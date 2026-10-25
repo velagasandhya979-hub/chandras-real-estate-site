@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Harrow & Vale Realty</title>
+<meta name="description" content="Houses, apartments, land and farm houses — browsed, filtered and visited without the runaround." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --sand:#fbf3e7; --sand-deep:#f4e6cc; --cream:#fffcf6;
+    --ink:#4a372b; --ink-soft:#8a7260; --ink-faint:#b7a68e;
+    --terracotta:#b9663a; --terracotta-deep:#954f2b;
+    --peach:#f3cba3; --honey:#dfa23d;
+    --sage:#a7b38c; --sage-deep:#74805a;
+    --line:#e8dabf;
+    --radius-lg:28px; --radius-md:18px; --radius-sm:10px;
+    --ease:cubic-bezier(0.23,1,0.32,1);
+    color-scheme: light;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--sand); color:var(--ink); font-family:"Inter",system-ui,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%;height:auto}
+  svg.scene-svg{display:block; width:100%; height:100%}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif; font-weight:400; margin:0; letter-spacing:-0.01em}
+  :focus-visible{outline:2px solid var(--terracotta); outline-offset:3px; border-radius:3px}
+  a{color:inherit}
+  .wrap{width:min(1160px,100% - 2.5rem); margin-inline:auto}
+  section.band{padding:clamp(3.5rem,7vw,6rem) 0}
+
+  .btn{display:inline-flex; align-items:center; gap:.5rem; min-height:46px; padding:.75rem 1.4rem; border-radius:999px; border:1px solid var(--terracotta); background:var(--terracotta); color:#fff; font:inherit; font-weight:500; text-decoration:none; cursor:pointer; transition:transform 140ms var(--ease), background-color 160ms var(--ease)}
+  .btn:active{transform:scale(.97)}
+  @media (hover:hover) and (pointer:fine){.btn:hover{background:var(--terracotta-deep)}}
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+  @media (hover:hover) and (pointer:fine){.btn.ghost:hover{background:var(--cream)}}
+
+  header.site{position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--sand) 90%,transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  header.site .wrap{display:flex; align-items:center; justify-content:space-between; height:4.3rem}
+  .brand{font-family:"Fraunces",serif; font-size:1.3rem; text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:.5rem}
+  .brand .mark{width:30px;height:30px;border-radius:9px 9px 9px 2px;background:var(--terracotta); flex:none}
+  nav.primary{display:flex; align-items:center; gap:1.6rem}
+  nav.primary a{font-size:.95rem; text-decoration:none; color:var(--ink-soft); padding:.3rem 0; border-bottom:2px solid transparent; transition:color 160ms var(--ease), border-color 160ms var(--ease)}
+  nav.primary a.active,nav.primary a:hover{color:var(--ink); border-color:var(--terracotta)}
+  .nav-toggle{display:none; border:1px solid var(--line); background:var(--cream); border-radius:10px; min-height:40px; padding:.4rem .7rem; font:inherit; cursor:pointer}
+  @media (max-width:880px){
+    nav.primary{position:absolute; top:4.3rem; left:0; right:0; background:var(--cream); flex-direction:column; align-items:flex-start; gap:0; padding:.5rem 1.25rem 1rem; border-bottom:1px solid var(--line); display:none}
+    nav.primary.open{display:flex}
+    nav.primary a{width:100%; padding:.65rem 0}
+    .nav-toggle{display:inline-flex}
+  }
+
+  .page{display:none}
+  .page.active{display:block; animation:pageIn 420ms var(--ease)}
+  @keyframes pageIn{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:translateY(0)}}
+
+  /* scroll-reveal + counters */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity 650ms var(--ease), transform 650ms var(--ease)}
+  .reveal.in-view{opacity:1; transform:translateY(0)}
+
+  /* motion inside the illustrated scenes */
+  .cloud{animation:drift 9s ease-in-out infinite alternate}
+  .sun-glow{animation:sunpulse 5s ease-in-out infinite}
+  @keyframes drift{from{transform:translateX(0)}to{transform:translateX(16px)}}
+  @keyframes sunpulse{0%,100%{opacity:.35}50%{opacity:.65}}
+
+  .hero{padding:clamp(2.5rem,7vw,5rem) 0 clamp(3rem,6vw,4.5rem)}
+  .hero-grid{display:grid; grid-template-columns:1fr .92fr; gap:clamp(2rem,5vw,3.5rem); align-items:center}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.6rem); line-height:1.08; font-weight:300; max-width:14ch}
+  .hero p.lede{margin:1.1rem 0 1.8rem; max-width:40ch; color:var(--ink-soft); font-size:1.05rem}
+  .hero-ctas{display:flex; gap:.8rem; flex-wrap:wrap; margin-bottom:2rem}
+  .hero-stats{display:flex; gap:2rem; padding-top:1.3rem; border-top:1px solid var(--line)}
+  .hero-stats div dt{font-family:"Fraunces",serif; font-size:1.7rem}
+  .hero-stats div dd{margin:.2rem 0 0; font-size:.82rem; color:var(--ink-soft)}
+  .hero-media{position:relative}
+  .hero-media .blob{position:absolute; inset:-8% -10% auto auto; width:70%; aspect-ratio:1; background:radial-gradient(circle at 30% 30%, var(--peach), var(--sage) 85%); opacity:.35; border-radius:46% 54% 60% 40%/50% 44% 56% 50%; z-index:0; animation:blobbreath 7s ease-in-out infinite}
+  @keyframes blobbreath{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+  .hero-media .main{position:relative; z-index:1; width:100%; aspect-ratio:4/5; border-radius:34px 10px 34px 10px; overflow:hidden; transition:transform 200ms var(--ease)}
+  .hero-media .float{position:absolute; z-index:2; left:-8%; bottom:-10%; width:46%; aspect-ratio:5/4; border-radius:10px 24px 10px 24px; border:5px solid var(--sand); box-shadow:0 12px 30px rgb(43 36 32/.18); overflow:hidden; transition:transform 200ms var(--ease)}
+  @media (max-width:880px){.hero-grid{grid-template-columns:1fr} .hero-media{margin-top:1rem}}
+
+  .cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem}
+  .cat-tile{position:relative; aspect-ratio:3/3.6; border-radius:30px 10px 30px 10px; overflow:hidden; text-decoration:none; color:#fff; display:block}
+  .cat-tile:nth-child(even){border-radius:10px 30px 10px 30px}
+  .cat-tile svg{position:absolute; inset:0; width:100%; height:100%; transition:transform 400ms var(--ease)}
+  @media (hover:hover) and (pointer:fine){.cat-tile:hover svg{transform:scale(1.06)}}
+  .cat-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgb(30 24 16/.75),rgb(30 24 16/0) 58%)}
+  .cat-tile .label{position:absolute; left:1.1rem; right:1.1rem; bottom:1rem; z-index:1}
+  .cat-tile .label h3{font-size:1.1rem; color:#fff; font-weight:400}
+  .cat-tile .label span{font-size:.8rem; opacity:.85}
+  @media (max-width:880px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+
+  .section-head{display:flex; justify-content:space-between; align-items:end; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.8rem}
+  .section-head h2{font-size:clamp(1.7rem,3.2vw,2.3rem); font-weight:300}
+  .section-head p{margin:.4rem 0 0; color:var(--ink-soft); max-width:46ch}
+
+  .prop-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.4rem}
+  .prop-card{background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; display:flex; flex-direction:column; text-decoration:none; color:var(--ink); transition:transform 180ms var(--ease), box-shadow 180ms var(--ease)}
+  @media (hover:hover) and (pointer:fine){.prop-card:hover{transform:translateY(-3px); box-shadow:0 14px 28px rgb(43 36 32/.1)}}
+  .prop-card .img-wrap{position:relative; aspect-ratio:4/3}
+  .prop-card .cat-tag{position:absolute; left:.8rem; top:.8rem; background:var(--cream); color:var(--ink); font-size:.78rem; padding:.25rem .6rem; border-radius:999px}
+  .prop-card .featured-tag{position:absolute; right:.8rem; top:.8rem; background:var(--terracotta); color:#fff; font-size:.78rem; padding:.25rem .6rem; border-radius:999px}
+  .prop-card .body{padding:1rem 1.1rem 1.2rem; display:grid; gap:.3rem; flex:1}
+  .prop-card .price{font-family:"Fraunces",serif; font-size:1.35rem}
+  .prop-card h3{font-size:1rem; font-weight:600; font-family:"Inter",sans-serif}
+  .prop-card .loc{color:var(--ink-soft); font-size:.9rem; margin:0}
+  .prop-card .specs{margin:.4rem 0 0; font-size:.86rem; color:var(--ink-soft); display:flex; gap:.6rem; flex-wrap:wrap}
+
+  .filter-bar{display:flex; flex-wrap:wrap; gap:.7rem; align-items:center; background:var(--cream); border:1px solid var(--line); border-radius:999px; padding:.6rem; margin-bottom:1.6rem}
+  .filter-bar input[type=search]{border:none; background:transparent; font:inherit; min-height:38px; padding:.3rem .8rem; flex:1; min-width:140px}
+  .filter-bar input:focus{outline:none}
+  .filter-bar select{border:1px solid var(--line); background:var(--sand); border-radius:999px; min-height:38px; padding:.3rem .9rem; font:inherit; font-size:.88rem}
+  .chip-row{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.6rem}
+  .chip{min-height:38px; padding:.4rem .95rem; border-radius:999px; border:1px solid var(--line); background:var(--cream); font:inherit; font-size:.88rem; cursor:pointer; color:var(--ink-soft); transition:background-color 160ms var(--ease), color 160ms var(--ease)}
+  .chip[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:#fff}
+  .count{margin:0 0 1rem; color:var(--ink-soft); font-size:.92rem}
+  .empty{display:none; text-align:center; padding:3rem 1rem; border:1px dashed var(--line); border-radius:var(--radius-md); color:var(--ink-soft)}
+  .empty.show{display:block}
+
+  .band.terracotta{background:linear-gradient(135deg, var(--peach), var(--honey) 120%); color:var(--ink)}
+  .band.terracotta h2{color:var(--ink)}
+  .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem}
+  .stat-row dt{font-family:"Fraunces",serif; font-size:2.2rem}
+  .stat-row dd{margin:.3rem 0 0; opacity:.85; font-size:.9rem}
+  @media (max-width:680px){.stat-row{grid-template-columns:1fr}}
+
+  .quote{max-width:50ch; font-family:"Fraunces",serif; font-size:1.5rem; font-weight:300; line-height:1.4; margin:0 0 1rem}
+  .quote-author{color:var(--ink-soft); font-size:.9rem}
+
+  .back-link{display:inline-flex; gap:.4rem; align-items:center; color:var(--ink-soft); text-decoration:none; font-size:.9rem; margin-bottom:1.4rem}
+  .detail-grid{display:grid; grid-template-columns:1.3fr .9fr; gap:2.5rem; align-items:start}
+  .gallery-main{border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/3}
+  .thumbs{display:flex; gap:.6rem; margin-top:.7rem}
+  .thumbs button{padding:0; border:2px solid transparent; border-radius:10px; overflow:hidden; width:72px; height:54px; cursor:pointer; background:none}
+  .thumbs button.active{border-color:var(--terracotta)}
+  .detail-info .cat-tag{display:inline-block; background:var(--sage-deep); color:#fff; font-size:.8rem; padding:.3rem .7rem; border-radius:999px; margin-bottom:.8rem}
+  .detail-info .price{font-family:"Fraunces",serif; font-size:2.1rem; margin:.2rem 0}
+  .detail-info h1{font-size:1.5rem; font-weight:500; font-family:"Inter",sans-serif}
+  .detail-info .loc{color:var(--ink-soft); margin:.2rem 0 1.2rem}
+  .spec-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem; padding:1.1rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:1.2rem}
+  .spec-grid dt{font-size:.78rem; color:var(--ink-soft)}
+  .spec-grid dd{margin:.15rem 0 0; font-weight:600}
+  .agent-card{display:flex; gap:.9rem; align-items:center; background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-md); padding:1rem; margin-top:1.4rem}
+  .agent-card svg{width:54px; height:54px; border-radius:50%; flex:none}
+  .agent-card strong{display:block}
+  .agent-card span{color:var(--ink-soft); font-size:.86rem}
+  @media (max-width:880px){.detail-grid{grid-template-columns:1fr}}
+
+  .about-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:3rem; align-items:center}
+  .about-grid svg{border-radius:34px 10px 34px 10px; aspect-ratio:4/5; width:100%; display:block}
+  @media (max-width:880px){.about-grid{grid-template-columns:1fr}}
+  .values{list-style:none; margin:1.5rem 0 0; padding:0; display:grid; gap:1rem}
+  .values li{padding-left:1.1rem; border-left:2px solid var(--sage-deep)}
+  .values strong{display:block; font-family:"Fraunces",serif; font-size:1.1rem; font-weight:400}
+  .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; margin-top:2rem}
+  .team-card svg{border-radius:20px 20px 4px 20px; aspect-ratio:3/3.4; width:100%; display:block; margin-bottom:.6rem}
+  .team-card strong{display:block}
+  .team-card span{color:var(--ink-soft); font-size:.86rem}
+  @media (max-width:760px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+
+  .contact-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:3rem; align-items:start}
+  .office-card{background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-md); padding:1.4rem; margin-bottom:1.2rem}
+  .office-card h3{font-size:1.1rem; font-weight:500; margin-bottom:.5rem}
+  .office-card p{margin:.2rem 0; color:var(--ink-soft); font-size:.92rem}
+  .map-block{aspect-ratio:16/9; border-radius:var(--radius-md); background:
+    repeating-linear-gradient(0deg,rgb(185 102 58/.08) 0 1px,transparent 1px 32px),
+    repeating-linear-gradient(90deg,rgb(185 102 58/.08) 0 1px,transparent 1px 32px),
+    var(--sand-deep);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--ink-soft); font-size:.9rem}
+  form.contact{display:grid; gap:1rem; background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-md); padding:clamp(1.3rem,3vw,2rem)}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:1rem}
+  .field{display:grid; gap:.35rem}
+  .field label{font-size:.85rem; font-weight:500; color:var(--ink-soft)}
+  input,select,textarea{width:100%; min-height:44px; padding:.6rem .8rem; font:inherit; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--sand); color:var(--ink)}
+  textarea{min-height:110px; resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:none; border-color:var(--terracotta); box-shadow:0 0 0 3px rgb(185 102 58/.18)}
+  .invalid{border-color:#a3391f !important}
+  .err{min-height:1.1em; font-size:.8rem; color:#a3391f; margin:0}
+  .form-status{margin:0; color:var(--sage-deep); font-size:.92rem; min-height:1.3em}
+  @media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
+  @media (max-width:600px){.row2{grid-template-columns:1fr}}
+
+  footer{border-top:1px solid var(--line); padding:3rem 0 2rem; margin-top:1rem}
+  .foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:2rem}
+  .foot-grid h4{font-size:.92rem; margin:0 0 .8rem}
+  .foot-grid ul{list-style:none; margin:0; padding:0; display:grid; gap:.5rem}
+  .foot-grid a{text-decoration:none; color:var(--ink-soft); font-size:.9rem}
+  .foot-bottom{margin-top:2.2rem; padding-top:1.2rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem; color:var(--ink-faint); font-size:.85rem}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .cat-tile svg,.prop-card,.btn{transition:none}
+    .reveal{opacity:1 !important; transform:none !important; transition:none !important}
+    .hero-media .blob,.cloud,.sun-glow{animation:none !important}
+    .page.active{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="#home" class="brand"><span class="mark"></span>Harrow &amp; Vale</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+    <nav class="primary" id="primaryNav">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#listings" data-page="listings">Listings</a>
+      <a href="#about" data-page="about">About</a>
+      <a href="#contact" data-page="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section class="page" data-page-section="home">
+  <div class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <h1 class="reveal">Properties picked the way we'd choose for our own family.</h1>
+        <p class="lede reveal">Houses, apartments, land and farm houses — each one walked through by an agent who will tell you honestly if it isn't right for you.</p>
+        <div class="hero-ctas reveal">
+          <a href="#listings" class="btn">Browse listings</a>
+          <a href="#contact" class="btn ghost">Talk to an agent</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt class="reveal" data-count="412" data-decimals="0">0</dt><dd>properties sold</dd></div>
+          <div><dt class="reveal" data-count="9" data-decimals="0" data-suffix=" days">0</dt><dd>median time to offer</dd></div>
+          <div><dt class="reveal" data-count="4.9" data-decimals="1">0.0</dt><dd>client rating</dd></div>
+        </dl>
+      </div>
+      <div class="hero-media" id="heroMedia">
+        <div class="blob"></div>
+        <div class="main" id="heroMain"></div>
+        <div class="float" id="heroFloat"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band wrap">
+    <div class="section-head reveal"><h2>Find it by what it is</h2><p>Four kinds of property, one honest search.</p></div>
+    <div class="cat-grid">
+      <a class="cat-tile reveal" href="#listings-house" id="tile-house"><span class="label"><h3>Houses</h3><span id="count-house"></span></span></a>
+      <a class="cat-tile reveal" href="#listings-apartment" id="tile-apartment"><span class="label"><h3>Apartments</h3><span id="count-apartment"></span></span></a>
+      <a class="cat-tile reveal" href="#listings-land" id="tile-land"><span class="label"><h3>Land &amp; plots</h3><span id="count-land"></span></span></a>
+      <a class="cat-tile reveal" href="#listings-farmhouse" id="tile-farmhouse"><span class="label"><h3>Farm houses</h3><span id="count-farmhouse"></span></span></a>
+    </div>
+  </div>
+
+  <div class="band wrap">
+    <div class="section-head reveal"><h2>Featured this month</h2><p>A short, honest shortlist — not everything we have.</p></div>
+    <div class="prop-grid" id="featuredGrid"></div>
+  </div>
+
+  <section class="band terracotta">
+    <div class="wrap">
+      <h2 class="reveal">Why people end up staying with us</h2>
+      <dl class="stat-row">
+        <div><dt class="reveal" data-count="18" data-decimals="0" data-suffix=" yrs">0</dt><dd>in this market, same three towns</dd></div>
+        <div><dt class="reveal">0 pressure</dt><dd>we'll say when a place is wrong for you</dd></div>
+        <div><dt class="reveal" data-count="1" data-decimals="0" data-suffix=" day">0</dt><dd>average reply time to an enquiry</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="band wrap">
+    <p class="quote reveal">"They talked us out of the first house we loved — and found us one we love more, six weeks later."</p>
+    <p class="quote-author reveal">— Priya &amp; Arjun, bought a farmhouse on Cedar Road</p>
+  </div>
+</section>
+
+<!-- LISTINGS -->
+<section class="page" data-page-section="listings">
+  <div class="band wrap">
+    <div class="section-head"><h2>All listings</h2></div>
+    <div class="chip-row" id="chipRow" role="group" aria-label="Filter by category"></div>
+    <div class="filter-bar">
+      <input type="search" id="searchInput" placeholder="Search by name or location" />
+      <select id="priceSelect">
+        <option value="Infinity">Any price</option>
+        <option value="300000">Up to $300k</option>
+        <option value="600000">Up to $600k</option>
+        <option value="900000">Up to $900k</option>
+      </select>
+      <select id="sortSelect">
+        <option value="newest">Newest</option>
+        <option value="price-asc">Price: low to high</option>
+        <option value="price-desc">Price: high to low</option>
+      </select>
+    </div>
+    <p class="count" id="listingCount" aria-live="polite"></p>
+    <div class="prop-grid" id="listingsGrid"></div>
+    <p class="empty" id="listingsEmpty">No properties match those filters. Try clearing the search or widening the price range.</p>
+  </div>
+</section>
+
+<!-- PROPERTY DETAIL -->
+<section class="page" data-page-section="property">
+  <div class="band wrap">
+    <a href="#listings" class="back-link">&larr; Back to listings</a>
+    <div id="propertyDetail"></div>
+    <div class="section-head" style="margin-top:3rem"><h2>Similar properties</h2></div>
+    <div class="prop-grid" id="relatedGrid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="page" data-page-section="about">
+  <div class="band wrap">
+    <div class="about-grid">
+      <div id="aboutMain"></div>
+      <div>
+        <h2 class="reveal" style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Three towns, one small agency, no script.</h2>
+        <p class="reveal" style="color:var(--ink-soft); max-width:50ch">Harrow &amp; Vale started as two agents who were tired of pushy sales targets. We still take on only as many clients as we can personally walk through a property with — which means we turn work away most weeks.</p>
+        <ul class="values">
+          <li class="reveal"><strong>We say no.</strong> If a property doesn't fit your list, we'll tell you before you book a viewing.</li>
+          <li class="reveal"><strong>We know the streets.</strong> Drainage, noise, school catchments — the things a listing photo won't show.</li>
+          <li class="reveal"><strong>We negotiate in writing.</strong> You see every offer and counter-offer as it happens.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section class="band terracotta">
+    <div class="wrap">
+      <h2 class="reveal">The team</h2>
+      <div class="team-grid" id="teamGrid"></div>
+    </div>
+  </section>
+</section>
+
+<!-- CONTACT -->
+<section class="page" data-page-section="contact">
+  <div class="band wrap">
+    <div class="section-head"><h2>Book a visit this week</h2><p>A senior agent replies within one working day.</p></div>
+    <div class="contact-grid">
+      <div>
+        <div class="office-card">
+          <h3>Main office</h3>
+          <p>24 Linden Row, Harrow Cross</p>
+          <p>Mon–Sat, 9:00–18:00</p>
+          <p><a href="tel:+10000000000">(000) 000-0000</a></p>
+          <p><a href="mailto:hello@example.com">hello@example.com</a></p>
+        </div>
+        <div class="map-block">Map placeholder — swap for an embedded map</div>
+      </div>
+      <form class="contact" id="contactForm" novalidate>
+        <div class="row2">
+          <div class="field">
+            <label for="cf-name">Full name</label>
+            <input id="cf-name" required />
+            <p class="err" id="err-name"></p>
+          </div>
+          <div class="field">
+            <label for="cf-contact">Phone or email</label>
+            <input id="cf-contact" required />
+            <p class="err" id="err-contact"></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-interest">What are you looking for?</label>
+          <select id="cf-interest">
+            <option>Buying a house</option>
+            <option>Buying an apartment</option>
+            <option>Buying land</option>
+            <option>Buying a farm house</option>
+            <option>Selling a property</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cf-message">Anything we should know? <span style="color:var(--ink-faint)">(optional)</span></label>
+          <textarea id="cf-message"></textarea>
+        </div>
+        <button class="btn" type="submit">Request a visit</button>
+        <p class="form-status" id="formStatus" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#home" class="brand" style="margin-bottom:.6rem"><span class="mark"></span>Harrow &amp; Vale</a>
+        <p style="color:var(--ink-soft); font-size:.9rem; max-width:32ch">An independent agency across three towns. Licensed brokerage, est. 2008.</p>
+      </div>
+      <div><h4>Explore</h4><ul>
+        <li><a href="#home">Home</a></li><li><a href="#listings">Listings</a></li>
+        <li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
+      </ul></div>
+      <div><h4>Categories</h4><ul>
+        <li><a href="#listings-house">Houses</a></li><li><a href="#listings-apartment">Apartments</a></li>
+        <li><a href="#listings-land">Land &amp; plots</a></li><li><a href="#listings-farmhouse">Farm houses</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="tel:+10000000000">(000) 000-0000</a></li>
+        <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+        <li>24 Linden Row, Harrow Cross</li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year"></span> Harrow &amp; Vale Realty</span>
+      <span>Frontend demo — no data is sent anywhere</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const properties = [
+    {id:1,title:"Sunlit Craftsman on Birchwood Ave",category:"house",location:"Maple Hill",price:640000,featured:true,added:9,
+      specs:[["Bedrooms","3"],["Bathrooms","2"],["Interior","1,480 sq ft"],["Lot size","4,200 sq ft"]],
+      desc:"A 1930s craftsman with the original woodwork intact, a deep front porch, and a kitchen that's already been opened up to the dining room."},
+    {id:2,title:"Brick Colonial near Linden Park",category:"house",location:"Linden Park",price:789000,featured:false,added:21,
+      specs:[["Bedrooms","4"],["Bathrooms","3"],["Interior","2,140 sq ft"],["Lot size","6,000 sq ft"]],
+      desc:"Four bedrooms on a quiet close two minutes' walk from the park. Finished basement, attached garage, recently replaced roof."},
+    {id:3,title:"Lakeview Cottage, Hollow Brook",category:"house",location:"Hollow Brook",price:512000,featured:true,added:4,
+      specs:[["Bedrooms","2"],["Bathrooms","1"],["Interior","1,020 sq ft"],["Lot size","3,600 sq ft"]],
+      desc:"A compact lakeside cottage, fully renovated, with a dock rights agreement already in place."},
+    {id:4,title:"Riverside Loft, 6th Floor",category:"apartment",location:"Canal Quarter",price:420000,featured:true,added:6,
+      specs:[["Bedrooms","1"],["Bathrooms","1"],["Interior","820 sq ft"],["Floor","6 of 9"]],
+      desc:"Exposed brick, tall windows, and a direct canal view. Building has a lift and secure parking."},
+    {id:5,title:"Garden-Level Flat, Old Market",category:"apartment",location:"Old Market",price:318000,featured:false,added:15,
+      specs:[["Bedrooms","2"],["Bathrooms","1"],["Interior","910 sq ft"],["Floor","Ground"]],
+      desc:"A quiet garden-level flat with its own private courtyard access — rare for this building."},
+    {id:6,title:"Skyline Two-Bed near Transit",category:"apartment",location:"Station Road",price:489000,featured:false,added:11,
+      specs:[["Bedrooms","2"],["Bathrooms","2"],["Interior","1,080 sq ft"],["Floor","11 of 14"]],
+      desc:"Two minutes from the station, with a south-facing balcony and in-unit laundry."},
+    {id:7,title:"12-Acre Open Parcel, Cedar Road",category:"land",location:"Cedar Road",price:210000,featured:true,added:2,
+      specs:[["Acreage","12 acres"],["Zoning","Residential"],["Road frontage","340 ft"],["Utilities","At the road"]],
+      desc:"A gently sloped, cleared parcel with utilities already run to the road line. Perc test on file."},
+    {id:8,title:"Wooded 5-Acre Lot",category:"land",location:"Pine Ridge",price:96000,featured:false,added:28,
+      specs:[["Acreage","5 acres"],["Zoning","Rural residential"],["Road frontage","180 ft"],["Utilities","Well & septic needed"]],
+      desc:"Mature hardwood lot backing onto conservation land, so the view stays the view."},
+    {id:9,title:"Riverside Building Plot",category:"land",location:"Millbrook",price:305000,featured:false,added:17,
+      specs:[["Acreage","2.4 acres"],["Zoning","Residential"],["Road frontage","110 ft"],["Utilities","At the road"]],
+      desc:"A rare riverside building plot with an approved site plan already on file for a single-family home."},
+    {id:10,title:"Restored Farmhouse with Barn",category:"farmhouse",location:"Cedar Road",price:875000,featured:true,added:5,
+      specs:[["Bedrooms","4"],["Bathrooms","2"],["Acreage","18 acres"],["Outbuildings","Barn, equipment shed"]],
+      desc:"A full farmhouse restoration — original beams, new mechanicals throughout — on 18 working acres with a standing barn."},
+    {id:11,title:"Working Farm with Orchard",category:"farmhouse",location:"Pine Ridge",price:1050000,featured:false,added:19,
+      specs:[["Bedrooms","5"],["Bathrooms","3"],["Acreage","32 acres"],["Outbuildings","Barn, orchard, silo"]],
+      desc:"A long-run apple orchard with an active harvest contract, plus a five-bedroom main house and full barn."},
+    {id:12,title:"Countryside Farmhouse Retreat",category:"farmhouse",location:"Millbrook",price:699000,featured:false,added:13,
+      specs:[["Bedrooms","3"],["Bathrooms","2"],["Acreage","9 acres"],["Outbuildings","Barn"]],
+      desc:"A smaller farmhouse for anyone wanting the land without the scale of a working farm. Fenced paddock included."}
+  ];
+
+  const catLabel = {house:"House",apartment:"Apartment",land:"Land & plot",farmhouse:"Farm house"};
+  const money = n => "$"+n.toLocaleString("en-US");
+
+  /* ---------- illustrated scenes (no network needed) ---------- */
+  const SKY = {
+    morning:['#fff3df','#f6cfa0','#ffcf6b'],
+    midday:['#fdeccb','#f3cba3','#dfa23d'],
+    afternoon:['#f6d9ab','#e9b685','#d98f4a']
+  };
+  function skyAndSun(uid, variant, seed){
+    const [top,bottom,sun] = SKY[variant]||SKY.midday;
+    const sx = 320 - (seed%3)*12;
+    return `<defs><linearGradient id="sky${uid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${bottom}"/></linearGradient></defs>
+      <rect width="400" height="300" fill="url(#sky${uid})"/>
+      <circle class="sun-glow" cx="${sx}" cy="55" r="34" fill="${sun}"/>
+      <circle cx="${sx}" cy="55" r="20" fill="${sun}"/>
+      <g class="cloud" style="animation-delay:-1s"><ellipse cx="90" cy="48" rx="26" ry="12" fill="#fffaf2" opacity=".8"/><ellipse cx="112" cy="44" rx="18" ry="10" fill="#fffaf2" opacity=".8"/></g>
+      <g class="cloud" style="animation-delay:-4s"><ellipse cx="250" cy="80" rx="20" ry="9" fill="#fffaf2" opacity=".6"/></g>`;
+  }
+  function wrapSvg(inner, label, vb){
+    return `<svg class="scene-svg" viewBox="${vb||'0 0 400 300'}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}">${inner}</svg>`;
+  }
+  function houseScene(variant, seed){
+    const roof = seed%2===0 ? '#b9663a' : '#a85a32';
+    return wrapSvg(`${skyAndSun('h'+seed+variant,variant,seed)}
+      <rect y="210" width="400" height="90" fill="#c9d2b0"/>
+      <path d="M60 300 Q140 270 220 300" fill="none" stroke="#9aa67c" stroke-width="2" opacity=".6"/>
+      <circle cx="340" cy="230" r="22" fill="#8a9a6e"/><rect x="336" y="248" width="8" height="26" fill="#6f6050"/>
+      <rect x="130" y="150" width="140" height="90" fill="#fdf6ea"/>
+      <polygon points="120,150 200,100 280,150" fill="${roof}"/>
+      <rect x="190" y="190" width="30" height="50" fill="#4a372b"/>
+      <rect x="150" y="175" width="24" height="24" fill="#a7b38c"/><rect x="226" y="175" width="24" height="24" fill="#a7b38c"/>
+      <line x1="162" y1="175" x2="162" y2="199" stroke="#4a372b" stroke-width="1.5"/><line x1="150" y1="187" x2="174" y2="187" stroke="#4a372b" stroke-width="1.5"/>
+      <line x1="238" y1="175" x2="238" y2="199" stroke="#4a372b" stroke-width="1.5"/><line x1="226" y1="187" x2="250" y2="187" stroke="#4a372b" stroke-width="1.5"/>
+      <circle cx="90" cy="238" r="2.5" fill="#dfa23d"/><circle cx="104" cy="242" r="2.5" fill="#b9663a"/><circle cx="118" cy="236" r="2.5" fill="#dfa23d"/>`, "Illustration of a house");
+  }
+  function apartmentScene(variant, seed){
+    const rows = Array.from({length:5});
+    const cols = Array.from({length:4});
+    const windows = rows.map((_,row)=>cols.map((__,col)=>{
+      const lit = (row+col+seed)%3===0;
+      return `<rect x="${176+col*32}" y="${78+row*28}" width="18" height="18" fill="${lit?'#dfa23d':'#a7b38c'}" opacity="${lit?0.9:0.7}"/>`;
+    }).join("")).join("");
+    return wrapSvg(`${skyAndSun('a'+seed+variant,variant,seed)}
+      <rect y="230" width="400" height="70" fill="#e3d4b2"/>
+      <rect x="40" y="110" width="110" height="120" fill="#cbb99a"/>
+      <rect x="160" y="60" width="150" height="170" fill="#fdf6ea"/>
+      ${windows}
+      <rect x="310" y="150" width="60" height="80" fill="#d8c6a2"/>`, "Illustration of an apartment building");
+  }
+  function landScene(variant, seed){
+    return wrapSvg(`${skyAndSun('l'+seed+variant,variant,seed)}
+      <path d="M0 230 Q100 190 220 225 T400 210 V300 H0 Z" fill="#b7c39a"/>
+      <path d="M0 260 Q140 230 260 258 T400 248 V300 H0 Z" fill="#a0ae80"/>
+      <line x1="30" y1="300" x2="30" y2="255" stroke="#8a7260" stroke-width="3"/><line x1="80" y1="300" x2="80" y2="250" stroke="#8a7260" stroke-width="3"/>
+      <line x1="30" y1="262" x2="80" y2="257" stroke="#8a7260" stroke-width="2"/>
+      <circle cx="330" cy="235" r="18" fill="#8a9a6e"/><rect x="326" y="250" width="8" height="24" fill="#6f6050"/>
+      <line x1="230" y1="300" x2="230" y2="235" stroke="#6f6050" stroke-width="2.5"/>
+      <polygon points="230,235 230,210 255,222" fill="#b9663a"/>`, "Illustration of open land");
+  }
+  function farmhouseScene(variant, seed){
+    const barn = seed%2===0 ? '#954f2b':'#8a4a2a';
+    return wrapSvg(`${skyAndSun('f'+seed+variant,variant,seed)}
+      <rect y="215" width="400" height="85" fill="#c3cd9f"/>
+      <g stroke="#9aa67c" stroke-width="1.5" opacity=".5"><line x1="0" y1="240" x2="400" y2="225"/><line x1="0" y1="258" x2="400" y2="243"/><line x1="0" y1="276" x2="400" y2="261"/></g>
+      <rect x="60" y="165" width="100" height="70" fill="#fdf6ea"/>
+      <polygon points="52,165 110,130 168,165" fill="#b9663a"/>
+      <rect x="95" y="195" width="22" height="40" fill="#4a372b"/>
+      <rect x="200" y="140" width="110" height="95" fill="${barn}"/>
+      <polygon points="192,140 255,95 318,140" fill="#78391f"/>
+      <rect x="240" y="175" width="30" height="60" fill="#fdf6ea"/>
+      <line x1="240" y1="175" x2="270" y2="235" stroke="${barn}" stroke-width="2"/><line x1="270" y1="175" x2="240" y2="235" stroke="${barn}" stroke-width="2"/>
+      <rect x="325" y="160" width="20" height="75" rx="10" fill="#d8c6a2"/><ellipse cx="335" cy="160" rx="10" ry="6" fill="#c3b093"/>`, "Illustration of a farm house with a barn");
+  }
+  const sceneByCategory = {house:houseScene, apartment:apartmentScene, land:landScene, farmhouse:farmhouseScene};
+
+  function interiorScene(){
+    return wrapSvg(`<rect width="400" height="320" fill="#f6e7cf"/>
+      <rect width="400" height="140" fill="#f3cba3" opacity=".5"/>
+      <polygon points="40,0 400,0 400,60 120,320 0,320" fill="#ffe2b0" opacity=".35"/>
+      <rect x="60" y="30" width="150" height="180" fill="#fdf6ea" stroke="#e8dabf" stroke-width="6"/>
+      <line x1="135" y1="30" x2="135" y2="210" stroke="#e8dabf" stroke-width="4"/><line x1="60" y1="120" x2="210" y2="120" stroke="#e8dabf" stroke-width="4"/>
+      <path d="M250 320 C250 230 330 230 330 150 L360 150 C360 230 300 230 300 320 Z" fill="#b9663a"/>
+      <rect x="230" y="300" width="140" height="20" rx="6" fill="#954f2b"/>
+      <circle cx="340" cy="260" r="26" fill="#a7b38c"/><rect x="334" y="278" width="12" height="30" fill="#74805a"/>
+      <path d="M330 262 q10 -24 24 -4" fill="none" stroke="#74805a" stroke-width="4"/>`, "Illustration of a cozy sunlit reading corner", "0 0 400 320");
+  }
+  function meetingScene(){
+    return wrapSvg(`<rect width="400" height="480" fill="#f6e7cf"/>
+      <rect width="400" height="60" fill="#e8dabf"/>
+      <rect x="150" y="20" width="100" height="70" fill="#fdf6ea" stroke="#d8c6a2" stroke-width="4"/>
+      <ellipse cx="200" cy="300" rx="140" ry="40" fill="#e3d4b2"/>
+      <circle cx="120" cy="230" r="26" fill="#b9663a"/><rect x="94" y="256" width="52" height="60" rx="16" fill="#954f2b"/>
+      <circle cx="200" cy="215" r="26" fill="#a7b38c"/><rect x="174" y="241" width="52" height="60" rx="16" fill="#74805a"/>
+      <circle cx="280" cy="230" r="26" fill="#dfa23d"/><rect x="254" y="256" width="52" height="60" rx="16" fill="#b9823a"/>
+      <rect x="170" y="280" width="60" height="10" rx="4" fill="#fdf6ea"/>
+      <circle cx="200" cy="90" r="10" fill="#dfa23d" opacity=".8"/><line x1="200" y1="60" x2="200" y2="80" stroke="#b9823a" stroke-width="3"/>`,
+      "Illustration of the team meeting around a table", "0 0 400 480");
+  }
+  function avatarScene(name, color){
+    return `<svg class="scene-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${name}">
+      <rect width="120" height="120" fill="${color}"/>
+      <circle cx="60" cy="48" r="24" fill="#fffaf2" opacity=".9"/>
+      <path d="M20 120 C20 88 40 76 60 76 C80 76 100 88 100 120 Z" fill="#fffaf2" opacity=".9"/></svg>`;
+  }
+
+  /* ---------- cards / grids ---------- */
+  function propCard(p){
+    const a = document.createElement("a");
+    a.href = "#property-"+p.id;
+    a.className = "prop-card reveal";
+    a.innerHTML = `
+      <div class="img-wrap">
+        ${sceneByCategory[p.category]("midday", p.id)}
+        <span class="cat-tag">${catLabel[p.category]}</span>
+        ${p.featured?'<span class="featured-tag">Featured</span>':''}
+      </div>
+      <div class="body">
+        <p class="price">${money(p.price)}</p>
+        <h3>${p.title}</h3>
+        <p class="loc">${p.location}</p>
+        <p class="specs">${p.specs.slice(0,2).map(s=>s[1]).join(" · ")}</p>
+      </div>`;
+    return a;
+  }
+
+  function renderFeatured(){
+    const grid = document.getElementById("featuredGrid");
+    grid.innerHTML = "";
+    properties.filter(p=>p.featured).slice(0,3).forEach(p=>grid.appendChild(propCard(p)));
+    observeReveals(grid);
+  }
+
+  function renderCounts(){
+    ["house","apartment","land","farmhouse"].forEach(c=>{
+      const n = properties.filter(p=>p.category===c).length;
+      document.getElementById("count-"+c).textContent = n+" listed";
+    });
+  }
+
+  function renderStaticScenes(){
+    document.getElementById("tile-house").insertAdjacentHTML("afterbegin", houseScene("midday",0));
+    document.getElementById("tile-apartment").insertAdjacentHTML("afterbegin", apartmentScene("midday",0));
+    document.getElementById("tile-land").insertAdjacentHTML("afterbegin", landScene("midday",0));
+    document.getElementById("tile-farmhouse").insertAdjacentHTML("afterbegin", farmhouseScene("midday",0));
+    document.getElementById("heroMain").innerHTML = houseScene("midday", 1);
+    document.getElementById("heroFloat").innerHTML = interiorScene();
+    document.getElementById("aboutMain").innerHTML = meetingScene();
+
+    const team = [
+      {name:"Meera Rao", role:"Senior agent", color:"#b9663a"},
+      {name:"Daniel Osei", role:"Land & rural", color:"#74805a"},
+      {name:"Lina Park", role:"Apartments", color:"#dfa23d"},
+      {name:"Tom Weaver", role:"Office manager", color:"#8a7260"}
+    ];
+    const teamGrid = document.getElementById("teamGrid");
+    teamGrid.innerHTML = team.map(t=>`<div class="team-card reveal">${avatarScene(t.name,t.color)}<strong>${t.name}</strong><span>${t.role}</span></div>`).join("");
+    observeReveals(teamGrid);
+  }
+
+  /* ---------- listings filter state ---------- */
+  const filterState = {category:"all", query:"", maxPrice:Infinity, sort:"newest"};
+  const chipRow = document.getElementById("chipRow");
+  const chipDefs = [["all","All"],["house","Houses"],["apartment","Apartments"],["land","Land & plots"],["farmhouse","Farm houses"]];
+  chipDefs.forEach(([val,label])=>{
+    const b = document.createElement("button");
+    b.className = "chip"; b.type="button"; b.textContent = label;
+    b.setAttribute("aria-pressed", String(val==="all"));
+    b.addEventListener("click", ()=>{
+      filterState.category = val;
+      [...chipRow.children].forEach(c=>c.setAttribute("aria-pressed","false"));
+      b.setAttribute("aria-pressed","true");
+      renderListings();
+    });
+    b.dataset.val = val;
+    chipRow.appendChild(b);
+  });
+
+  document.getElementById("searchInput").addEventListener("input", e=>{ filterState.query = e.target.value.trim().toLowerCase(); renderListings(); });
+  document.getElementById("priceSelect").addEventListener("change", e=>{ filterState.maxPrice = Number(e.target.value); renderListings(); });
+  document.getElementById("sortSelect").addEventListener("change", e=>{ filterState.sort = e.target.value; renderListings(); });
+
+  function setCategoryFilter(cat){
+    filterState.category = cat || "all";
+    [...chipRow.children].forEach(c=>c.setAttribute("aria-pressed", String(c.dataset.val===filterState.category)));
+  }
+
+  function renderListings(){
+    let results = properties.filter(p=>{
+      if (filterState.category!=="all" && p.category!==filterState.category) return false;
+      if (filterState.query && !(p.title+" "+p.location).toLowerCase().includes(filterState.query)) return false;
+      if (p.price > filterState.maxPrice) return false;
+      return true;
+    });
+    if (filterState.sort==="price-asc") results.sort((a,b)=>a.price-b.price);
+    else if (filterState.sort==="price-desc") results.sort((a,b)=>b.price-a.price);
+    else results.sort((a,b)=>a.added-b.added);
+
+    const grid = document.getElementById("listingsGrid");
+    grid.innerHTML = "";
+    results.forEach(p=>grid.appendChild(propCard(p)));
+    document.getElementById("listingCount").textContent = results.length===1 ? "1 property" : results.length+" properties";
+    document.getElementById("listingsEmpty").classList.toggle("show", results.length===0);
+    observeReveals(grid);
+  }
+
+  /* ---------- property detail ---------- */
+  function renderProperty(id){
+    const p = properties.find(x=>x.id===Number(id));
+    const wrap = document.getElementById("propertyDetail");
+    const related = document.getElementById("relatedGrid");
+    if (!p){ wrap.innerHTML = "<p>That listing isn't available any more.</p>"; related.innerHTML=""; return; }
+
+    const sceneFn = sceneByCategory[p.category];
+    const variants = [sceneFn("morning",p.id), sceneFn("midday",p.id), sceneFn("afternoon",p.id), sceneFn("midday",p.id+5)];
+
+    wrap.innerHTML = `
+      <div class="detail-grid">
+        <div>
+          <div class="gallery-main" id="galleryMain">${variants[1]}</div>
+          <div class="thumbs">
+            ${variants.map((v,i)=>`<button type="button" class="${i===1?'active':''}" data-idx="${i}">${v}</button>`).join("")}
+          </div>
+          <p style="margin-top:1.4rem; color:var(--ink-soft); max-width:60ch">${p.desc}</p>
+        </div>
+        <div class="detail-info">
+          <span class="cat-tag">${catLabel[p.category]}</span>
+          <p class="price">${money(p.price)}</p>
+          <h1>${p.title}</h1>
+          <p class="loc">${p.location}</p>
+          <dl class="spec-grid">
+            ${p.specs.map(s=>`<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join("")}
+          </dl>
+          <a href="#contact" class="btn" style="width:100%; justify-content:center">Request a viewing</a>
+          <div class="agent-card">
+            ${avatarScene('Meera Rao','#b9663a')}
+            <div><strong>Meera Rao</strong><span>Senior agent · replies within a day</span></div>
+          </div>
+        </div>
+      </div>`;
+
+    wrap.querySelectorAll(".thumbs button").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        wrap.querySelectorAll(".thumbs button").forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("galleryMain").innerHTML = variants[Number(btn.dataset.idx)];
+      });
+    });
+
+    related.innerHTML = "";
+    properties.filter(x=>x.category===p.category && x.id!==p.id).slice(0,3).forEach(r=>related.appendChild(propCard(r)));
+    observeReveals(related);
+  }
+
+  /* ---------- contact form ---------- */
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("formStatus");
+  function setErr(input,errId,msg){
+    document.getElementById(errId).textContent = msg;
+    input.classList.toggle("invalid", Boolean(msg));
+    return !msg;
+  }
+  form.addEventListener("submit", e=>{
+    e.preventDefault();
+    status.textContent = "";
+    const name = document.getElementById("cf-name");
+    const contact = document.getElementById("cf-contact");
+    const nameOk = setErr(name,"err-name", name.value.trim().length<2 ? "Please enter your name." : "");
+    const contactOk = setErr(contact,"err-contact", contact.value.trim().length<5 ? "Add a phone number or email." : "");
+    if (!nameOk || !contactOk){ (nameOk?contact:name).focus(); return; }
+    status.textContent = "Thanks — an agent will reply within one working day.";
+    form.reset();
+  });
+
+  /* ---------- mobile nav ---------- */
+  const navToggle = document.getElementById("navToggle");
+  const primaryNav = document.getElementById("primaryNav");
+  navToggle.addEventListener("click", ()=>{
+    const open = primaryNav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(open));
+  });
+  primaryNav.querySelectorAll("a").forEach(a=>a.addEventListener("click", ()=>{
+    primaryNav.classList.remove("open"); navToggle.setAttribute("aria-expanded","false");
+  }));
+
+  /* ---------- scroll reveal + counters ---------- */
+  const reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealObserver = "IntersectionObserver" in window ? new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in-view"); revealObserver.unobserve(en.target); } });
+  },{threshold:0.15}) : null;
+  function observeReveals(root){
+    (root||document).querySelectorAll(".reveal:not(.in-view)").forEach(el=>{
+      if (reduceMotion || !revealObserver){ el.classList.add("in-view"); } else { revealObserver.observe(el); }
+    });
+  }
+
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count);
+    const decimals = Number(el.dataset.decimals||0);
+    const suffix = el.dataset.suffix||"";
+    if (reduceMotion || isNaN(target)){ el.textContent = target.toFixed(decimals)+suffix; return; }
+    const start = performance.now();
+    const dur = 1100;
+    function tick(now){
+      const p = Math.min(1,(now-start)/dur);
+      const eased = 1 - Math.pow(1-p,3);
+      el.textContent = (target*eased).toFixed(decimals)+suffix;
+      if (p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const countObserver = "IntersectionObserver" in window ? new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ animateCount(en.target); countObserver.unobserve(en.target); } });
+  },{threshold:0.4}) : null;
+  function observeCounts(root){
+    (root||document).querySelectorAll("[data-count]").forEach(el=>{
+      if (!countObserver){ animateCount(el); } else { countObserver.observe(el); }
+    });
+  }
+
+  /* ---------- gentle parallax on the hero images ---------- */
+  const heroMedia = document.getElementById("heroMedia");
+  if (heroMedia && matchMedia("(hover:hover) and (pointer:fine)").matches && !reduceMotion){
+    heroMedia.addEventListener("mousemove", e=>{
+      const r = heroMedia.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width - .5;
+      const y = (e.clientY - r.top)/r.height - .5;
+      const floatEl = document.getElementById("heroFloat");
+      const mainEl = document.getElementById("heroMain");
+      if (floatEl) floatEl.style.transform = `translate(${x*14}px, ${y*14}px)`;
+      if (mainEl) mainEl.style.transform = `translate(${x*-6}px, ${y*-6}px)`;
+    });
+    heroMedia.addEventListener("mouseleave", ()=>{
+      const floatEl = document.getElementById("heroFloat");
+      const mainEl = document.getElementById("heroMain");
+      if (floatEl) floatEl.style.transform = "";
+      if (mainEl) mainEl.style.transform = "";
+    });
+  }
+
+  /* ---------- router ---------- */
+  const pages = document.querySelectorAll("[data-page-section]");
+  const navLinks = document.querySelectorAll("nav.primary a");
+
+  function router(){
+    const hash = location.hash.replace("#","") || "home";
+    const [pageRaw, arg] = hash.split("-");
+    const validPages = ["home","listings","property","about","contact"];
+    const page = validPages.includes(pageRaw) ? pageRaw : "home";
+
+    pages.forEach(s=>s.classList.toggle("active", s.dataset.pageSection===page));
+    navLinks.forEach(a=>a.classList.toggle("active", a.dataset.page===page));
+
+    if (page==="listings"){
+      setCategoryFilter(["house","apartment","land","farmhouse"].includes(arg) ? arg : "all");
+      renderListings();
+    }
+    if (page==="property"){
+      renderProperty(arg);
+    }
+    window.scrollTo({top:0, behavior:"instant" in window ? "instant" : "auto"});
+  }
+
+  window.addEventListener("hashchange", router);
+  renderStaticScenes();
+  renderFeatured();
+  renderCounts();
+  router();
+  observeReveals(document);
+  observeCounts(document);
+  document.getElementById("year").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Dependencies & build output (if the project grows)
+node_modules/
+dist/
+build/
+*.log
