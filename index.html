@@ -5,27 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Harrow & Vale Realty</title>
 <meta name="description" content="Houses, apartments, land and farm houses — browsed, filtered and visited without the runaround." />
+<meta name="theme-color" content="#fbf3e7" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Harrow &amp; Vale Realty" />
+<meta property="og:title" content="Harrow &amp; Vale Realty" />
+<meta property="og:description" content="Houses, apartments, land and farm houses — each one walked through by an agent who will tell you honestly if it isn't right for you." />
+<meta name="twitter:card" content="summary" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23b06036'/%3E%3Cpath d='M7 16.5 16 9l9 7.5V25a1 1 0 0 1-1 1h-5.4v-5.4h-5.2V26H8a1 1 0 0 1-1-1z' fill='%23fffcf6'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
     --sand:#fbf3e7; --sand-deep:#f4e6cc; --cream:#fffcf6;
-    --ink:#4a372b; --ink-soft:#8a7260; --ink-faint:#b7a68e;
-    --terracotta:#b9663a; --terracotta-deep:#954f2b;
+    --ink:#4a372b; --ink-soft:#7f6854; --ink-faint:#b7a68e;
+    --terracotta:#b06036; --terracotta-deep:#954f2b;
     --peach:#f3cba3; --honey:#dfa23d;
-    --sage:#a7b38c; --sage-deep:#74805a;
+    --sage:#a7b38c; --sage-deep:#69734c;
     --line:#e8dabf;
     --radius-lg:28px; --radius-md:18px; --radius-sm:10px;
     --ease:cubic-bezier(0.23,1,0.32,1);
     color-scheme: light;
   }
   *,*::before,*::after{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0; background:var(--sand); color:var(--ink); font-family:"Inter",system-ui,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+  body{margin:0; background:var(--sand); color:var(--ink); font-family:"Inter",system-ui,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:clip}
   img{display:block;max-width:100%;height:auto}
   svg.scene-svg{display:block; width:100%; height:100%}
-  h1,h2,h3{font-family:"Fraunces",Georgia,serif; font-weight:400; margin:0; letter-spacing:-0.01em}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif; font-weight:400; margin:0; letter-spacing:-0.01em; text-wrap:balance}
+  p,li,dd{text-wrap:pretty}
+  ::selection{background:var(--peach); color:var(--ink)}
+
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+  .skip-link{position:fixed; top:.6rem; left:50%; transform:translate(-50%,-160%); z-index:100; background:var(--ink); color:var(--cream); font-size:.9rem; font-weight:500; padding:.65rem 1.2rem; border-radius:999px; text-decoration:none; box-shadow:0 10px 24px rgb(43 36 32/.22); transition:transform 180ms var(--ease)}
+  .skip-link:focus-visible{transform:translate(-50%,0); outline:2px solid var(--cream); outline-offset:2px}
+  main:focus{outline:none}
   :focus-visible{outline:2px solid var(--terracotta); outline-offset:3px; border-radius:3px}
   a{color:inherit}
   .wrap{width:min(1160px,100% - 2.5rem); margin-inline:auto}
@@ -36,8 +50,15 @@
   @media (hover:hover) and (pointer:fine){.btn:hover{background:var(--terracotta-deep)}}
   .btn.ghost{background:transparent; color:var(--ink); border-color:var(--line)}
   @media (hover:hover) and (pointer:fine){.btn.ghost:hover{background:var(--cream)}}
+  @media (max-width:520px){
+    .hero-ctas .btn{flex:1 1 0; justify-content:center}
+    .hero-stats{gap:1.1rem; padding-top:1rem}
+    .hero-stats div dt{font-size:1.45rem}
+    .hero-stats div dd{font-size:.75rem}
+  }
 
-  header.site{position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--sand) 90%,transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  header.site{position:sticky; top:0; z-index:30; background:color-mix(in srgb,var(--sand) 90%,transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); transition:box-shadow 220ms var(--ease), border-color 220ms var(--ease)}
+  header.site.scrolled{box-shadow:0 12px 28px rgb(43 36 32/.07); border-color:transparent}
   header.site .wrap{display:flex; align-items:center; justify-content:space-between; height:4.3rem}
   .brand{font-family:"Fraunces",serif; font-size:1.3rem; text-decoration:none; color:var(--ink); display:flex; align-items:center; gap:.5rem}
   .brand .mark{width:30px;height:30px;border-radius:9px 9px 9px 2px;background:var(--terracotta); flex:none}
@@ -72,7 +93,7 @@
   .hero p.lede{margin:1.1rem 0 1.8rem; max-width:40ch; color:var(--ink-soft); font-size:1.05rem}
   .hero-ctas{display:flex; gap:.8rem; flex-wrap:wrap; margin-bottom:2rem}
   .hero-stats{display:flex; gap:2rem; padding-top:1.3rem; border-top:1px solid var(--line)}
-  .hero-stats div dt{font-family:"Fraunces",serif; font-size:1.7rem}
+  .hero-stats div dt{font-family:"Fraunces",serif; font-size:1.7rem; font-variant-numeric:tabular-nums}
   .hero-stats div dd{margin:.2rem 0 0; font-size:.82rem; color:var(--ink-soft)}
   .hero-media{position:relative}
   .hero-media .blob{position:absolute; inset:-8% -10% auto auto; width:70%; aspect-ratio:1; background:radial-gradient(circle at 30% 30%, var(--peach), var(--sage) 85%); opacity:.35; border-radius:46% 54% 60% 40%/50% 44% 56% 50%; z-index:0; animation:blobbreath 7s ease-in-out infinite}
@@ -93,27 +114,35 @@
   @media (max-width:880px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
 
   .section-head{display:flex; justify-content:space-between; align-items:end; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.8rem}
-  .section-head h2{font-size:clamp(1.7rem,3.2vw,2.3rem); font-weight:300}
+  .section-head :is(h1,h2){font-size:clamp(1.7rem,3.2vw,2.3rem); font-weight:300}
   .section-head p{margin:.4rem 0 0; color:var(--ink-soft); max-width:46ch}
 
   .prop-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.4rem}
-  .prop-card{background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; display:flex; flex-direction:column; text-decoration:none; color:var(--ink); transition:transform 180ms var(--ease), box-shadow 180ms var(--ease)}
-  @media (hover:hover) and (pointer:fine){.prop-card:hover{transform:translateY(-3px); box-shadow:0 14px 28px rgb(43 36 32/.1)}}
-  .prop-card .img-wrap{position:relative; aspect-ratio:4/3}
+  #featuredGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:820px){#featuredGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:560px){#featuredGrid{grid-template-columns:1fr}}
+  .prop-card{background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; display:flex; flex-direction:column; text-decoration:none; color:var(--ink); transition:transform 180ms var(--ease), box-shadow 180ms var(--ease), border-color 180ms var(--ease)}
+  @media (hover:hover) and (pointer:fine){.prop-card:hover{transform:translateY(-3px); box-shadow:0 14px 28px rgb(43 36 32/.1); border-color:color-mix(in srgb,var(--terracotta) 28%,var(--line))}}
+  .prop-card .img-wrap{position:relative; aspect-ratio:4/3; overflow:hidden}
+  .prop-card .img-wrap svg{transition:transform 420ms var(--ease)}
+  @media (hover:hover) and (pointer:fine){.prop-card:hover .img-wrap svg{transform:scale(1.045)}}
   .prop-card .cat-tag{position:absolute; left:.8rem; top:.8rem; background:var(--cream); color:var(--ink); font-size:.78rem; padding:.25rem .6rem; border-radius:999px}
   .prop-card .featured-tag{position:absolute; right:.8rem; top:.8rem; background:var(--terracotta); color:#fff; font-size:.78rem; padding:.25rem .6rem; border-radius:999px}
-  .prop-card .body{padding:1rem 1.1rem 1.2rem; display:grid; gap:.3rem; flex:1}
-  .prop-card .price{font-family:"Fraunces",serif; font-size:1.35rem}
-  .prop-card h3{font-size:1rem; font-weight:600; font-family:"Inter",sans-serif}
+  .prop-card .body{padding:1rem 1.1rem 1.15rem; display:grid; gap:.2rem; align-content:start; flex:1}
+  .prop-card .price{font-family:"Fraunces",serif; font-size:1.35rem; margin:0 0 .3rem; line-height:1.25}
+  .prop-card h3{font-size:1rem; font-weight:600; font-family:"Inter",sans-serif; line-height:1.35}
   .prop-card .loc{color:var(--ink-soft); font-size:.9rem; margin:0}
-  .prop-card .specs{margin:.4rem 0 0; font-size:.86rem; color:var(--ink-soft); display:flex; gap:.6rem; flex-wrap:wrap}
+  .prop-card .specs{margin:.5rem 0 0; font-size:.86rem; color:var(--ink-soft); display:flex; gap:.6rem; flex-wrap:wrap}
 
-  .filter-bar{display:flex; flex-wrap:wrap; gap:.7rem; align-items:center; background:var(--cream); border:1px solid var(--line); border-radius:999px; padding:.6rem; margin-bottom:1.6rem}
+  .filter-bar{display:flex; flex-wrap:wrap; gap:.7rem; align-items:center; background:var(--cream); border:1px solid var(--line); border-radius:999px; padding:.6rem; margin-bottom:1.6rem; transition:border-color 160ms var(--ease), box-shadow 160ms var(--ease)}
+  .filter-bar:focus-within{border-color:color-mix(in srgb,var(--terracotta) 55%,var(--line)); box-shadow:0 0 0 3px rgb(185 102 58/.13)}
   .filter-bar input[type=search]{border:none; background:transparent; font:inherit; min-height:38px; padding:.3rem .8rem; flex:1; min-width:140px}
-  .filter-bar input:focus{outline:none}
-  .filter-bar select{border:1px solid var(--line); background:var(--sand); border-radius:999px; min-height:38px; padding:.3rem .9rem; font:inherit; font-size:.88rem}
+  .filter-bar input:focus,.filter-bar input:focus-visible{outline:none; box-shadow:none}
+  .filter-bar select{border:1px solid var(--line); background-color:var(--sand); border-radius:999px; min-height:38px; padding:.3rem .9rem; font:inherit; font-size:.88rem; cursor:pointer; width:auto; flex:0 1 auto}
+  @media (hover:hover) and (pointer:fine){.filter-bar select:hover{border-color:var(--ink-faint)}}
   .chip-row{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.6rem}
-  .chip{min-height:38px; padding:.4rem .95rem; border-radius:999px; border:1px solid var(--line); background:var(--cream); font:inherit; font-size:.88rem; cursor:pointer; color:var(--ink-soft); transition:background-color 160ms var(--ease), color 160ms var(--ease)}
+  .chip{min-height:38px; padding:.4rem .95rem; border-radius:999px; border:1px solid var(--line); background:var(--cream); font:inherit; font-size:.88rem; cursor:pointer; color:var(--ink-soft); transition:background-color 160ms var(--ease), color 160ms var(--ease), border-color 160ms var(--ease)}
+  @media (hover:hover) and (pointer:fine){.chip:hover{color:var(--ink); border-color:var(--ink-faint)}}
   .chip[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:#fff}
   .count{margin:0 0 1rem; color:var(--ink-soft); font-size:.92rem}
   .empty{display:none; text-align:center; padding:3rem 1rem; border:1px dashed var(--line); border-radius:var(--radius-md); color:var(--ink-soft)}
@@ -122,7 +151,7 @@
   .band.terracotta{background:linear-gradient(135deg, var(--peach), var(--honey) 120%); color:var(--ink)}
   .band.terracotta h2{color:var(--ink)}
   .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem}
-  .stat-row dt{font-family:"Fraunces",serif; font-size:2.2rem}
+  .stat-row dt{font-family:"Fraunces",serif; font-size:2.2rem; font-variant-numeric:tabular-nums}
   .stat-row dd{margin:.3rem 0 0; opacity:.85; font-size:.9rem}
   @media (max-width:680px){.stat-row{grid-template-columns:1fr}}
 
@@ -132,12 +161,13 @@
   .back-link{display:inline-flex; gap:.4rem; align-items:center; color:var(--ink-soft); text-decoration:none; font-size:.9rem; margin-bottom:1.4rem}
   .detail-grid{display:grid; grid-template-columns:1.3fr .9fr; gap:2.5rem; align-items:start}
   .gallery-main{border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/3}
-  .thumbs{display:flex; gap:.6rem; margin-top:.7rem}
-  .thumbs button{padding:0; border:2px solid transparent; border-radius:10px; overflow:hidden; width:72px; height:54px; cursor:pointer; background:none}
-  .thumbs button.active{border-color:var(--terracotta)}
+  .thumbs{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:.7rem}
+  .thumbs button{padding:0; border:2px solid transparent; border-radius:10px; overflow:hidden; width:72px; height:54px; cursor:pointer; background:none; opacity:.72; transition:opacity 160ms var(--ease), border-color 160ms var(--ease), transform 160ms var(--ease)}
+  @media (hover:hover) and (pointer:fine){.thumbs button:hover{opacity:1; transform:translateY(-2px)}}
+  .thumbs button.active{border-color:var(--terracotta); opacity:1}
   .detail-info .cat-tag{display:inline-block; background:var(--sage-deep); color:#fff; font-size:.8rem; padding:.3rem .7rem; border-radius:999px; margin-bottom:.8rem}
   .detail-info .price{font-family:"Fraunces",serif; font-size:2.1rem; margin:.2rem 0}
-  .detail-info h1{font-size:1.5rem; font-weight:500; font-family:"Inter",sans-serif}
+  .detail-info h1{font-size:1.6rem; font-weight:500; line-height:1.3; font-family:"Inter",sans-serif}
   .detail-info .loc{color:var(--ink-soft); margin:.2rem 0 1.2rem}
   .spec-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem; padding:1.1rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-bottom:1.2rem}
   .spec-grid dt{font-size:.78rem; color:var(--ink-soft)}
@@ -173,33 +203,51 @@
   .row2{display:grid; grid-template-columns:1fr 1fr; gap:1rem}
   .field{display:grid; gap:.35rem}
   .field label{font-size:.85rem; font-weight:500; color:var(--ink-soft)}
-  input,select,textarea{width:100%; min-height:44px; padding:.6rem .8rem; font:inherit; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--sand); color:var(--ink)}
+  .field .req{color:var(--terracotta-deep)}
+  input,select,textarea{width:100%; min-height:44px; padding:.6rem .8rem; font:inherit; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--sand); color:var(--ink); transition:border-color 140ms var(--ease), box-shadow 140ms var(--ease), background-color 140ms var(--ease)}
+  input::placeholder,textarea::placeholder{color:var(--ink-soft)}
+  select{appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%237f6854' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right .8rem center; background-size:11px 8px; padding-right:2.1rem}
   textarea{min-height:110px; resize:vertical}
-  input:focus,select:focus,textarea:focus{outline:none; border-color:var(--terracotta); box-shadow:0 0 0 3px rgb(185 102 58/.18)}
-  .invalid{border-color:#a3391f !important}
-  .err{min-height:1.1em; font-size:.8rem; color:#a3391f; margin:0}
-  .form-status{margin:0; color:var(--sage-deep); font-size:.92rem; min-height:1.3em}
+  input:focus,select:focus,textarea:focus{outline:none; border-color:var(--terracotta); box-shadow:0 0 0 3px rgb(185 102 58/.18); background-color:var(--cream)}
+  .invalid,.invalid:focus{border-color:#a3391f !important; box-shadow:0 0 0 3px rgb(163 57 31/.14) !important}
+  .err{min-height:1.1em; font-size:.8rem; color:#a3391f; margin:0; display:flex; align-items:center; gap:.35rem}
+  .err:not(:empty)::before{content:"!"; flex:none; display:grid; place-items:center; width:14px; height:14px; border-radius:50%; background:#a3391f; color:#fff; font-size:.62rem; font-weight:700; line-height:1}
+  .form-status{margin:0; color:var(--sage-deep); font-size:.92rem; min-height:1.3em; font-weight:500; display:flex; align-items:center; gap:.45rem}
+  .form-status:not(:empty)::before{content:""; flex:none; width:8px; height:8px; border-radius:50%; background:var(--sage-deep)}
   @media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
   @media (max-width:600px){.row2{grid-template-columns:1fr}}
+  @media (max-width:620px){
+    .filter-bar{border-radius:var(--radius-md); padding:.7rem; gap:.55rem}
+    .filter-bar input[type=search]{flex:1 1 100%; min-width:0; border:1px solid var(--line); border-radius:999px; background:var(--sand); padding-inline:.9rem}
+    .filter-bar select{flex:1 1 0; min-width:0}
+    .chip-row{gap:.45rem}
+    .chip{font-size:.84rem; padding:.35rem .85rem}
+  }
 
   footer{border-top:1px solid var(--line); padding:3rem 0 2rem; margin-top:1rem}
+  .nojs{margin:1rem 0; background:var(--cream); border:1px solid var(--line); border-radius:var(--radius-md); padding:1rem 1.2rem; font-size:.92rem; color:var(--ink-soft)}
   .foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:2rem}
-  .foot-grid h4{font-size:.92rem; margin:0 0 .8rem}
+  .foot-grid h3{font-family:"Inter",sans-serif; font-size:.92rem; font-weight:600; letter-spacing:0; margin:0 0 .8rem}
   .foot-grid ul{list-style:none; margin:0; padding:0; display:grid; gap:.5rem}
-  .foot-grid a{text-decoration:none; color:var(--ink-soft); font-size:.9rem}
-  .foot-bottom{margin-top:2.2rem; padding-top:1.2rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem; color:var(--ink-faint); font-size:.85rem}
+  .foot-grid a{text-decoration:none; color:var(--ink-soft); font-size:.9rem; transition:color 160ms var(--ease)}
+  @media (hover:hover) and (pointer:fine){.foot-grid a:hover{color:var(--ink)}}
+  .foot-bottom{margin-top:2.2rem; padding-top:1.2rem; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:.5rem; color:var(--ink-soft); font-size:.85rem}
   @media (max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}}
 
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .cat-tile svg,.prop-card,.btn{transition:none}
+    .cat-tile svg,.prop-card,.btn,.prop-card .img-wrap svg,.thumbs button,.chip,.foot-grid a{transition:none}
     .reveal{opacity:1 !important; transform:none !important; transition:none !important}
     .hero-media .blob,.cloud,.sun-glow{animation:none !important}
     .page.active{animation:none}
+    .cat-tile:hover svg,.prop-card:hover .img-wrap svg,.thumbs button:hover{transform:none}
+    .skip-link{transition:none}
   }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site">
   <div class="wrap">
@@ -214,7 +262,7 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
 <!-- HOME -->
 <section class="page" data-page-section="home">
@@ -276,17 +324,17 @@
 <!-- LISTINGS -->
 <section class="page" data-page-section="listings">
   <div class="band wrap">
-    <div class="section-head"><h2>All listings</h2></div>
+    <div class="section-head"><h1>All listings</h1></div>
     <div class="chip-row" id="chipRow" role="group" aria-label="Filter by category"></div>
     <div class="filter-bar">
-      <input type="search" id="searchInput" placeholder="Search by name or location" />
-      <select id="priceSelect">
+      <input type="search" id="searchInput" placeholder="Search by name or location" aria-label="Search listings by name or location" autocomplete="off" />
+      <select id="priceSelect" aria-label="Maximum price">
         <option value="Infinity">Any price</option>
         <option value="300000">Up to $300k</option>
         <option value="600000">Up to $600k</option>
         <option value="900000">Up to $900k</option>
       </select>
-      <select id="sortSelect">
+      <select id="sortSelect" aria-label="Sort listings">
         <option value="newest">Newest</option>
         <option value="price-asc">Price: low to high</option>
         <option value="price-desc">Price: high to low</option>
@@ -303,7 +351,7 @@
   <div class="band wrap">
     <a href="#listings" class="back-link">&larr; Back to listings</a>
     <div id="propertyDetail"></div>
-    <div class="section-head" style="margin-top:3rem"><h2>Similar properties</h2></div>
+    <div class="section-head" style="margin-top:3rem"><h2 style="font-size:1.45rem">Similar properties</h2></div>
     <div class="prop-grid" id="relatedGrid"></div>
   </div>
 </section>
@@ -314,7 +362,7 @@
     <div class="about-grid">
       <div id="aboutMain"></div>
       <div>
-        <h2 class="reveal" style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Three towns, one small agency, no script.</h2>
+        <h1 class="reveal" style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Three towns, one small agency, no script.</h1>
         <p class="reveal" style="color:var(--ink-soft); max-width:50ch">Harrow &amp; Vale started as two agents who were tired of pushy sales targets. We still take on only as many clients as we can personally walk through a property with — which means we turn work away most weeks.</p>
         <ul class="values">
           <li class="reveal"><strong>We say no.</strong> If a property doesn't fit your list, we'll tell you before you book a viewing.</li>
@@ -336,7 +384,7 @@
 <!-- CONTACT -->
 <section class="page" data-page-section="contact">
   <div class="band wrap">
-    <div class="section-head"><h2>Book a visit this week</h2><p>A senior agent replies within one working day.</p></div>
+    <div class="section-head"><h1>Book a visit this week</h1><p>A senior agent replies within one working day.</p></div>
     <div class="contact-grid">
       <div>
         <div class="office-card">
@@ -351,19 +399,19 @@
       <form class="contact" id="contactForm" novalidate>
         <div class="row2">
           <div class="field">
-            <label for="cf-name">Full name</label>
-            <input id="cf-name" required />
+            <label for="cf-name">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="err-name" />
             <p class="err" id="err-name"></p>
           </div>
           <div class="field">
-            <label for="cf-contact">Phone or email</label>
-            <input id="cf-contact" required />
+            <label for="cf-contact">Phone or email <span class="req" aria-hidden="true">*</span></label>
+            <input id="cf-contact" name="contact" type="text" autocomplete="email" required aria-describedby="err-contact" />
             <p class="err" id="err-contact"></p>
           </div>
         </div>
         <div class="field">
           <label for="cf-interest">What are you looking for?</label>
-          <select id="cf-interest">
+          <select id="cf-interest" name="interest">
             <option>Buying a house</option>
             <option>Buying an apartment</option>
             <option>Buying land</option>
@@ -372,8 +420,8 @@
           </select>
         </div>
         <div class="field">
-          <label for="cf-message">Anything we should know? <span style="color:var(--ink-faint)">(optional)</span></label>
-          <textarea id="cf-message"></textarea>
+          <label for="cf-message">Anything we should know? <span style="color:var(--ink-soft)">(optional)</span></label>
+          <textarea id="cf-message" name="message" autocomplete="off"></textarea>
         </div>
         <button class="btn" type="submit">Request a visit</button>
         <p class="form-status" id="formStatus" role="status"></p>
@@ -384,6 +432,12 @@
 
 </main>
 
+<noscript>
+  <div class="wrap">
+    <p class="nojs">This demo builds the listings, illustrations and filters with JavaScript. Turn JavaScript on to browse the full site.</p>
+  </div>
+</noscript>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -391,15 +445,15 @@
         <a href="#home" class="brand" style="margin-bottom:.6rem"><span class="mark"></span>Harrow &amp; Vale</a>
         <p style="color:var(--ink-soft); font-size:.9rem; max-width:32ch">An independent agency across three towns. Licensed brokerage, est. 2008.</p>
       </div>
-      <div><h4>Explore</h4><ul>
+      <div><h3>Explore</h3><ul>
         <li><a href="#home">Home</a></li><li><a href="#listings">Listings</a></li>
         <li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li>
       </ul></div>
-      <div><h4>Categories</h4><ul>
+      <div><h3>Categories</h3><ul>
         <li><a href="#listings-house">Houses</a></li><li><a href="#listings-apartment">Apartments</a></li>
         <li><a href="#listings-land">Land &amp; plots</a></li><li><a href="#listings-farmhouse">Farm houses</a></li>
       </ul></div>
-      <div><h4>Contact</h4><ul>
+      <div><h3>Contact</h3><ul>
         <li><a href="tel:+10000000000">(000) 000-0000</a></li>
         <li><a href="mailto:hello@example.com">hello@example.com</a></li>
         <li>24 Linden Row, Harrow Cross</li>
@@ -674,7 +728,7 @@
         <div>
           <div class="gallery-main" id="galleryMain">${variants[1]}</div>
           <div class="thumbs">
-            ${variants.map((v,i)=>`<button type="button" class="${i===1?'active':''}" data-idx="${i}">${v}</button>`).join("")}
+            ${variants.map((v,i)=>`<button type="button" class="${i===1?'active':''}" data-idx="${i}" aria-label="Show view ${i+1}" aria-pressed="${i===1}">${v}</button>`).join("")}
           </div>
           <p style="margin-top:1.4rem; color:var(--ink-soft); max-width:60ch">${p.desc}</p>
         </div>
@@ -695,9 +749,12 @@
       </div>`;
 
     wrap.querySelectorAll(".thumbs button").forEach(btn=>{
+      const inner = btn.querySelector("svg");
+      if (inner){ inner.setAttribute("aria-hidden","true"); inner.removeAttribute("role"); inner.removeAttribute("aria-label"); }
       btn.addEventListener("click", ()=>{
-        wrap.querySelectorAll(".thumbs button").forEach(b=>b.classList.remove("active"));
+        wrap.querySelectorAll(".thumbs button").forEach(b=>{ b.classList.remove("active"); b.setAttribute("aria-pressed","false"); });
         btn.classList.add("active");
+        btn.setAttribute("aria-pressed","true");
         document.getElementById("galleryMain").innerHTML = variants[Number(btn.dataset.idx)];
       });
     });
@@ -713,6 +770,7 @@
   function setErr(input,errId,msg){
     document.getElementById(errId).textContent = msg;
     input.classList.toggle("invalid", Boolean(msg));
+    input.setAttribute("aria-invalid", msg ? "true" : "false");
     return !msg;
   }
   form.addEventListener("submit", e=>{
@@ -737,6 +795,23 @@
   primaryNav.querySelectorAll("a").forEach(a=>a.addEventListener("click", ()=>{
     primaryNav.classList.remove("open"); navToggle.setAttribute("aria-expanded","false");
   }));
+  document.addEventListener("keydown", e=>{
+    if (e.key === "Escape" && primaryNav.classList.contains("open")){
+      primaryNav.classList.remove("open"); navToggle.setAttribute("aria-expanded","false"); navToggle.focus();
+    }
+  });
+
+  /* ---------- sticky header ---------- */
+  const siteHeader = document.querySelector("header.site");
+  let headerTick = false;
+  function syncHeader(){
+    siteHeader.classList.toggle("scrolled", window.scrollY > 8);
+    headerTick = false;
+  }
+  window.addEventListener("scroll", ()=>{
+    if (!headerTick){ headerTick = true; requestAnimationFrame(syncHeader); }
+  }, {passive:true});
+  syncHeader();
 
   /* ---------- scroll reveal + counters ---------- */
   const reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -746,6 +821,13 @@
   function observeReveals(root){
     (root||document).querySelectorAll(".reveal:not(.in-view)").forEach(el=>{
       if (reduceMotion || !revealObserver){ el.classList.add("in-view"); } else { revealObserver.observe(el); }
+    });
+  }
+  function revealInView(root){
+    const vh = window.innerHeight;
+    (root||document).querySelectorAll(".reveal:not(.in-view)").forEach(el=>{
+      const r = el.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh){ el.classList.add("in-view"); revealObserver && revealObserver.unobserve(el); }
     });
   }
 
@@ -797,6 +879,13 @@
   const pages = document.querySelectorAll("[data-page-section]");
   const navLinks = document.querySelectorAll("nav.primary a");
 
+  const pageTitles = {
+    home:"Harrow & Vale Realty",
+    listings:"All listings — Harrow & Vale",
+    about:"About us — Harrow & Vale",
+    contact:"Book a visit — Harrow & Vale"
+  };
+
   function router(){
     const hash = location.hash.replace("#","") || "home";
     const [pageRaw, arg] = hash.split("-");
@@ -804,7 +893,12 @@
     const page = validPages.includes(pageRaw) ? pageRaw : "home";
 
     pages.forEach(s=>s.classList.toggle("active", s.dataset.pageSection===page));
-    navLinks.forEach(a=>a.classList.toggle("active", a.dataset.page===page));
+    const navFor = page === "property" ? "listings" : page;
+    navLinks.forEach(a=>{
+      const isActive = a.dataset.page === navFor;
+      a.classList.toggle("active", isActive);
+      if (isActive){ a.setAttribute("aria-current","page"); } else { a.removeAttribute("aria-current"); }
+    });
 
     if (page==="listings"){
       setCategoryFilter(["house","apartment","land","farmhouse"].includes(arg) ? arg : "all");
@@ -813,6 +907,13 @@
     if (page==="property"){
       renderProperty(arg);
     }
+
+    const current = page==="property" ? properties.find(p=>String(p.id)===arg) : null;
+    document.title = current ? `${current.title} — Harrow & Vale` : (pageTitles[page] || pageTitles.home);
+
+    const activePage = document.querySelector(".page.active");
+    if (activePage){ revealInView(activePage); }
+
     window.scrollTo({top:0, behavior:"instant" in window ? "instant" : "auto"});
   }
 
