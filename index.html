@@ -172,34 +172,6 @@
   .hero-photo::after{content:""; position:absolute; inset:0; pointer-events:none;
     background:linear-gradient(95deg, rgba(16,18,24,.5) 0%, rgba(16,18,24,.14) 26%, rgba(16,18,24,0) 52%),
       linear-gradient(0deg, rgba(16,18,24,.5), rgba(16,18,24,0) 45%)}
-  .hero-photo::before{content:""; position:absolute; inset:-45% -10%; z-index:2; pointer-events:none;
-    background:linear-gradient(104deg, transparent 40%, rgba(255,255,255,.08) 46%, rgba(255,255,255,.24) 50%, rgba(255,255,255,.08) 54%, transparent 60%);
-    transform:translateX(-62%); animation:sheen 9s ease-in-out infinite}
-  @keyframes sheen{0%,58%{transform:translateX(-62%)}100%{transform:translateX(62%)}}
-
-  .medallion{position:absolute; right:clamp(12px,2vw,24px); bottom:clamp(12px,2vw,24px); z-index:4;
-    width:clamp(92px,8.5vw,122px); aspect-ratio:1; border-radius:50%; display:grid; place-items:center;
-    background:rgba(253,250,243,.12); backdrop-filter:blur(16px) saturate(1.5); -webkit-backdrop-filter:blur(16px) saturate(1.5);
-    border:1px solid rgba(253,250,243,.4);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 20px 44px -26px rgba(0,0,0,.75)}
-  .medallion-ring{position:absolute; inset:0; width:100%; height:100%; animation:spin 26s linear infinite}
-  .medallion-ring text{fill:rgba(253,250,243,.94); font-family:var(--sans); font-size:10.6px; letter-spacing:.2em}
-  .medallion-core{position:relative; font-family:var(--serif); font-size:1.6rem; font-weight:300; color:var(--cream); line-height:1}
-  @keyframes spin{to{transform:rotate(360deg)}}
-
-  .motes{position:absolute; inset:0; z-index:1; pointer-events:none}
-  .motes span{position:absolute; border-radius:50%;
-    background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.95), rgba(255,255,255,.25) 42%, rgba(236,207,186,.4) 72%);
-    border:1px solid rgba(255,255,255,.55); box-shadow:0 12px 26px -14px rgba(32,28,22,.45);
-    -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px)}
-  .motes span:nth-child(1){width:30px; height:30px; left:4%; top:16%; animation:mote 17s ease-in-out infinite}
-  .motes span:nth-child(2){width:15px; height:15px; left:19%; top:64%; animation:mote 21s ease-in-out infinite reverse}
-  .motes span:nth-child(3){width:9px; height:9px; left:12%; top:38%; animation:mote 13s ease-in-out infinite}
-  @keyframes mote{
-    0%,100%{transform:translate3d(0,0,0)}
-    35%{transform:translate3d(14px,-22px,0)}
-    70%{transform:translate3d(-9px,-38px,0)}
-  }
 
   .hero-copy{grid-column:1 / -1; grid-row:1; z-index:2; display:flex; flex-direction:column; justify-content:center;
     padding:clamp(1.4rem,3vw,2.4rem) 0; pointer-events:none}
@@ -524,7 +496,7 @@
   .drawer-body .btn{width:100%}
   body.drawer-open{overflow:hidden}
 
-  /* ---------- extra glass: sheen, blur, shine ---------- */
+  /* ---------- extra glass: blur + highlight ---------- */
   .prop-card, .team-card, .office-card, .detail-info, .more-tile, .hero-stats, .filter-bar,
   form.contact, .about-grid > div:last-child, .quote-block{
     background-image:linear-gradient(148deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.06) 38%, rgba(255,255,255,.02) 66%, rgba(255,255,255,.3) 100%);
@@ -532,15 +504,6 @@
     backdrop-filter:blur(34px) saturate(1.7);
     border-color:var(--glass-edge);
   }
-  .prop-card{position:relative}
-  .prop-card::after{content:""; position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0;
-    background:linear-gradient(115deg, transparent 34%, rgba(255,255,255,.5) 50%, transparent 66%);
-    transform:translateX(-65%)}
-  @media (hover:hover) and (pointer:fine){
-    .prop-card:hover::after{opacity:1; animation:cardSheen .95s ease-out}
-  }
-  @keyframes cardSheen{from{transform:translateX(-65%)}to{transform:translateX(65%)}}
-
   .swash{display:block; width:min(228px,62%); height:12px; margin:.5rem 0 0; color:var(--clay); overflow:visible}
   .swash path{stroke-dasharray:240; stroke-dashoffset:240; transition:stroke-dashoffset 1.5s var(--ease) .25s}
   .section-head.in-view .swash path{stroke-dashoffset:0}
@@ -574,7 +537,7 @@
     .prop-card, .btn, .prop-card .img-wrap img, .cat-tile img, .thumbs button, .chip, .foot-grid a, .team-card,
     .drawer, .drawer-scrim, .more-tile{transition:none}
     .reveal{opacity:1 !important; transform:none !important; transition:none !important}
-    .glow, .hero-photo .main img, .medallion-ring, .hero-photo::before, .motes span, .prop-card:hover::after{animation:none !important}
+    .glow, .hero-photo .main img{animation:none !important}
     .swash path{transition:none; stroke-dashoffset:0}
     .page.active{animation:none}
     .prop-card .img-wrap img{transform:none}
@@ -623,16 +586,8 @@
     <div class="hero-stage">
       <figure class="hero-photo" id="heroMedia">
         <div class="main" id="heroMain"></div>
-        <div class="medallion" aria-hidden="true">
-          <svg class="medallion-ring" viewBox="0 0 120 120">
-            <defs><path id="medallionPath" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" fill="none" /></defs>
-            <text><textPath href="#medallionPath" startOffset="0">CHANDRA ESTATES &#183; THREE TOWNS &#183; EST. 2008 &#183; </textPath></text>
-          </svg>
-          <span class="medallion-core">C</span>
-        </div>
       </figure>
 
-      <div class="motes" aria-hidden="true"><span></span><span></span><span></span></div>
 
       <div class="hero-copy">
         <p class="eyebrow"><span class="idx">01</span> Independent brokerage</p>
