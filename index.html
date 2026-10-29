@@ -180,7 +180,7 @@
   .hero-copy a,.hero-copy .btn{pointer-events:auto}
 
   .wordmark{position:relative; width:max-content; max-width:100%; --split:55%}
-  .wm{font-family:var(--serif); font-weight:300; font-size:clamp(3.2rem,12.8vw,11.5rem); line-height:.84;
+  .wm{font-family:var(--serif); font-weight:300; font-size:var(--wm-font,clamp(3.2rem,12.8vw,11.5rem)); line-height:.84;
     letter-spacing:-.05em; margin:0; white-space:nowrap}
   .wm em{font-style:italic; font-weight:300}
   .wm-base{color:var(--ink)}
@@ -1173,11 +1173,37 @@
 
   function syncWordmarkSplit(){
     if (!wordmark || !heroMedia) return;
-    const wr = wordmark.getBoundingClientRect();
+    const base = wordmark.querySelector(".wm-base");
+    if (!base) return;
+
+    if (window.innerWidth <= 900 || !wordmark.offsetWidth){
+      wordmark.style.removeProperty("--wm-font");
+      wordmark.style.removeProperty("--split");
+      return;
+    }
+
+    // measure at the CSS-clamped size, then solve the font so the name is
+    // exactly 60% left of the photo edge and 40% over it
+    wordmark.style.removeProperty("--wm-font");
+    let wr = wordmark.getBoundingClientRect();
     const pr = heroMedia.getBoundingClientRect();
-    if (!wr.width) return;
-    const split = Math.max(0, Math.min(wr.width, pr.left - wr.left));
-    wordmark.style.setProperty("--split", split.toFixed(1) + "px");
+    const fs = parseFloat(getComputedStyle(base).fontSize) || 100;
+    if (!wr.width || pr.left <= wr.left) return;
+
+    const avail = pr.left - wr.left;
+    const ratio = wr.width / fs;
+    let next = avail / 0.6 / ratio;
+    next = Math.max(56, Math.min(196, next));
+    wordmark.style.setProperty("--wm-font", next.toFixed(2) + "px");
+    wordmark.style.setProperty("--split", avail.toFixed(1) + "px");
+
+    requestAnimationFrame(()=>{
+      if (!wordmark) return;
+      const w2 = wordmark.getBoundingClientRect();
+      if (w2.width){
+        wordmark.style.setProperty("--split", Math.min(avail, w2.width).toFixed(1) + "px");
+      }
+    });
   }
 
   let heroTick = false;
