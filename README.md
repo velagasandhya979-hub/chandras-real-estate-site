@@ -31,7 +31,20 @@ A mix of Swiss grid discipline, bento layout, glass surfaces and wabi-sabi warmt
 - Google Fonts: Fraunces + Inter + Caveat
 - Hash router: `#home`, `#listings`, `#listings-<category>`, `#property-<id>`, `#about`, `#contact`
 
+## Publish
+
+The site is a static folder (`index.html` + `assets/`), so any static host works:
+
+- **GitHub Pages** — Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)`. The repo must be public for free Pages, or keep it private and use another host.
+- **Netlify Drop / Cloudflare Pages** — drag the folder in, no build step.
+- **Any host** — upload `index.html` and `assets/` to the web root.
+
+After a real domain exists, change the two share-image tags to absolute URLs
+(`https://your-domain/assets/hero.webp`) so Facebook and WhatsApp can preview the image.
+
 ## Notes
 
 - Listings, filters, gallery and contact form are front-end only — no data leaves the page.
+- Contact number 98499 96566 is wired for both `tel:` calls and WhatsApp.
+- Anything marked `FEATURED`, the counters (412 sold, 4.9 rating) and the testimonials are sample content — replace with real figures before launch.
 - Photography sourced from [Unsplash](https://unsplash.com) under the Unsplash License.
