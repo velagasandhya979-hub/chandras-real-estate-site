@@ -701,9 +701,9 @@
       <input type="search" id="searchInput" placeholder="Search by name or location" aria-label="Search listings by name or location" autocomplete="off" />
       <select id="priceSelect" aria-label="Maximum price">
         <option value="Infinity">Any price</option>
-        <option value="300000">Up to $300k</option>
-        <option value="600000">Up to $600k</option>
-        <option value="900000">Up to $900k</option>
+        <option value="5000000">Up to ₹50 lakh</option>
+        <option value="10000000">Up to ₹1 crore</option>
+        <option value="20000000">Up to ₹2 crore</option>
       </select>
       <select id="sortSelect" aria-label="Sort listings">
         <option value="newest">Newest</option>
@@ -837,46 +837,622 @@
 <script>
 (function(){
   const properties = [
-    {id:1,img:"assets/p1.webp",title:"Sunlit Craftsman on Birchwood Ave",category:"house",location:"Maple Hill",price:640000,featured:true,added:9,
-      specs:[["Bedrooms","3"],["Bathrooms","2"],["Interior","1,480 sq ft"],["Lot size","4,200 sq ft"]],
-      desc:"A 1930s craftsman with the original woodwork intact, a deep front porch, and a kitchen that's already been opened up to the dining room."},
-    {id:2,img:"assets/p2.webp",title:"Brick Colonial near Linden Park",category:"house",location:"Linden Park",price:789000,featured:false,added:21,
-      specs:[["Bedrooms","4"],["Bathrooms","3"],["Interior","2,140 sq ft"],["Lot size","6,000 sq ft"]],
-      desc:"Four bedrooms on a quiet close two minutes' walk from the park. Finished basement, attached garage, recently replaced roof."},
-    {id:3,img:"assets/p3.webp",title:"Lakeview Cottage, Hollow Brook",category:"house",location:"Hollow Brook",price:512000,featured:true,added:4,
-      specs:[["Bedrooms","2"],["Bathrooms","1"],["Interior","1,020 sq ft"],["Lot size","3,600 sq ft"]],
-      desc:"A compact lakeside cottage, fully renovated, with a dock rights agreement already in place."},
-    {id:4,img:"assets/p4.webp",title:"Riverside Loft, 6th Floor",category:"apartment",location:"Canal Quarter",price:420000,featured:true,added:6,
-      specs:[["Bedrooms","1"],["Bathrooms","1"],["Interior","820 sq ft"],["Floor","6 of 9"]],
-      desc:"Exposed brick, tall windows, and a direct canal view. Building has a lift and secure parking."},
-    {id:5,img:"assets/p5.webp",title:"Garden-Level Flat, Old Market",category:"apartment",location:"Old Market",price:318000,featured:false,added:15,
-      specs:[["Bedrooms","2"],["Bathrooms","1"],["Interior","910 sq ft"],["Floor","Ground"]],
-      desc:"A quiet garden-level flat with its own private courtyard access — rare for this building."},
-    {id:6,img:"assets/p6.webp",title:"Skyline Two-Bed near Transit",category:"apartment",location:"Station Road",price:489000,featured:false,added:11,
-      specs:[["Bedrooms","2"],["Bathrooms","2"],["Interior","1,080 sq ft"],["Floor","11 of 14"]],
-      desc:"Two minutes from the station, with a south-facing balcony and in-unit laundry."},
-    {id:7,img:"assets/p7.webp",title:"12-Acre Open Parcel, Cedar Road",category:"land",location:"Cedar Road",price:210000,featured:true,added:2,
-      specs:[["Acreage","12 acres"],["Zoning","Residential"],["Road frontage","340 ft"],["Utilities","At the road"]],
-      desc:"A gently sloped, cleared parcel with utilities already run to the road line. Perc test on file."},
-    {id:8,img:"assets/p8.webp",title:"Wooded 5-Acre Lot",category:"land",location:"Pine Ridge",price:96000,featured:false,added:28,
-      specs:[["Acreage","5 acres"],["Zoning","Rural residential"],["Road frontage","180 ft"],["Utilities","Well & septic needed"]],
-      desc:"Mature hardwood lot backing onto conservation land, so the view stays the view."},
-    {id:9,img:"assets/p9.webp",title:"Riverside Building Plot",category:"land",location:"Millbrook",price:305000,featured:false,added:17,
-      specs:[["Acreage","2.4 acres"],["Zoning","Residential"],["Road frontage","110 ft"],["Utilities","At the road"]],
-      desc:"A rare riverside building plot with an approved site plan already on file for a single-family home."},
-    {id:10,img:"assets/p10.webp",title:"Restored Farmhouse with Barn",category:"farmhouse",location:"Cedar Road",price:875000,featured:true,added:5,
-      specs:[["Bedrooms","4"],["Bathrooms","2"],["Acreage","18 acres"],["Outbuildings","Barn, equipment shed"]],
-      desc:"A full farmhouse restoration — original beams, new mechanicals throughout — on 18 working acres with a standing barn."},
-    {id:11,img:"assets/p11.webp",title:"Working Farm with Orchard",category:"farmhouse",location:"Pine Ridge",price:1050000,featured:false,added:19,
-      specs:[["Bedrooms","5"],["Bathrooms","3"],["Acreage","32 acres"],["Outbuildings","Barn, orchard, silo"]],
-      desc:"A long-run apple orchard with an active harvest contract, plus a five-bedroom main house and full barn."},
-    {id:12,img:"assets/p12.webp",title:"Countryside Farmhouse Retreat",category:"farmhouse",location:"Millbrook",price:699000,featured:false,added:13,
-      specs:[["Bedrooms","3"],["Bathrooms","2"],["Acreage","9 acres"],["Outbuildings","Barn"]],
-      desc:"A smaller farmhouse for anyone wanting the land without the scale of a working farm. Fenced paddock included."}
+    {
+      "id": 1,
+      "title": "Sunlit 4 BHK Villa, Devara Meadows",
+      "category": "house",
+      "listingType": "sale",
+      "price": 14500000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹1,45,00,000",
+      "location": "Devara Meadows, Hyderabad",
+      "locality": "Devara Meadows",
+      "city": "Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "pinCode": null,
+      "address": "Fictional address: 14, Devara Meadows, Hyderabad",
+      "description": "A four-bedroom home on a quiet internal lane of Devara Meadows, with a covered porch, a first-floor balcony and a kitchen that opens onto a small rear courtyard.",
+      "images": [
+        "assets/p1.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": true,
+      "added": 9,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Covered parking",
+        "Rainwater harvesting",
+        "Solar water heater",
+        "Landscaped garden"
+      ],
+      "parking": "2 covered car parks",
+      "furnishing": "Semi-furnished",
+      "facing": "East",
+      "area": 2400,
+      "areaUnit": "sq ft",
+      "bhk": 4,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "builtUpArea": 2400,
+      "plotArea": 300,
+      "plotAreaUnit": "sq yd",
+      "numberOfFloors": 2,
+      "yearBuilt": 2016
+    },
+    {
+      "id": 2,
+      "title": "Brick-Front 5 BHK Home, Nandanagiri",
+      "category": "house",
+      "listingType": "sale",
+      "price": 21000000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹2,10,00,000",
+      "location": "Nandanagiri Enclave, Bengaluru",
+      "locality": "Nandanagiri Enclave",
+      "city": "Bengaluru",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "pinCode": null,
+      "address": "Fictional address: 7, Nandanagiri Enclave, Bengaluru",
+      "description": "Five bedrooms across three floors in Nandanagiri Enclave, a short walk from the neighbourhood park. Covered parking for two cars and a roof replaced recently.",
+      "images": [
+        "assets/p2.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": false,
+      "added": 21,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Covered parking",
+        "Rainwater harvesting",
+        "Power backup",
+        "Children's play area"
+      ],
+      "parking": "2 covered car parks",
+      "furnishing": "Unfurnished",
+      "facing": "North-East",
+      "area": 3200,
+      "areaUnit": "sq ft",
+      "bhk": 5,
+      "bedrooms": 5,
+      "bathrooms": 5,
+      "builtUpArea": 3200,
+      "plotArea": 400,
+      "plotAreaUnit": "sq yd",
+      "numberOfFloors": 3,
+      "yearBuilt": 2012
+    },
+    {
+      "id": 3,
+      "title": "Garden 3 BHK Cottage, Kanaka Ridge",
+      "category": "house",
+      "listingType": "sale",
+      "price": 9500000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹95,00,000",
+      "location": "Kanaka Ridge, Pune",
+      "locality": "Kanaka Ridge",
+      "city": "Pune",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "pinCode": null,
+      "address": "Fictional address: 3, Kanaka Ridge, Pune",
+      "description": "A compact three-bedroom cottage on Kanaka Ridge, fully renovated, with a paved front garden and a covered sit-out that faces the morning sun.",
+      "images": [
+        "assets/p3.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": true,
+      "added": 4,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Covered parking",
+        "Solar water heater",
+        "Private garden"
+      ],
+      "parking": "1 covered car park",
+      "furnishing": "Fully furnished",
+      "facing": "West",
+      "area": 1650,
+      "areaUnit": "sq ft",
+      "bhk": 3,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "builtUpArea": 1650,
+      "plotArea": 200,
+      "plotAreaUnit": "sq yd",
+      "numberOfFloors": 2,
+      "yearBuilt": 2019
+    },
+    {
+      "id": 4,
+      "title": "Riverside 3 BHK Flat, Ravella Springs",
+      "category": "apartment",
+      "listingType": "sale",
+      "price": 7800000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹78,00,000",
+      "location": "Ravella Springs, Hyderabad",
+      "locality": "Ravella Springs",
+      "city": "Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "pinCode": null,
+      "address": "Fictional address: Flat 604, Ravella Springs, Hyderabad",
+      "description": "A sixth-floor three-bedroom apartment at Ravella Springs with a wide balcony and a clear view over the layout's central green. The building has two lifts.",
+      "images": [
+        "assets/p4.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": true,
+      "added": 6,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Clubhouse",
+        "Swimming pool",
+        "Gym",
+        "24x7 security",
+        "Power backup",
+        "CCTV"
+      ],
+      "parking": "1 covered car park",
+      "furnishing": "Semi-furnished",
+      "facing": "East",
+      "area": 1240,
+      "areaUnit": "sq ft",
+      "bhk": 3,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "carpetArea": 1240,
+      "builtUpArea": 1560,
+      "floorNumber": 6,
+      "totalFloors": 12,
+      "balconies": 2,
+      "maintenanceCharges": 4500,
+      "lift": true,
+      "security": true
+    },
+    {
+      "id": 5,
+      "title": "Courtyard 2 BHK Flat, Kesava Corner",
+      "category": "apartment",
+      "listingType": "sale",
+      "price": 5200000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹52,00,000",
+      "location": "Kesava Corner, Pune",
+      "locality": "Kesava Corner",
+      "city": "Pune",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "pinCode": null,
+      "address": "Fictional address: Flat 02, Kesava Corner, Pune",
+      "description": "A quiet ground-floor two-bedroom flat at Kesava Corner with its own private entrance and a small courtyard - rare for this building.",
+      "images": [
+        "assets/p5.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": false,
+      "added": 15,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Covered parking",
+        "CCTV",
+        "Power backup"
+      ],
+      "parking": "1 open car park",
+      "furnishing": "Unfurnished",
+      "facing": "South",
+      "area": 890,
+      "areaUnit": "sq ft",
+      "bhk": 2,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "carpetArea": 890,
+      "builtUpArea": 1120,
+      "floorNumber": 0,
+      "totalFloors": 5,
+      "balconies": 1,
+      "maintenanceCharges": 3200,
+      "lift": true,
+      "security": true
+    },
+    {
+      "id": 6,
+      "title": "Skyline 2 BHK Flat, Vasudha Terrace",
+      "category": "apartment",
+      "listingType": "sale",
+      "price": 6400000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹64,00,000",
+      "location": "Vasudha Terrace, Chennai",
+      "locality": "Vasudha Terrace",
+      "city": "Chennai",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "pinCode": null,
+      "address": "Fictional address: Flat 1103, Vasudha Terrace, Chennai",
+      "description": "An eleventh-floor two-bedroom apartment at Vasudha Terrace with a south-facing balcony and covered parking in the basement.",
+      "images": [
+        "assets/p6.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": false,
+      "added": 11,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Clubhouse",
+        "Gym",
+        "24x7 security",
+        "Power backup",
+        "Visitor parking"
+      ],
+      "parking": "1 covered car park",
+      "furnishing": "Fully furnished",
+      "facing": "South",
+      "area": 1050,
+      "areaUnit": "sq ft",
+      "bhk": 2,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "carpetArea": 1050,
+      "builtUpArea": 1320,
+      "floorNumber": 11,
+      "totalFloors": 14,
+      "balconies": 2,
+      "maintenanceCharges": 3800,
+      "lift": true,
+      "security": true
+    },
+    {
+      "id": 7,
+      "title": "400 sq yd Plot, Siri Vanam Layout",
+      "category": "land",
+      "listingType": "sale",
+      "price": 18000000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹1,80,00,000",
+      "location": "Siri Vanam Layout, Hyderabad",
+      "locality": "Siri Vanam Layout",
+      "city": "Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "pinCode": null,
+      "address": "Fictional address: Plot 22, Siri Vanam Layout, Hyderabad",
+      "description": "A level 400 sq yd plot in Siri Vanam Layout with a 40 ft approach road, a compound wall on two sides and utility lines already brought to the plot boundary.",
+      "images": [
+        "assets/p7.webp",
+        "assets/p8.webp",
+        "assets/p9.webp",
+        "assets/cat-land.webp"
+      ],
+      "featured": true,
+      "added": 2,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Gated layout",
+        "Street lighting"
+      ],
+      "parking": null,
+      "furnishing": null,
+      "facing": "East",
+      "area": 400,
+      "areaUnit": "sq yd",
+      "plotArea": 400,
+      "plotLength": 60,
+      "plotWidth": 60,
+      "roadWidth": 40,
+      "landUse": "Residential plot",
+      "zoning": "Residential",
+      "waterAvailability": "Municipal line at road",
+      "electricityAvailability": "Overhead line at road",
+      "approvalStatus": null
+    },
+    {
+      "id": 8,
+      "title": "200 sq yd Plot, Bhoomi Greens",
+      "category": "land",
+      "listingType": "sale",
+      "price": 4200000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹42,00,000",
+      "location": "Bhoomi Greens, Chennai",
+      "locality": "Bhoomi Greens",
+      "city": "Chennai",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "pinCode": null,
+      "address": "Fictional address: Plot 9, Bhoomi Greens, Chennai",
+      "description": "A 200 sq yd corner plot in Bhoomi Greens, cleared and ready to build, with a 30 ft road on two sides.",
+      "images": [
+        "assets/p8.webp",
+        "assets/p7.webp",
+        "assets/p9.webp",
+        "assets/cat-land.webp"
+      ],
+      "featured": false,
+      "added": 28,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Gated layout",
+        "Street lighting"
+      ],
+      "parking": null,
+      "furnishing": null,
+      "facing": "North-East",
+      "area": 200,
+      "areaUnit": "sq yd",
+      "plotArea": 200,
+      "plotLength": 30,
+      "plotWidth": 60,
+      "roadWidth": 30,
+      "landUse": "Residential plot",
+      "zoning": "Residential",
+      "waterAvailability": "Municipal line at road",
+      "electricityAvailability": "Overhead line at road",
+      "approvalStatus": null
+    },
+    {
+      "id": 9,
+      "title": "250 sq yd Plot, Aranya Grove",
+      "category": "land",
+      "listingType": "sale",
+      "price": 8800000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹88,00,000",
+      "location": "Aranya Grove, Bengaluru",
+      "locality": "Aranya Grove",
+      "city": "Bengaluru",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "pinCode": null,
+      "address": "Fictional address: Plot 41, Aranya Grove, Bengaluru",
+      "description": "A 250 sq yd plot in Aranya Grove with a gentle slope, a 30 ft approach road and room for a single-family home.",
+      "images": [
+        "assets/p9.webp",
+        "assets/p7.webp",
+        "assets/p8.webp",
+        "assets/cat-land.webp"
+      ],
+      "featured": false,
+      "added": 17,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Gated layout",
+        "Street lighting",
+        "Rainwater harvesting"
+      ],
+      "parking": null,
+      "furnishing": null,
+      "facing": "West",
+      "area": 250,
+      "areaUnit": "sq yd",
+      "plotArea": 250,
+      "plotLength": 45,
+      "plotWidth": 50,
+      "roadWidth": 30,
+      "landUse": "Residential plot",
+      "zoning": "Residential",
+      "waterAvailability": "Borewell in the layout",
+      "electricityAvailability": "Overhead line at road",
+      "approvalStatus": null
+    },
+    {
+      "id": 10,
+      "title": "Restored 4 BHK Farmhouse, Devara Farmlands",
+      "category": "farmhouse",
+      "listingType": "sale",
+      "price": 26000000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹2,60,00,000",
+      "location": "Devara Farmlands, Pune",
+      "locality": "Devara Farmlands",
+      "city": "Pune",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "pinCode": null,
+      "address": "Fictional address: Survey-free demo entry, Devara Farmlands, Pune",
+      "description": "A restored four-bedroom farmhouse on 2.5 acres at Devara Farmlands - original timber beams, new plumbing and wiring throughout, plus a standing barn and equipment shed.",
+      "images": [
+        "assets/p10.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": true,
+      "added": 5,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Borewell",
+        "Farm shed",
+        "Fruit trees",
+        "Solar water heater"
+      ],
+      "parking": "Open parking for 3 cars",
+      "furnishing": "Semi-furnished",
+      "facing": "East",
+      "area": 2.5,
+      "areaUnit": "acre",
+      "landArea": 2.5,
+      "landAreaUnit": "acre",
+      "builtUpArea": 3200,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "waterSource": "Borewell",
+      "irrigation": "Drip irrigation for the garden",
+      "electricityAvailability": "Three-phase connection",
+      "roadAccess": "Tar road up to the gate",
+      "outbuildings": [
+        "Barn",
+        "Equipment shed"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "5-Acre Farm with Orchard, Siri Orchards",
+      "category": "farmhouse",
+      "listingType": "sale",
+      "price": 42500000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹4,25,00,000",
+      "location": "Siri Orchards, Hyderabad",
+      "locality": "Siri Orchards",
+      "city": "Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "pinCode": null,
+      "address": "Fictional address: Demo entry, Siri Orchards, Hyderabad",
+      "description": "A five-acre working farm at Siri Orchards with a maintained fruit orchard, a four-bedroom main house and a full barn.",
+      "images": [
+        "assets/p11.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": false,
+      "added": 19,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Borewell",
+        "Irrigation network",
+        "Farm shed",
+        "Fruit orchard",
+        "Staff quarters"
+      ],
+      "parking": "Open parking for 4 cars",
+      "furnishing": "Unfurnished",
+      "facing": "North",
+      "area": 5,
+      "areaUnit": "acre",
+      "landArea": 5,
+      "landAreaUnit": "acre",
+      "builtUpArea": 4600,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "waterSource": "Borewell and farm pond",
+      "irrigation": "Drip and sprinkler network",
+      "electricityAvailability": "Three-phase connection",
+      "roadAccess": "Tar road, 1.2 km from the village junction",
+      "outbuildings": [
+        "Barn",
+        "Orchard store",
+        "Staff quarters"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "1.5-Acre Farmhouse, Kanaka Pastures",
+      "category": "farmhouse",
+      "listingType": "sale",
+      "price": 19000000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹1,90,00,000",
+      "location": "Kanaka Pastures, Bengaluru",
+      "locality": "Kanaka Pastures",
+      "city": "Bengaluru",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "pinCode": null,
+      "address": "Fictional address: Demo entry, Kanaka Pastures, Bengaluru",
+      "description": "A 1.5-acre farmhouse at Kanaka Pastures for anyone wanting land without the scale of a working farm. Fenced paddock and a three-bedroom house included.",
+      "images": [
+        "assets/p12.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
+      "featured": false,
+      "added": 13,
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Borewell",
+        "Fenced paddock",
+        "Farm shed",
+        "Fruit trees"
+      ],
+      "parking": "Open parking for 2 cars",
+      "furnishing": "Semi-furnished",
+      "facing": "South",
+      "area": 1.5,
+      "areaUnit": "acre",
+      "landArea": 1.5,
+      "landAreaUnit": "acre",
+      "builtUpArea": 2400,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "waterSource": "Borewell",
+      "irrigation": "Sprinkler for the paddock",
+      "electricityAvailability": "Single-phase connection",
+      "roadAccess": "Tar road up to the gate",
+      "outbuildings": [
+        "Farm shed"
+      ]
+    }
   ];
 
   const catLabel = {house:"House",apartment:"Apartment",land:"Land & plot",farmhouse:"Farm house"};
-  const money = n => "$"+n.toLocaleString("en-US");
+  const money = n => "\u20b9" + n.toLocaleString("en-IN");
 
   /* ---------- photography ---------- */
   const photo = {
@@ -897,12 +1473,38 @@
       "Tom Weaver": "assets/team-tom.webp"
     }
   };
-  const landGallery = ["assets/p7.webp","assets/p8.webp","assets/p9.webp","assets/cat-land.webp"];
-  const galleryFor = p => p.category === "land"
-    ? [p.img, ...landGallery.filter(src => src !== p.img)].slice(0,4)
-    : [p.img, ...photo.interiors].slice(0,4);
+  const galleryFor = p => (p.images || []).slice(0,4);
   const imgTag = (src, alt, extra) =>
     `<img src="${src}" alt="${alt}" ${extra || ""} loading="lazy" decoding="async" />`;
+
+  /* ---------- spec pairs for cards, drawer and detail ---------- */
+  const nf = n => Number(n).toLocaleString("en-IN");
+  function specPairs(p){
+    if (p.category === "house") return [
+      ["Configuration", p.bhk + " BHK"],
+      ["Built-up", nf(p.builtUpArea) + " sq ft"],
+      ["Bathrooms", String(p.bathrooms)],
+      ["Plot", nf(p.plotArea) + " " + p.plotAreaUnit]
+    ];
+    if (p.category === "apartment") return [
+      ["Configuration", p.bhk + " BHK"],
+      ["Carpet area", nf(p.carpetArea) + " sq ft"],
+      ["Floor", (p.floorNumber === 0 ? "Ground" : p.floorNumber) + " of " + p.totalFloors],
+      ["Maintenance", money(p.maintenanceCharges) + "/mo"]
+    ];
+    if (p.category === "land") return [
+      ["Plot area", nf(p.plotArea) + " " + p.areaUnit],
+      ["Dimensions", p.plotLength + " \u00d7 " + p.plotWidth + " ft"],
+      ["Road width", p.roadWidth + " ft"],
+      ["Land use", p.landUse]
+    ];
+    return [
+      ["Land area", nf(p.landArea) + " " + p.landAreaUnit + (p.landArea === 1 ? "" : "s")],
+      ["Built-up", nf(p.builtUpArea) + " sq ft"],
+      ["Bedrooms", String(p.bedrooms)],
+      ["Outbuildings", (p.outbuildings || []).join(", ")]
+    ];
+  }
 
   /* ---------- cards / grids ---------- */
   function propCard(p){
@@ -911,7 +1513,7 @@
     a.className = "prop-card reveal";
     a.innerHTML = `
       <div class="img-wrap">
-        ${imgTag(p.img, p.title + " — exterior", 'width="900" height="675"')}
+        ${imgTag(p.images[0], p.title + " — exterior", 'width="900" height="675"')}
         <span class="cat-tag">${catLabel[p.category]}</span>
         ${p.featured?'<span class="featured-tag">Featured</span>':''}
       </div>
@@ -919,7 +1521,7 @@
         <p class="price">${money(p.price)}</p>
         <h3>${p.title}</h3>
         <p class="loc">${p.location}</p>
-        <p class="specs">${p.specs.slice(0,2).map(s=>s[1]).join(" · ")}</p>
+        <p class="specs">${specPairs(p).slice(0,2).map(s=>s[1]).join(" · ")}</p>
       </div>`;
     return a;
   }
@@ -1033,7 +1635,7 @@
           <div class="thumbs">
             ${variants.map((v,i)=>`<button type="button" class="${i===0?'active':''}" data-idx="${i}" aria-label="Show view ${i+1}" aria-pressed="${i===0}">${imgTag(v, p.title + " — view " + (i+1))}</button>`).join("")}
           </div>
-          <p style="margin:1.2rem 0 0; color:var(--ink-2); max-width:58ch; font-size:.92rem">${p.desc}</p>
+          <p style="margin:1.2rem 0 0; color:var(--ink-2); max-width:58ch; font-size:.92rem">${p.description}</p>
         </div>
         <div class="detail-info">
           <span class="cat-tag">${catLabel[p.category]}</span>
@@ -1041,7 +1643,7 @@
           <h1>${p.title}</h1>
           <p class="loc">${p.location}</p>
           <dl class="spec-grid">
-            ${p.specs.map(s=>`<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join("")}
+            ${specPairs(p).map(s=>`<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join("")}
           </dl>
           <a href="#contact" class="btn" style="width:100%; justify-content:center">Request a viewing</a>
           <div class="agent-card">
@@ -1215,12 +1817,12 @@
 
   function fillDrawer(p){
     drawerMedia.querySelectorAll("img").forEach(n => n.remove());
-    drawerMedia.insertAdjacentHTML("afterbegin", imgTag(p.img, p.title, 'width="800" height="600"'));
+    drawerMedia.insertAdjacentHTML("afterbegin", imgTag(p.images[0], p.title, 'width="800" height="600"'));
     drawerKicker.textContent = catLabel[p.category];
     drawerTitle.textContent = p.title;
     drawerPrice.textContent = money(p.price);
     drawerLoc.textContent = p.location;
-    drawerSpecs.textContent = p.specs.map(s => s[0] + ": " + s[1]).join(" \u00b7 ");
+    drawerSpecs.textContent = specPairs(p).map(s => s[0] + ": " + s[1]).join(" \u00b7 ");
     drawerLink.href = "#property-" + p.id;
   }
   function openDrawer(p){

@@ -42,6 +42,21 @@ The site is a static folder (`index.html` + `assets/`), so any static host works
 After a real domain exists, change the two share-image tags to absolute URLs
 (`https://your-domain/assets/hero.webp`) so Facebook and WhatsApp can preview the image.
 
+## Demo data
+
+All 12 properties are **fictional sample data for demonstration only**. None of them is a real
+property, a real address or an offer for sale or rent.
+
+- Prices are illustrative INR figures, not valuations and not converted from another currency.
+- City and district names are real Indian places used as sample locations. Every locality, plot
+  number and address is invented — addresses are prefixed `Fictional address:`. This does not imply
+  the agency operates in those cities.
+- No PIN code, ownership detail, survey number, approval or RERA registration exists for any record;
+  those fields are `null` rather than guessed.
+- The same 12 records live in two places and must be kept in sync: the `const properties` array in
+  `index.html` (what the site renders) and `properties.json` (a read-only export the site does not
+  fetch yet).
+
 ## Notes
 
 - Listings, filters, gallery and contact form are front-end only — no data leaves the page.

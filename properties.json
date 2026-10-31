@@ -1,425 +1,653 @@
 {
   "dataset": {
-    "name": "Chandra Estates — property dataset",
-    "schemaVersion": 1,
+    "name": "Chandra Estates - property dataset",
+    "schemaVersion": 2,
     "market": "India",
-    "marketNote": "The target market is India. These demo records still carry US-dollar prices and non-Indian neighbourhood names; they have not been localised in this stage.",
+    "currency": "INR",
+    "currencyCode": "INR",
+    "currencySymbol": "₹",
+    "numbering": "Indian digit grouping (lakh / crore), e.g. ₹75,00,000 and ₹1,25,00,000",
     "dataStatus": "demo",
     "isDemoData": true,
-    "dataDisclaimer": "This file contains sample/demo data only. Nothing here is a real listing, a real address, a real price or a real availability. Do not present it to customers as available property.",
+    "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+    "priceNotice": "All prices are fictional illustrative examples for a demo website. They are not market valuations, not offers, and were not converted from any other currency.",
+    "listingTypeNotice": "Every demo record is marked listingType 'sale' for illustration only.",
+    "locationNotice": "City and district names are real Indian places used as sample locations. Every locality name, plot number and address below is invented. This does not imply that Chandra Estates operates in those cities.",
+    "pinCodeNotice": "pinCode is null on every record because no verified postal code exists for a fictional address.",
     "recordCount": 12,
-    "currency": "USD",
-    "currencyNote": "Prices are the original demo values in US dollars. They have deliberately not been converted to INR — currency localisation is a separate step.",
-    "specsFormat": "Array of [label, value] string pairs. Labels and units differ per category.",
-    "source": "index.html — const properties (lines 839-876)",
-    "sourceOfTruth": "index.html",
-    "extractedOn": "2026-10-31",
+    "countsByCategory": {
+      "house": 3,
+      "apartment": 3,
+      "land": 3,
+      "farmhouse": 3
+    },
+    "categoryFields": "Category-specific fields appear only on records of that category; all records share the same common fields.",
+    "updatedOn": "2026-10-31",
+    "source": "index.html - const properties (kept in sync with this file)",
     "usedByWebsite": false,
+    "syncNote": "index.html carries an identical copy of these records in its JavaScript array; the site does not fetch this JSON yet.",
     "notes": [
-      "IDs, image paths, titles, categories, locations, prices, featured flags, specifications and descriptions are copied unchanged from index.html.",
-      "No property in this dataset has a street address, city, PIN code, ownership record, approval, survey number or legal/RERA detail. None has been invented.",
-      "No sale/rent flag, availability status, amenities list, area unit, map location, video or listing date exists in the source data. Those fields are absent rather than guessed.",
-      "'added' is an internal sort key (days since listed) used for 'Newest' ordering; it is not shown on the website.",
-      "Photographs are stock images (Unsplash) referenced by relative path; property detail galleries additionally reuse shared interior photos across listings.",
-      "The website still reads the JavaScript array inside index.html. This file is a read-only export and is not yet referenced by the site."
+      "Prices are numeric INR values; priceDisplay uses Indian grouping and always matches the numeric price.",
+      "No record has an address, PIN code, ownership detail, survey number, approval or RERA registration that can be verified. Those attachments are deliberately absent.",
+      "streetAddress fields are prefixed 'Fictional address:' so they can never be mistaken for a real location.",
+      "approvalStatus is null on every plot; no approval or legality is claimed.",
+      "status is 'demo-only' for every record and is not an availability state.",
+      "Photographs are stock images (Unsplash); detail galleries reuse shared interior photos across listings.",
+      "The website still reads the JavaScript array in index.html."
     ]
   },
   "properties": [
     {
       "id": 1,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p1.webp",
-      "title": "Sunlit Craftsman on Birchwood Ave",
+      "title": "Sunlit 4 BHK Villa, Devara Meadows",
       "category": "house",
-      "location": "Maple Hill",
-      "price": 640000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 14500000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹1,45,00,000",
+      "location": "Devara Meadows, Hyderabad",
+      "locality": "Devara Meadows",
+      "city": "Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "pinCode": null,
+      "address": "Fictional address: 14, Devara Meadows, Hyderabad",
+      "description": "A four-bedroom home on a quiet internal lane of Devara Meadows, with a covered porch, a first-floor balcony and a kitchen that opens onto a small rear courtyard.",
+      "images": [
+        "assets/p1.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": true,
       "added": 9,
-      "specs": [
-        [
-          "Bedrooms",
-          "3"
-        ],
-        [
-          "Bathrooms",
-          "2"
-        ],
-        [
-          "Interior",
-          "1,480 sq ft"
-        ],
-        [
-          "Lot size",
-          "4,200 sq ft"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Covered parking",
+        "Rainwater harvesting",
+        "Solar water heater",
+        "Landscaped garden"
       ],
-      "desc": "A 1930s craftsman with the original woodwork intact, a deep front porch, and a kitchen that's already been opened up to the dining room."
+      "parking": "2 covered car parks",
+      "furnishing": "Semi-furnished",
+      "facing": "East",
+      "area": 2400,
+      "areaUnit": "sq ft",
+      "bhk": 4,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "builtUpArea": 2400,
+      "plotArea": 300,
+      "plotAreaUnit": "sq yd",
+      "numberOfFloors": 2,
+      "yearBuilt": 2016
     },
     {
       "id": 2,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p2.webp",
-      "title": "Brick Colonial near Linden Park",
+      "title": "Brick-Front 5 BHK Home, Nandanagiri",
       "category": "house",
-      "location": "Linden Park",
-      "price": 789000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 21000000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹2,10,00,000",
+      "location": "Nandanagiri Enclave, Bengaluru",
+      "locality": "Nandanagiri Enclave",
+      "city": "Bengaluru",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "pinCode": null,
+      "address": "Fictional address: 7, Nandanagiri Enclave, Bengaluru",
+      "description": "Five bedrooms across three floors in Nandanagiri Enclave, a short walk from the neighbourhood park. Covered parking for two cars and a roof replaced recently.",
+      "images": [
+        "assets/p2.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": false,
       "added": 21,
-      "specs": [
-        [
-          "Bedrooms",
-          "4"
-        ],
-        [
-          "Bathrooms",
-          "3"
-        ],
-        [
-          "Interior",
-          "2,140 sq ft"
-        ],
-        [
-          "Lot size",
-          "6,000 sq ft"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Covered parking",
+        "Rainwater harvesting",
+        "Power backup",
+        "Children's play area"
       ],
-      "desc": "Four bedrooms on a quiet close two minutes' walk from the park. Finished basement, attached garage, recently replaced roof."
+      "parking": "2 covered car parks",
+      "furnishing": "Unfurnished",
+      "facing": "North-East",
+      "area": 3200,
+      "areaUnit": "sq ft",
+      "bhk": 5,
+      "bedrooms": 5,
+      "bathrooms": 5,
+      "builtUpArea": 3200,
+      "plotArea": 400,
+      "plotAreaUnit": "sq yd",
+      "numberOfFloors": 3,
+      "yearBuilt": 2012
     },
     {
       "id": 3,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p3.webp",
-      "title": "Lakeview Cottage, Hollow Brook",
+      "title": "Garden 3 BHK Cottage, Kanaka Ridge",
       "category": "house",
-      "location": "Hollow Brook",
-      "price": 512000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 9500000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹95,00,000",
+      "location": "Kanaka Ridge, Pune",
+      "locality": "Kanaka Ridge",
+      "city": "Pune",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "pinCode": null,
+      "address": "Fictional address: 3, Kanaka Ridge, Pune",
+      "description": "A compact three-bedroom cottage on Kanaka Ridge, fully renovated, with a paved front garden and a covered sit-out that faces the morning sun.",
+      "images": [
+        "assets/p3.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": true,
       "added": 4,
-      "specs": [
-        [
-          "Bedrooms",
-          "2"
-        ],
-        [
-          "Bathrooms",
-          "1"
-        ],
-        [
-          "Interior",
-          "1,020 sq ft"
-        ],
-        [
-          "Lot size",
-          "3,600 sq ft"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Covered parking",
+        "Solar water heater",
+        "Private garden"
       ],
-      "desc": "A compact lakeside cottage, fully renovated, with a dock rights agreement already in place."
+      "parking": "1 covered car park",
+      "furnishing": "Fully furnished",
+      "facing": "West",
+      "area": 1650,
+      "areaUnit": "sq ft",
+      "bhk": 3,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "builtUpArea": 1650,
+      "plotArea": 200,
+      "plotAreaUnit": "sq yd",
+      "numberOfFloors": 2,
+      "yearBuilt": 2019
     },
     {
       "id": 4,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p4.webp",
-      "title": "Riverside Loft, 6th Floor",
+      "title": "Riverside 3 BHK Flat, Ravella Springs",
       "category": "apartment",
-      "location": "Canal Quarter",
-      "price": 420000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 7800000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹78,00,000",
+      "location": "Ravella Springs, Hyderabad",
+      "locality": "Ravella Springs",
+      "city": "Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "pinCode": null,
+      "address": "Fictional address: Flat 604, Ravella Springs, Hyderabad",
+      "description": "A sixth-floor three-bedroom apartment at Ravella Springs with a wide balcony and a clear view over the layout's central green. The building has two lifts.",
+      "images": [
+        "assets/p4.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": true,
       "added": 6,
-      "specs": [
-        [
-          "Bedrooms",
-          "1"
-        ],
-        [
-          "Bathrooms",
-          "1"
-        ],
-        [
-          "Interior",
-          "820 sq ft"
-        ],
-        [
-          "Floor",
-          "6 of 9"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Clubhouse",
+        "Swimming pool",
+        "Gym",
+        "24x7 security",
+        "Power backup",
+        "CCTV"
       ],
-      "desc": "Exposed brick, tall windows, and a direct canal view. Building has a lift and secure parking."
+      "parking": "1 covered car park",
+      "furnishing": "Semi-furnished",
+      "facing": "East",
+      "area": 1240,
+      "areaUnit": "sq ft",
+      "bhk": 3,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "carpetArea": 1240,
+      "builtUpArea": 1560,
+      "floorNumber": 6,
+      "totalFloors": 12,
+      "balconies": 2,
+      "maintenanceCharges": 4500,
+      "lift": true,
+      "security": true
     },
     {
       "id": 5,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p5.webp",
-      "title": "Garden-Level Flat, Old Market",
+      "title": "Courtyard 2 BHK Flat, Kesava Corner",
       "category": "apartment",
-      "location": "Old Market",
-      "price": 318000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 5200000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹52,00,000",
+      "location": "Kesava Corner, Pune",
+      "locality": "Kesava Corner",
+      "city": "Pune",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "pinCode": null,
+      "address": "Fictional address: Flat 02, Kesava Corner, Pune",
+      "description": "A quiet ground-floor two-bedroom flat at Kesava Corner with its own private entrance and a small courtyard - rare for this building.",
+      "images": [
+        "assets/p5.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": false,
       "added": 15,
-      "specs": [
-        [
-          "Bedrooms",
-          "2"
-        ],
-        [
-          "Bathrooms",
-          "1"
-        ],
-        [
-          "Interior",
-          "910 sq ft"
-        ],
-        [
-          "Floor",
-          "Ground"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Covered parking",
+        "CCTV",
+        "Power backup"
       ],
-      "desc": "A quiet garden-level flat with its own private courtyard access — rare for this building."
+      "parking": "1 open car park",
+      "furnishing": "Unfurnished",
+      "facing": "South",
+      "area": 890,
+      "areaUnit": "sq ft",
+      "bhk": 2,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "carpetArea": 890,
+      "builtUpArea": 1120,
+      "floorNumber": 0,
+      "totalFloors": 5,
+      "balconies": 1,
+      "maintenanceCharges": 3200,
+      "lift": true,
+      "security": true
     },
     {
       "id": 6,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p6.webp",
-      "title": "Skyline Two-Bed near Transit",
+      "title": "Skyline 2 BHK Flat, Vasudha Terrace",
       "category": "apartment",
-      "location": "Station Road",
-      "price": 489000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 6400000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹64,00,000",
+      "location": "Vasudha Terrace, Chennai",
+      "locality": "Vasudha Terrace",
+      "city": "Chennai",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "pinCode": null,
+      "address": "Fictional address: Flat 1103, Vasudha Terrace, Chennai",
+      "description": "An eleventh-floor two-bedroom apartment at Vasudha Terrace with a south-facing balcony and covered parking in the basement.",
+      "images": [
+        "assets/p6.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": false,
       "added": 11,
-      "specs": [
-        [
-          "Bedrooms",
-          "2"
-        ],
-        [
-          "Bathrooms",
-          "2"
-        ],
-        [
-          "Interior",
-          "1,080 sq ft"
-        ],
-        [
-          "Floor",
-          "11 of 14"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Clubhouse",
+        "Gym",
+        "24x7 security",
+        "Power backup",
+        "Visitor parking"
       ],
-      "desc": "Two minutes from the station, with a south-facing balcony and in-unit laundry."
+      "parking": "1 covered car park",
+      "furnishing": "Fully furnished",
+      "facing": "South",
+      "area": 1050,
+      "areaUnit": "sq ft",
+      "bhk": 2,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "carpetArea": 1050,
+      "builtUpArea": 1320,
+      "floorNumber": 11,
+      "totalFloors": 14,
+      "balconies": 2,
+      "maintenanceCharges": 3800,
+      "lift": true,
+      "security": true
     },
     {
       "id": 7,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p7.webp",
-      "title": "12-Acre Open Parcel, Cedar Road",
+      "title": "400 sq yd Plot, Siri Vanam Layout",
       "category": "land",
-      "location": "Cedar Road",
-      "price": 210000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 18000000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹1,80,00,000",
+      "location": "Siri Vanam Layout, Hyderabad",
+      "locality": "Siri Vanam Layout",
+      "city": "Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "pinCode": null,
+      "address": "Fictional address: Plot 22, Siri Vanam Layout, Hyderabad",
+      "description": "A level 400 sq yd plot in Siri Vanam Layout with a 40 ft approach road, a compound wall on two sides and utility lines already brought to the plot boundary.",
+      "images": [
+        "assets/p7.webp",
+        "assets/p8.webp",
+        "assets/p9.webp",
+        "assets/cat-land.webp"
+      ],
       "featured": true,
       "added": 2,
-      "specs": [
-        [
-          "Acreage",
-          "12 acres"
-        ],
-        [
-          "Zoning",
-          "Residential"
-        ],
-        [
-          "Road frontage",
-          "340 ft"
-        ],
-        [
-          "Utilities",
-          "At the road"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Gated layout",
+        "Street lighting"
       ],
-      "desc": "A gently sloped, cleared parcel with utilities already run to the road line. Perc test on file."
+      "parking": null,
+      "furnishing": null,
+      "facing": "East",
+      "area": 400,
+      "areaUnit": "sq yd",
+      "plotArea": 400,
+      "plotLength": 60,
+      "plotWidth": 60,
+      "roadWidth": 40,
+      "landUse": "Residential plot",
+      "zoning": "Residential",
+      "waterAvailability": "Municipal line at road",
+      "electricityAvailability": "Overhead line at road",
+      "approvalStatus": null
     },
     {
       "id": 8,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p8.webp",
-      "title": "Wooded 5-Acre Lot",
+      "title": "200 sq yd Plot, Bhoomi Greens",
       "category": "land",
-      "location": "Pine Ridge",
-      "price": 96000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 4200000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹42,00,000",
+      "location": "Bhoomi Greens, Chennai",
+      "locality": "Bhoomi Greens",
+      "city": "Chennai",
+      "district": "Chennai",
+      "state": "Tamil Nadu",
+      "pinCode": null,
+      "address": "Fictional address: Plot 9, Bhoomi Greens, Chennai",
+      "description": "A 200 sq yd corner plot in Bhoomi Greens, cleared and ready to build, with a 30 ft road on two sides.",
+      "images": [
+        "assets/p8.webp",
+        "assets/p7.webp",
+        "assets/p9.webp",
+        "assets/cat-land.webp"
+      ],
       "featured": false,
       "added": 28,
-      "specs": [
-        [
-          "Acreage",
-          "5 acres"
-        ],
-        [
-          "Zoning",
-          "Rural residential"
-        ],
-        [
-          "Road frontage",
-          "180 ft"
-        ],
-        [
-          "Utilities",
-          "Well & septic needed"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Gated layout",
+        "Street lighting"
       ],
-      "desc": "Mature hardwood lot backing onto conservation land, so the view stays the view."
+      "parking": null,
+      "furnishing": null,
+      "facing": "North-East",
+      "area": 200,
+      "areaUnit": "sq yd",
+      "plotArea": 200,
+      "plotLength": 30,
+      "plotWidth": 60,
+      "roadWidth": 30,
+      "landUse": "Residential plot",
+      "zoning": "Residential",
+      "waterAvailability": "Municipal line at road",
+      "electricityAvailability": "Overhead line at road",
+      "approvalStatus": null
     },
     {
       "id": 9,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p9.webp",
-      "title": "Riverside Building Plot",
+      "title": "250 sq yd Plot, Aranya Grove",
       "category": "land",
-      "location": "Millbrook",
-      "price": 305000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 8800000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹88,00,000",
+      "location": "Aranya Grove, Bengaluru",
+      "locality": "Aranya Grove",
+      "city": "Bengaluru",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "pinCode": null,
+      "address": "Fictional address: Plot 41, Aranya Grove, Bengaluru",
+      "description": "A 250 sq yd plot in Aranya Grove with a gentle slope, a 30 ft approach road and room for a single-family home.",
+      "images": [
+        "assets/p9.webp",
+        "assets/p7.webp",
+        "assets/p8.webp",
+        "assets/cat-land.webp"
+      ],
       "featured": false,
       "added": 17,
-      "specs": [
-        [
-          "Acreage",
-          "2.4 acres"
-        ],
-        [
-          "Zoning",
-          "Residential"
-        ],
-        [
-          "Road frontage",
-          "110 ft"
-        ],
-        [
-          "Utilities",
-          "At the road"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Gated layout",
+        "Street lighting",
+        "Rainwater harvesting"
       ],
-      "desc": "A rare riverside building plot with an approved site plan already on file for a single-family home."
+      "parking": null,
+      "furnishing": null,
+      "facing": "West",
+      "area": 250,
+      "areaUnit": "sq yd",
+      "plotArea": 250,
+      "plotLength": 45,
+      "plotWidth": 50,
+      "roadWidth": 30,
+      "landUse": "Residential plot",
+      "zoning": "Residential",
+      "waterAvailability": "Borewell in the layout",
+      "electricityAvailability": "Overhead line at road",
+      "approvalStatus": null
     },
     {
       "id": 10,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p10.webp",
-      "title": "Restored Farmhouse with Barn",
+      "title": "Restored 4 BHK Farmhouse, Devara Farmlands",
       "category": "farmhouse",
-      "location": "Cedar Road",
-      "price": 875000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 26000000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹2,60,00,000",
+      "location": "Devara Farmlands, Pune",
+      "locality": "Devara Farmlands",
+      "city": "Pune",
+      "district": "Pune",
+      "state": "Maharashtra",
+      "pinCode": null,
+      "address": "Fictional address: Survey-free demo entry, Devara Farmlands, Pune",
+      "description": "A restored four-bedroom farmhouse on 2.5 acres at Devara Farmlands - original timber beams, new plumbing and wiring throughout, plus a standing barn and equipment shed.",
+      "images": [
+        "assets/p10.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": true,
       "added": 5,
-      "specs": [
-        [
-          "Bedrooms",
-          "4"
-        ],
-        [
-          "Bathrooms",
-          "2"
-        ],
-        [
-          "Acreage",
-          "18 acres"
-        ],
-        [
-          "Outbuildings",
-          "Barn, equipment shed"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Borewell",
+        "Farm shed",
+        "Fruit trees",
+        "Solar water heater"
       ],
-      "desc": "A full farmhouse restoration — original beams, new mechanicals throughout — on 18 working acres with a standing barn."
+      "parking": "Open parking for 3 cars",
+      "furnishing": "Semi-furnished",
+      "facing": "East",
+      "area": 2.5,
+      "areaUnit": "acre",
+      "landArea": 2.5,
+      "landAreaUnit": "acre",
+      "builtUpArea": 3200,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "waterSource": "Borewell",
+      "irrigation": "Drip irrigation for the garden",
+      "electricityAvailability": "Three-phase connection",
+      "roadAccess": "Tar road up to the gate",
+      "outbuildings": [
+        "Barn",
+        "Equipment shed"
+      ]
     },
     {
       "id": 11,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p11.webp",
-      "title": "Working Farm with Orchard",
+      "title": "5-Acre Farm with Orchard, Siri Orchards",
       "category": "farmhouse",
-      "location": "Pine Ridge",
-      "price": 1050000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 42500000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹4,25,00,000",
+      "location": "Siri Orchards, Hyderabad",
+      "locality": "Siri Orchards",
+      "city": "Hyderabad",
+      "district": "Hyderabad",
+      "state": "Telangana",
+      "pinCode": null,
+      "address": "Fictional address: Demo entry, Siri Orchards, Hyderabad",
+      "description": "A five-acre working farm at Siri Orchards with a maintained fruit orchard, a four-bedroom main house and a full barn.",
+      "images": [
+        "assets/p11.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": false,
       "added": 19,
-      "specs": [
-        [
-          "Bedrooms",
-          "5"
-        ],
-        [
-          "Bathrooms",
-          "3"
-        ],
-        [
-          "Acreage",
-          "32 acres"
-        ],
-        [
-          "Outbuildings",
-          "Barn, orchard, silo"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Borewell",
+        "Irrigation network",
+        "Farm shed",
+        "Fruit orchard",
+        "Staff quarters"
       ],
-      "desc": "A long-run apple orchard with an active harvest contract, plus a five-bedroom main house and full barn."
+      "parking": "Open parking for 4 cars",
+      "furnishing": "Unfurnished",
+      "facing": "North",
+      "area": 5,
+      "areaUnit": "acre",
+      "landArea": 5,
+      "landAreaUnit": "acre",
+      "builtUpArea": 4600,
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "waterSource": "Borewell and farm pond",
+      "irrigation": "Drip and sprinkler network",
+      "electricityAvailability": "Three-phase connection",
+      "roadAccess": "Tar road, 1.2 km from the village junction",
+      "outbuildings": [
+        "Barn",
+        "Orchard store",
+        "Staff quarters"
+      ]
     },
     {
       "id": 12,
-      "isDemo": true,
-      "dataStatus": "demo",
-      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
-      "img": "assets/p12.webp",
-      "title": "Countryside Farmhouse Retreat",
+      "title": "1.5-Acre Farmhouse, Kanaka Pastures",
       "category": "farmhouse",
-      "location": "Millbrook",
-      "price": 699000,
-      "priceCurrency": "USD",
+      "listingType": "sale",
+      "price": 19000000,
+      "priceCurrency": "INR",
+      "priceDisplay": "₹1,90,00,000",
+      "location": "Kanaka Pastures, Bengaluru",
+      "locality": "Kanaka Pastures",
+      "city": "Bengaluru",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka",
+      "pinCode": null,
+      "address": "Fictional address: Demo entry, Kanaka Pastures, Bengaluru",
+      "description": "A 1.5-acre farmhouse at Kanaka Pastures for anyone wanting land without the scale of a working farm. Fenced paddock and a three-bedroom house included.",
+      "images": [
+        "assets/p12.webp",
+        "assets/interior-1.webp",
+        "assets/interior-2.webp",
+        "assets/interior-3.webp"
+      ],
       "featured": false,
       "added": 13,
-      "specs": [
-        [
-          "Bedrooms",
-          "3"
-        ],
-        [
-          "Bathrooms",
-          "2"
-        ],
-        [
-          "Acreage",
-          "9 acres"
-        ],
-        [
-          "Outbuildings",
-          "Barn"
-        ]
+      "updatedAt": "2026-10-31",
+      "status": "demo-only",
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "amenities": [
+        "Borewell",
+        "Fenced paddock",
+        "Farm shed",
+        "Fruit trees"
       ],
-      "desc": "A smaller farmhouse for anyone wanting the land without the scale of a working farm. Fenced paddock included."
+      "parking": "Open parking for 2 cars",
+      "furnishing": "Semi-furnished",
+      "facing": "South",
+      "area": 1.5,
+      "areaUnit": "acre",
+      "landArea": 1.5,
+      "landAreaUnit": "acre",
+      "builtUpArea": 2400,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "waterSource": "Borewell",
+      "irrigation": "Sprinkler for the paddock",
+      "electricityAvailability": "Single-phase connection",
+      "roadAccess": "Tar road up to the gate",
+      "outbuildings": [
+        "Farm shed"
+      ]
     }
   ]
 }
