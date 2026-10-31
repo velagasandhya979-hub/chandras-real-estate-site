@@ -53,13 +53,25 @@ property, a real address or an offer for sale or rent.
   the agency operates in those cities.
 - No PIN code, ownership detail, survey number, approval or RERA registration exists for any record;
   those fields are `null` rather than guessed.
+- Every record carries `status: "demo-only"`, `availability: "not-available"`, `priceType:
+  "illustrative"`, `listingType: null` and `isDemo: true`. Nothing is offered for sale or rent.
 - The same 12 records live in two places and must be kept in sync: the `const properties` array in
   `index.html` (what the site renders) and `properties.json` (a read-only export the site does not
   fetch yet).
+- Demo status is shown in the interface, not only in the footer: a `DEMO LISTING` label on every
+  property card, a notice on every detail page and in the quick-view drawer, a banner on the listings
+  page, and a note under the enquiry form.
+- Photographs are stock images used as illustrative demo images. They do not depict the property
+  described; galleries are captioned and alt text is deliberately generic. Land listings use only
+  their own image plus the shared `cat-land.webp`, never another plot's photo.
 
 ## Notes
 
-- Listings, filters, gallery and contact form are front-end only — no data leaves the page.
-- Contact number 98499 96566 is wired for both `tel:` calls and WhatsApp.
-- Anything marked `FEATURED`, the counters (412 sold, 4.9 rating) and the testimonials are sample content — replace with real figures before launch.
+- Listings, filters, gallery and contact form are front-end only — no data leaves the page, and the
+  enquiry form has no backend, so nothing is sent, stored or shared.
+- No phone number, email, office address or map location is published. Contact details are demo
+  placeholders only; do not add real ones without the agency's confirmation.
+- The hero counters (12 sample properties, 4 categories, 0 real listings) and the testimonial are
+  sample content, labelled as such. There are no sold-property statistics, ratings, licensing claims
+  or agency history anywhere on the site.
 - Photography sourced from [Unsplash](https://unsplash.com) under the Unsplash License.

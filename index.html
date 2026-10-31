@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Chandra Estates — Houses, apartments, land &amp; farm houses</title>
-<meta name="description" content="Houses, apartments, land and farm houses — browsed, filtered and visited without the runaround." />
+<title>Chandra Estates — fictional demo real-estate site</title>
+<meta name="description" content="A fictional Indian real-estate demonstration site: 12 sample properties, illustrative INR prices and stock photography. Nothing here is a real listing." />
 <meta name="theme-color" content="#f2ece1" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Chandra Estates" />
-<meta property="og:title" content="Chandra Estates" />
-<meta property="og:description" content="Houses, apartments, land and farm houses — each one walked through by an agent who will tell you honestly if it isn't right for you." />
+<meta property="og:title" content="Chandra Estates — fictional demo" />
+<meta property="og:description" content="A fictional Indian real-estate demonstration site. Sample listings, illustrative prices, stock photography — not a real agency." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:image" content="assets/hero.webp" />
-<meta property="og:image:alt" content="A craftsman house glowing at dusk" />
+<meta property="og:image:alt" content="Illustrative demo image of a house at dusk" />
 <meta property="og:image:width" content="1600" />
 <meta property="og:image:height" content="1067" />
 <meta name="twitter:image" content="assets/hero.webp" />
@@ -327,6 +327,24 @@
     .filter-bar select{flex:1 1 0; min-width:0; padding-left:.8rem}
   }
 
+  /* ---------- demo safety ---------- */
+  .prop-card .demo-tag{position:absolute; left:.85rem; bottom:.85rem; z-index:2; padding:.32rem .72rem; border-radius:999px;
+    background:rgba(164,79,40,.92); backdrop-filter:blur(10px); color:var(--cream);
+    font-size:.53rem; letter-spacing:.18em; text-transform:uppercase}
+  .demo-note{margin:1.1rem 0 1rem; padding:.85rem 1rem; border-radius:var(--r-sm);
+    background:rgba(164,79,40,.09); border:1px solid rgba(164,79,40,.28);
+    font-size:.78rem; line-height:1.55; color:var(--ink-2)}
+  .demo-note strong{display:block; font-size:.56rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--clay-deep); margin-bottom:.3rem; font-weight:600}
+  .drawer-body .demo-note{margin:.35rem 0 .6rem; font-size:.74rem}
+  .gallery-caption{margin:.55rem 0 0; font-size:.66rem; letter-spacing:.06em; color:var(--ink-3)}
+  .listings-demo{margin:0 0 1.1rem; padding:.8rem 1rem; border-radius:var(--r-sm);
+    background:rgba(164,79,40,.09); border:1px solid rgba(164,79,40,.26);
+    font-size:.78rem; line-height:1.55; color:var(--ink-2)}
+  .listings-demo strong{font-size:.56rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--clay-deep); margin-right:.45rem}
+  .form-demo{margin:.85rem 0 0; font-size:.74rem; line-height:1.55; color:var(--ink-2)}
+
   /* ---------- quote ---------- */
   .quote-block{background:linear-gradient(150deg, rgba(236,207,186,.85), rgba(236,207,186,.55));
     backdrop-filter:blur(22px); border:1px solid rgba(255,255,255,.45); border-radius:var(--r-lg);
@@ -587,23 +605,23 @@
       </figure>
 
       <div class="hero-copy">
-        <p class="eyebrow"><span class="idx">01</span> Independent brokerage</p>
+        <p class="eyebrow"><span class="idx">01</span> Fictional demonstration site</p>
         <div class="wordmark" id="wordmark">
           <h1 class="wm wm-base">Chandra<br /><em>Estates</em></h1>
           <span class="wm wm-over" aria-hidden="true">Chandra<br /><em>Estates</em></span>
         </div>
-        <p class="lede">Houses, apartments, land and farm houses &mdash; each one walked through by an agent who will tell you honestly if it isn't right for you.</p>
+        <p class="lede">Houses, apartments, land and farm houses &mdash; all twelve are fictional samples, with illustrative INR prices and stock photography.</p>
         <div class="hero-ctas">
           <a href="#listings" class="btn">Browse listings</a>
-          <a href="https://wa.me/919849996566" class="btn ghost" target="_blank" rel="noopener">WhatsApp us</a>
+          <a href="#contact" class="btn ghost">Demo enquiries</a>
         </div>
       </div>
     </div>
 
     <dl class="hero-stats">
-      <div><dt data-count="412" data-decimals="0">0</dt><dd>properties sold</dd></div>
-      <div><dt data-count="9" data-decimals="0">0</dt><dd>median days to offer</dd></div>
-      <div><dt data-count="4.9" data-decimals="1">0.0</dt><dd>client rating</dd></div>
+      <div><dt data-count="12" data-decimals="0">12</dt><dd>sample properties</dd></div>
+      <div><dt data-count="4" data-decimals="0">4</dt><dd>categories</dd></div>
+      <div><dt data-count="0" data-decimals="0">0</dt><dd>real listings</dd></div>
     </dl>
   </div>
 
@@ -613,7 +631,7 @@
         <p class="eyebrow"><span class="idx">02</span> The collection</p>
         <h2>Four ways to find your place</h2>
       </div>
-      <p>A house, an apartment, a plot, a farm &mdash; each one seen in person before it's listed.</p>
+      <p>Sample houses, apartments, plots and farmhouses &mdash; every one is fictional.</p>
     </div>
     <div class="cat-grid">
       <a class="cat-tile reveal" href="#listings-house" id="tile-house"><span class="idx">01</span><span class="go" aria-hidden="true">&#8599;</span><span class="label"><h3>Houses</h3><span id="count-house"></span></span></a>
@@ -626,10 +644,10 @@
   <div class="band wrap">
     <div class="section-head reveal">
       <div>
-        <p class="eyebrow"><span class="idx">03</span> This month</p>
+        <p class="eyebrow"><span class="idx">03</span> Featured demo</p>
         <h2>Featured properties</h2>
       </div>
-      <p>A short, honest shortlist — not everything we have.</p>
+      <p>Three sample properties from the demo set.</p>
     </div>
     <div class="prop-grid" id="featuredGrid"></div>
   </div>
@@ -637,38 +655,38 @@
   <div class="band wrap">
     <div class="section-head reveal">
       <div>
-        <p class="eyebrow"><span class="idx">04</span> Also on the market</p>
-        <h2>Five more worth a walk-through</h2>
+        <p class="eyebrow"><span class="idx">04</span> More samples</p>
+        <h2>Five more sample properties</h2>
       </div>
-      <p><a class="text-link" href="#listings">All 12 listings <span aria-hidden="true">&#8594;</span></a></p>
+      <p><a class="text-link" href="#listings">All 12 sample properties <span aria-hidden="true">&#8594;</span></a></p>
     </div>
     <div class="prop-grid more-grid" id="moreGrid"></div>
   </div>
 
   <div class="band wrap">
     <div class="quote-block reveal">
-      <p class="eyebrow"><span class="idx">05</span> In their words</p>
-      <p class="quote">&ldquo;They talked us out of the first house we loved — and found us one we love more, six weeks later.&rdquo;</p>
-      <p class="quote-author">— Priya &amp; Arjun, bought a farmhouse on Cedar Road</p>
+      <p class="eyebrow"><span class="idx">05</span> Demo testimonial</p>
+      <p class="quote">&ldquo;Placeholder testimonial text. No real client said this &mdash; it is here only to show how a quote would look.&rdquo;</p>
+      <p class="quote-author">— Sample testimonial, not a real customer</p>
     </div>
   </div>
 
   <div class="band wrap" id="homeAbout">
     <div class="section-head reveal">
       <div>
-        <p class="eyebrow"><span class="idx">06</span> About the agency</p>
-        <h2>Three towns, one small agency, no script.</h2>
+        <p class="eyebrow"><span class="idx">06</span> About this demo</p>
+        <h2>A fictional agency, built to show the layout.</h2>
       </div>
-      <p>Only as many clients as we can personally walk through a property with.</p>
+      <p>Nothing on this page describes a real business, listing or client.</p>
     </div>
     <div class="about-grid">
       <div id="aboutMain"></div>
       <div>
-        <p class="reveal">Chandra Estates started as two agents who were tired of pushy sales targets. We still take on only as many clients as we can personally walk through a property with &mdash; which means we turn work away most weeks.</p>
+        <p class="reveal">Chandra Estates is an invented brand made for this demonstration website. The listings, prices, locations and photographs are sample content used to show the design.</p>
         <ul class="values">
-          <li class="reveal"><strong>We say no.</strong> If a property doesn't fit your list, we'll tell you before you book a viewing.</li>
-          <li class="reveal"><strong>We know the streets.</strong> Drainage, noise, school catchments &mdash; the things a listing photo won't show.</li>
-          <li class="reveal"><strong>We negotiate in writing.</strong> You see every offer and counter-offer as it happens.</li>
+          <li class="reveal"><strong>Sample data.</strong> All twelve properties, prices and locations are invented.</li>
+          <li class="reveal"><strong>Stock photography.</strong> Every image is illustrative and does not show a real property.</li>
+          <li class="reveal"><strong>No real enquiries.</strong> The contact form is a front-end demo and sends nothing.</li>
         </ul>
       </div>
     </div>
@@ -677,10 +695,10 @@
   <div class="band wrap">
     <div class="section-head reveal">
       <div>
-        <p class="eyebrow"><span class="idx">07</span> The people</p>
-        <h2>The team</h2>
+        <p class="eyebrow"><span class="idx">07</span> Sample team</p>
+        <h2>Fictional team</h2>
       </div>
-      <p>Four agents. You meet the one who knows your street.</p>
+      <p>Invented profiles used to demonstrate the layout. No real staff and no response times.</p>
     </div>
     <div class="team-grid" id="teamGrid"></div>
   </div>
@@ -692,10 +710,11 @@
     <div class="section-head">
       <div>
         <p class="eyebrow"><span class="idx">02</span> The collection</p>
-        <h1>All listings</h1>
+        <h1>All demo listings</h1>
       </div>
-      <p>Every property is walked through by the agent who lists it.</p>
+      <p>Every property below is fictional sample data, shown to demonstrate the layout.</p>
     </div>
+    <p class="listings-demo"><strong>Demo listings</strong> 12 fictional sample properties &mdash; locations, prices and photographs are invented or illustrative. Nothing here is for sale or rent.</p>
     <div class="chip-row" id="chipRow" role="group" aria-label="Filter by category"></div>
     <div class="filter-bar">
       <input type="search" id="searchInput" placeholder="Search by name or location" aria-label="Search listings by name or location" autocomplete="off" />
@@ -722,7 +741,7 @@
   <div class="band wrap">
     <a href="#listings" class="back-link">&larr; Back to listings</a>
     <div id="propertyDetail"></div>
-    <div class="section-head" style="margin-top:3rem"><h2 style="font-size:1.45rem">Similar properties</h2></div>
+    <div class="section-head" style="margin-top:3rem"><h2 style="font-size:1.45rem">Similar sample properties</h2></div>
     <div class="prop-grid" id="relatedGrid"></div>
   </div>
 </section>
@@ -732,21 +751,20 @@
   <div class="band wrap">
     <div class="section-head">
       <div>
-        <p class="eyebrow"><span class="idx">08</span> Say hello</p>
-        <h1>Book a visit this week</h1>
+        <p class="eyebrow"><span class="idx">08</span> Demo contact</p>
+        <h1>Demo enquiry form</h1>
       </div>
-      <p>A senior agent replies within one working day.</p>
+      <p>This form is part of a demonstration website. It sends nothing, and no agency will reply.</p>
     </div>
     <div class="contact-grid">
       <div>
         <div class="office-card">
-          <h3>Main office</h3>
-          <p>24 Linden Row, Harrow Cross</p>
-          <p>Mon–Sat, 9:00–18:00</p>
-          <p>Phone: <a href="tel:+919849996566">98499 96566</a></p>
-          <p>WhatsApp: <a href="https://wa.me/919849996566" target="_blank" rel="noopener">98499 96566</a></p>
+          <h3>Demo contact details</h3>
+          <p>No phone number, email or office address is provided.</p>
+          <p>This is a fictional agency, built for demonstration only.</p>
+          <p>Nothing entered here reaches a real business.</p>
         </div>
-        <div class="map-block"><span>Harrow Cross — Linden Row, off the market square</span></div>
+        <div class="map-block"><span>Demo site — no real office or map location</span></div>
       </div>
       <form class="contact" id="contactForm" novalidate>
         <div class="row2">
@@ -775,8 +793,9 @@
           <label for="cf-message">Anything we should know? <span style="color:var(--ink-2)">(optional)</span></label>
           <textarea id="cf-message" name="message" autocomplete="off"></textarea>
         </div>
-        <button class="btn" type="submit">Request a visit</button>
+        <button class="btn" type="submit">Submit demo enquiry</button>
         <p class="form-status" id="formStatus" role="status"></p>
+        <p class="form-demo">Demo only &mdash; this form has no backend. Entries are not sent, stored or shared, and no agency receives them.</p>
       </form>
     </div>
   </div>
@@ -795,7 +814,7 @@
     <div class="foot-grid">
       <div>
         <a href="#home" class="brand" style="margin-bottom:.6rem"><span class="mark"></span>Chandra Estates</a>
-        <p class="foot-note">An independent agency across three towns. Licensed brokerage, est. 2008.</p>
+        <p class="foot-note">A fictional demonstration agency. Sample properties, illustrative prices, stock photography &mdash; nothing here is real.</p>
       </div>
       <div><h3>Explore</h3><ul>
         <li><a href="#home">Home</a></li><li><a href="#listings">Listings</a></li>
@@ -805,10 +824,10 @@
         <li><a href="#listings-house">Houses</a></li><li><a href="#listings-apartment">Apartments</a></li>
         <li><a href="#listings-land">Land &amp; plots</a></li><li><a href="#listings-farmhouse">Farm houses</a></li>
       </ul></div>
-      <div><h3>Contact</h3><ul>
-        <li><a href="tel:+919849996566">98499 96566</a></li>
-        <li><a href="https://wa.me/919849996566" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li>24 Linden Row, Harrow Cross</li>
+      <div><h3>Site</h3><ul>
+        <li>No real contact details</li>
+        <li><a href="#contact">Demo enquiry form</a></li>
+        <li>Nothing for sale or rent</li>
       </ul></div>
     </div>
     <div class="foot-bottom">
@@ -827,10 +846,11 @@
   <div class="drawer-body">
     <p class="drawer-kicker" id="drawerKicker">Apartment</p>
     <h2 id="drawerTitle"></h2>
+    <p class="demo-note" id="drawerDemo"><strong>Demo listing</strong>Fictional sample — property, location, price and photographs are illustrative only.</p>
     <p class="drawer-price" id="drawerPrice"></p>
     <p class="drawer-loc" id="drawerLoc"></p>
     <p class="drawer-specs" id="drawerSpecs"></p>
-    <a class="btn" id="drawerLink" href="#listings">View full listing</a>
+    <a class="btn" id="drawerLink" href="#listings">View demo details</a>
   </div>
 </aside>
 
@@ -841,10 +861,12 @@
       "id": 1,
       "title": "Sunlit 4 BHK Villa, Devara Meadows",
       "category": "house",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 14500000,
       "priceCurrency": "INR",
       "priceDisplay": "₹1,45,00,000",
+      "priceType": "illustrative",
       "location": "Devara Meadows, Hyderabad",
       "locality": "Devara Meadows",
       "city": "Hyderabad",
@@ -866,6 +888,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Covered parking",
         "Rainwater harvesting",
@@ -876,6 +899,7 @@
       "furnishing": "Semi-furnished",
       "facing": "East",
       "area": 2400,
+      "areaBasis": "built-up area",
       "areaUnit": "sq ft",
       "bhk": 4,
       "bedrooms": 4,
@@ -888,12 +912,14 @@
     },
     {
       "id": 2,
-      "title": "Brick-Front 5 BHK Home, Nandanagiri",
+      "title": "Brick-Front 5 BHK Home, Nandanagiri Enclave",
       "category": "house",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 21000000,
       "priceCurrency": "INR",
       "priceDisplay": "₹2,10,00,000",
+      "priceType": "illustrative",
       "location": "Nandanagiri Enclave, Bengaluru",
       "locality": "Nandanagiri Enclave",
       "city": "Bengaluru",
@@ -915,6 +941,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Covered parking",
         "Rainwater harvesting",
@@ -925,6 +952,7 @@
       "furnishing": "Unfurnished",
       "facing": "North-East",
       "area": 3200,
+      "areaBasis": "built-up area",
       "areaUnit": "sq ft",
       "bhk": 5,
       "bedrooms": 5,
@@ -939,10 +967,12 @@
       "id": 3,
       "title": "Garden 3 BHK Cottage, Kanaka Ridge",
       "category": "house",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 9500000,
       "priceCurrency": "INR",
       "priceDisplay": "₹95,00,000",
+      "priceType": "illustrative",
       "location": "Kanaka Ridge, Pune",
       "locality": "Kanaka Ridge",
       "city": "Pune",
@@ -964,6 +994,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Covered parking",
         "Solar water heater",
@@ -973,6 +1004,7 @@
       "furnishing": "Fully furnished",
       "facing": "West",
       "area": 1650,
+      "areaBasis": "built-up area",
       "areaUnit": "sq ft",
       "bhk": 3,
       "bedrooms": 3,
@@ -987,10 +1019,12 @@
       "id": 4,
       "title": "Riverside 3 BHK Flat, Ravella Springs",
       "category": "apartment",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 7800000,
       "priceCurrency": "INR",
       "priceDisplay": "₹78,00,000",
+      "priceType": "illustrative",
       "location": "Ravella Springs, Hyderabad",
       "locality": "Ravella Springs",
       "city": "Hyderabad",
@@ -1012,6 +1046,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Clubhouse",
         "Swimming pool",
@@ -1024,6 +1059,7 @@
       "furnishing": "Semi-furnished",
       "facing": "East",
       "area": 1240,
+      "areaBasis": "carpet area",
       "areaUnit": "sq ft",
       "bhk": 3,
       "bedrooms": 3,
@@ -1034,6 +1070,8 @@
       "totalFloors": 12,
       "balconies": 2,
       "maintenanceCharges": 4500,
+      "maintenanceCurrency": "INR",
+      "maintenancePeriod": "month",
       "lift": true,
       "security": true
     },
@@ -1041,10 +1079,12 @@
       "id": 5,
       "title": "Courtyard 2 BHK Flat, Kesava Corner",
       "category": "apartment",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 5200000,
       "priceCurrency": "INR",
       "priceDisplay": "₹52,00,000",
+      "priceType": "illustrative",
       "location": "Kesava Corner, Pune",
       "locality": "Kesava Corner",
       "city": "Pune",
@@ -1066,6 +1106,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Covered parking",
         "CCTV",
@@ -1075,6 +1116,7 @@
       "furnishing": "Unfurnished",
       "facing": "South",
       "area": 890,
+      "areaBasis": "carpet area",
       "areaUnit": "sq ft",
       "bhk": 2,
       "bedrooms": 2,
@@ -1085,6 +1127,8 @@
       "totalFloors": 5,
       "balconies": 1,
       "maintenanceCharges": 3200,
+      "maintenanceCurrency": "INR",
+      "maintenancePeriod": "month",
       "lift": true,
       "security": true
     },
@@ -1092,10 +1136,12 @@
       "id": 6,
       "title": "Skyline 2 BHK Flat, Vasudha Terrace",
       "category": "apartment",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 6400000,
       "priceCurrency": "INR",
       "priceDisplay": "₹64,00,000",
+      "priceType": "illustrative",
       "location": "Vasudha Terrace, Chennai",
       "locality": "Vasudha Terrace",
       "city": "Chennai",
@@ -1117,6 +1163,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Clubhouse",
         "Gym",
@@ -1128,6 +1175,7 @@
       "furnishing": "Fully furnished",
       "facing": "South",
       "area": 1050,
+      "areaBasis": "carpet area",
       "areaUnit": "sq ft",
       "bhk": 2,
       "bedrooms": 2,
@@ -1138,6 +1186,8 @@
       "totalFloors": 14,
       "balconies": 2,
       "maintenanceCharges": 3800,
+      "maintenanceCurrency": "INR",
+      "maintenancePeriod": "month",
       "lift": true,
       "security": true
     },
@@ -1145,10 +1195,12 @@
       "id": 7,
       "title": "400 sq yd Plot, Siri Vanam Layout",
       "category": "land",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 18000000,
       "priceCurrency": "INR",
       "priceDisplay": "₹1,80,00,000",
+      "priceType": "illustrative",
       "location": "Siri Vanam Layout, Hyderabad",
       "locality": "Siri Vanam Layout",
       "city": "Hyderabad",
@@ -1159,17 +1211,16 @@
       "description": "A level 400 sq yd plot in Siri Vanam Layout with a 40 ft approach road, a compound wall on two sides and utility lines already brought to the plot boundary.",
       "images": [
         "assets/p7.webp",
-        "assets/p8.webp",
-        "assets/p9.webp",
         "assets/cat-land.webp"
       ],
-      "featured": true,
+      "featured": false,
       "added": 2,
       "updatedAt": "2026-10-31",
       "status": "demo-only",
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Gated layout",
         "Street lighting"
@@ -1178,6 +1229,7 @@
       "furnishing": null,
       "facing": "East",
       "area": 400,
+      "areaBasis": "plot area",
       "areaUnit": "sq yd",
       "plotArea": 400,
       "plotLength": 60,
@@ -1193,10 +1245,12 @@
       "id": 8,
       "title": "200 sq yd Plot, Bhoomi Greens",
       "category": "land",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 4200000,
       "priceCurrency": "INR",
       "priceDisplay": "₹42,00,000",
+      "priceType": "illustrative",
       "location": "Bhoomi Greens, Chennai",
       "locality": "Bhoomi Greens",
       "city": "Chennai",
@@ -1207,8 +1261,6 @@
       "description": "A 200 sq yd corner plot in Bhoomi Greens, cleared and ready to build, with a 30 ft road on two sides.",
       "images": [
         "assets/p8.webp",
-        "assets/p7.webp",
-        "assets/p9.webp",
         "assets/cat-land.webp"
       ],
       "featured": false,
@@ -1218,6 +1270,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Gated layout",
         "Street lighting"
@@ -1226,6 +1279,7 @@
       "furnishing": null,
       "facing": "North-East",
       "area": 200,
+      "areaBasis": "plot area",
       "areaUnit": "sq yd",
       "plotArea": 200,
       "plotLength": 30,
@@ -1241,10 +1295,12 @@
       "id": 9,
       "title": "250 sq yd Plot, Aranya Grove",
       "category": "land",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 8800000,
       "priceCurrency": "INR",
       "priceDisplay": "₹88,00,000",
+      "priceType": "illustrative",
       "location": "Aranya Grove, Bengaluru",
       "locality": "Aranya Grove",
       "city": "Bengaluru",
@@ -1255,8 +1311,6 @@
       "description": "A 250 sq yd plot in Aranya Grove with a gentle slope, a 30 ft approach road and room for a single-family home.",
       "images": [
         "assets/p9.webp",
-        "assets/p7.webp",
-        "assets/p8.webp",
         "assets/cat-land.webp"
       ],
       "featured": false,
@@ -1266,6 +1320,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Gated layout",
         "Street lighting",
@@ -1275,6 +1330,7 @@
       "furnishing": null,
       "facing": "West",
       "area": 250,
+      "areaBasis": "plot area",
       "areaUnit": "sq yd",
       "plotArea": 250,
       "plotLength": 45,
@@ -1290,10 +1346,12 @@
       "id": 10,
       "title": "Restored 4 BHK Farmhouse, Devara Farmlands",
       "category": "farmhouse",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 26000000,
       "priceCurrency": "INR",
       "priceDisplay": "₹2,60,00,000",
+      "priceType": "illustrative",
       "location": "Devara Farmlands, Pune",
       "locality": "Devara Farmlands",
       "city": "Pune",
@@ -1308,13 +1366,14 @@
         "assets/interior-2.webp",
         "assets/interior-3.webp"
       ],
-      "featured": true,
+      "featured": false,
       "added": 5,
       "updatedAt": "2026-10-31",
       "status": "demo-only",
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Borewell",
         "Farm shed",
@@ -1325,6 +1384,7 @@
       "furnishing": "Semi-furnished",
       "facing": "East",
       "area": 2.5,
+      "areaBasis": "land area",
       "areaUnit": "acre",
       "landArea": 2.5,
       "landAreaUnit": "acre",
@@ -1344,10 +1404,12 @@
       "id": 11,
       "title": "5-Acre Farm with Orchard, Siri Orchards",
       "category": "farmhouse",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 42500000,
       "priceCurrency": "INR",
       "priceDisplay": "₹4,25,00,000",
+      "priceType": "illustrative",
       "location": "Siri Orchards, Hyderabad",
       "locality": "Siri Orchards",
       "city": "Hyderabad",
@@ -1369,6 +1431,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Borewell",
         "Irrigation network",
@@ -1380,6 +1443,7 @@
       "furnishing": "Unfurnished",
       "facing": "North",
       "area": 5,
+      "areaBasis": "land area",
       "areaUnit": "acre",
       "landArea": 5,
       "landAreaUnit": "acre",
@@ -1400,10 +1464,12 @@
       "id": 12,
       "title": "1.5-Acre Farmhouse, Kanaka Pastures",
       "category": "farmhouse",
-      "listingType": "sale",
+      "listingType": null,
+      "availability": "not-available",
       "price": 19000000,
       "priceCurrency": "INR",
       "priceDisplay": "₹1,90,00,000",
+      "priceType": "illustrative",
       "location": "Kanaka Pastures, Bengaluru",
       "locality": "Kanaka Pastures",
       "city": "Bengaluru",
@@ -1425,6 +1491,7 @@
       "isDemo": true,
       "dataStatus": "demo",
       "dataDisclaimer": "Fictional sample property for website demonstration only. Not a real property. Not offered for sale or rent. Not available for viewing.",
+      "demoNotice": "Fictional sample — property, location, price and photographs are illustrative only. Not for sale or rent; not available for viewing.",
       "amenities": [
         "Borewell",
         "Fenced paddock",
@@ -1435,6 +1502,7 @@
       "furnishing": "Semi-furnished",
       "facing": "South",
       "area": 1.5,
+      "areaBasis": "land area",
       "areaUnit": "acre",
       "landArea": 1.5,
       "landAreaUnit": "acre",
@@ -1513,9 +1581,10 @@
     a.className = "prop-card reveal";
     a.innerHTML = `
       <div class="img-wrap">
-        ${imgTag(p.images[0], p.title + " — exterior", 'width="900" height="675"')}
+        ${imgTag(p.images[0], "Illustrative demo image — fictional sample property", 'width="900" height="675"')}
         <span class="cat-tag">${catLabel[p.category]}</span>
         ${p.featured?'<span class="featured-tag">Featured</span>':''}
+        <span class="demo-tag">Demo listing</span>
       </div>
       <div class="body">
         <p class="price">${money(p.price)}</p>
@@ -1543,7 +1612,7 @@
   function renderCounts(){
     ["house","apartment","land","farmhouse"].forEach(c=>{
       const n = properties.filter(p=>p.category===c).length;
-      document.getElementById("count-"+c).textContent = n+" listed";
+      document.getElementById("count-"+c).textContent = n+" sample properties";
     });
   }
 
@@ -1558,7 +1627,7 @@
     put("farmhouse","farmhouse","An old timber barn in a field at sunset");
 
     document.getElementById("heroMain").innerHTML =
-      `<img src="${photo.hero}" alt="A craftsman house glowing at dusk, framed by old trees" width="1600" height="1067" fetchpriority="high" decoding="async" />`;
+      `<img src="${photo.hero}" alt="A contemporary house glowing at dusk, framed by trees" width="1600" height="1067" fetchpriority="high" decoding="async" />`;
     document.getElementById("aboutMain").innerHTML =
       imgTag(photo.about, "Two Chandra Estates agents laughing over a laptop in the office", 'width="900" height="600"');
 
@@ -1614,7 +1683,7 @@
     const grid = document.getElementById("listingsGrid");
     grid.innerHTML = "";
     results.forEach(p=>grid.appendChild(propCard(p)));
-    document.getElementById("listingCount").textContent = results.length===1 ? "1 property" : results.length+" properties";
+    document.getElementById("listingCount").textContent = results.length===1 ? "1 demo property" : results.length+" demo properties";
     document.getElementById("listingsEmpty").classList.toggle("show", results.length===0);
     observeReveals(grid);
   }
@@ -1624,16 +1693,17 @@
     const p = properties.find(x=>x.id===Number(id));
     const wrap = document.getElementById("propertyDetail");
     const related = document.getElementById("relatedGrid");
-    if (!p){ wrap.innerHTML = "<p>That listing isn't available any more.</p>"; related.innerHTML=""; return; }
+    if (!p){ wrap.innerHTML = "<p>That demo listing could not be found.</p>"; related.innerHTML=""; return; }
 
     const variants = galleryFor(p);
 
     wrap.innerHTML = `
       <div class="detail-grid">
         <div>
-          <div class="gallery-main" id="galleryMain">${imgTag(variants[0], p.title + " — exterior", 'width="1000" height="750"')}</div>
+          <div class="gallery-main" id="galleryMain">${imgTag(variants[0], "Illustrative demo image \u2014 fictional sample property", 'width="1000" height="750"')}</div>
+          <p class="gallery-caption">Illustrative demo image \u2014 not an actual property photograph.</p>
           <div class="thumbs">
-            ${variants.map((v,i)=>`<button type="button" class="${i===0?'active':''}" data-idx="${i}" aria-label="Show view ${i+1}" aria-pressed="${i===0}">${imgTag(v, p.title + " — view " + (i+1))}</button>`).join("")}
+            ${variants.map((v,i)=>`<button type="button" class="${i===0?'active':''}" data-idx="${i}" aria-label="Show illustrative image ${i+1}" aria-pressed="${i===0}">${imgTag(v, "Illustrative demo image " + (i+1) + " of " + variants.length)}</button>`).join("")}
           </div>
           <p style="margin:1.2rem 0 0; color:var(--ink-2); max-width:58ch; font-size:.92rem">${p.description}</p>
         </div>
@@ -1645,11 +1715,8 @@
           <dl class="spec-grid">
             ${specPairs(p).map(s=>`<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join("")}
           </dl>
-          <a href="#contact" class="btn" style="width:100%; justify-content:center">Request a viewing</a>
-          <div class="agent-card">
-            ${imgTag(photo.team["Meera Rao"], "Portrait of Meera Rao", 'width="46" height="46"')}
-            <div><strong>Meera Rao</strong><span>Senior agent · replies within a day</span></div>
-          </div>
+          <p class="demo-note"><strong>Demo listing</strong>${p.demoNotice}</p>
+          <a href="#contact" class="btn" style="width:100%; justify-content:center">Demo enquiry</a>
         </div>
       </div>`;
 
@@ -1659,7 +1726,7 @@
         btn.classList.add("active");
         btn.setAttribute("aria-pressed","true");
         const i = Number(btn.dataset.idx);
-        document.getElementById("galleryMain").innerHTML = imgTag(variants[i], p.title + " — view " + (i+1), 'width="1000" height="750"');
+        document.getElementById("galleryMain").innerHTML = imgTag(variants[i], "Illustrative demo image " + (i+1) + " of " + variants.length, 'width="1000" height="750"');
       });
     });
 
@@ -1694,7 +1761,7 @@
     const nameOk = setErr(name,"err-name", name.value.trim().length<2 ? "Please enter your name." : "");
     const contactOk = setErr(contact,"err-contact", contact.value.trim().length<5 ? "Add a phone number or email." : "");
     if (!nameOk || !contactOk){ (nameOk?contact:name).focus(); return; }
-    status.textContent = "Thanks — an agent will reply within one working day.";
+    status.textContent = "Demo only — nothing was sent. This message appears on your screen and is not delivered anywhere.";
     form.reset();
   });
 
@@ -1817,7 +1884,7 @@
 
   function fillDrawer(p){
     drawerMedia.querySelectorAll("img").forEach(n => n.remove());
-    drawerMedia.insertAdjacentHTML("afterbegin", imgTag(p.images[0], p.title, 'width="800" height="600"'));
+    drawerMedia.insertAdjacentHTML("afterbegin", imgTag(p.images[0], "Illustrative demo image — fictional sample property", 'width="800" height="600"'));
     drawerKicker.textContent = catLabel[p.category];
     drawerTitle.textContent = p.title;
     drawerPrice.textContent = money(p.price);
@@ -1875,10 +1942,10 @@
   const navLinks = document.querySelectorAll("nav.primary a");
 
   const pageTitles = {
-    home:"Chandra Estates",
-    listings:"All listings — Chandra Estates",
-    about:"About us — Chandra Estates",
-    contact:"Book a visit — Chandra Estates"
+    home:"Chandra Estates — fictional demo",
+    listings:"All demo listings — Chandra Estates",
+    about:"About this demo — Chandra Estates",
+    contact:"Demo enquiry — Chandra Estates"
   };
 
   function router(){
