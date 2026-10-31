@@ -1,0 +1,425 @@
+{
+  "dataset": {
+    "name": "Chandra Estates — property dataset",
+    "schemaVersion": 1,
+    "market": "India",
+    "marketNote": "The target market is India. These demo records still carry US-dollar prices and non-Indian neighbourhood names; they have not been localised in this stage.",
+    "dataStatus": "demo",
+    "isDemoData": true,
+    "dataDisclaimer": "This file contains sample/demo data only. Nothing here is a real listing, a real address, a real price or a real availability. Do not present it to customers as available property.",
+    "recordCount": 12,
+    "currency": "USD",
+    "currencyNote": "Prices are the original demo values in US dollars. They have deliberately not been converted to INR — currency localisation is a separate step.",
+    "specsFormat": "Array of [label, value] string pairs. Labels and units differ per category.",
+    "source": "index.html — const properties (lines 839-876)",
+    "sourceOfTruth": "index.html",
+    "extractedOn": "2026-10-31",
+    "usedByWebsite": false,
+    "notes": [
+      "IDs, image paths, titles, categories, locations, prices, featured flags, specifications and descriptions are copied unchanged from index.html.",
+      "No property in this dataset has a street address, city, PIN code, ownership record, approval, survey number or legal/RERA detail. None has been invented.",
+      "No sale/rent flag, availability status, amenities list, area unit, map location, video or listing date exists in the source data. Those fields are absent rather than guessed.",
+      "'added' is an internal sort key (days since listed) used for 'Newest' ordering; it is not shown on the website.",
+      "Photographs are stock images (Unsplash) referenced by relative path; property detail galleries additionally reuse shared interior photos across listings.",
+      "The website still reads the JavaScript array inside index.html. This file is a read-only export and is not yet referenced by the site."
+    ]
+  },
+  "properties": [
+    {
+      "id": 1,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p1.webp",
+      "title": "Sunlit Craftsman on Birchwood Ave",
+      "category": "house",
+      "location": "Maple Hill",
+      "price": 640000,
+      "priceCurrency": "USD",
+      "featured": true,
+      "added": 9,
+      "specs": [
+        [
+          "Bedrooms",
+          "3"
+        ],
+        [
+          "Bathrooms",
+          "2"
+        ],
+        [
+          "Interior",
+          "1,480 sq ft"
+        ],
+        [
+          "Lot size",
+          "4,200 sq ft"
+        ]
+      ],
+      "desc": "A 1930s craftsman with the original woodwork intact, a deep front porch, and a kitchen that's already been opened up to the dining room."
+    },
+    {
+      "id": 2,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p2.webp",
+      "title": "Brick Colonial near Linden Park",
+      "category": "house",
+      "location": "Linden Park",
+      "price": 789000,
+      "priceCurrency": "USD",
+      "featured": false,
+      "added": 21,
+      "specs": [
+        [
+          "Bedrooms",
+          "4"
+        ],
+        [
+          "Bathrooms",
+          "3"
+        ],
+        [
+          "Interior",
+          "2,140 sq ft"
+        ],
+        [
+          "Lot size",
+          "6,000 sq ft"
+        ]
+      ],
+      "desc": "Four bedrooms on a quiet close two minutes' walk from the park. Finished basement, attached garage, recently replaced roof."
+    },
+    {
+      "id": 3,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p3.webp",
+      "title": "Lakeview Cottage, Hollow Brook",
+      "category": "house",
+      "location": "Hollow Brook",
+      "price": 512000,
+      "priceCurrency": "USD",
+      "featured": true,
+      "added": 4,
+      "specs": [
+        [
+          "Bedrooms",
+          "2"
+        ],
+        [
+          "Bathrooms",
+          "1"
+        ],
+        [
+          "Interior",
+          "1,020 sq ft"
+        ],
+        [
+          "Lot size",
+          "3,600 sq ft"
+        ]
+      ],
+      "desc": "A compact lakeside cottage, fully renovated, with a dock rights agreement already in place."
+    },
+    {
+      "id": 4,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p4.webp",
+      "title": "Riverside Loft, 6th Floor",
+      "category": "apartment",
+      "location": "Canal Quarter",
+      "price": 420000,
+      "priceCurrency": "USD",
+      "featured": true,
+      "added": 6,
+      "specs": [
+        [
+          "Bedrooms",
+          "1"
+        ],
+        [
+          "Bathrooms",
+          "1"
+        ],
+        [
+          "Interior",
+          "820 sq ft"
+        ],
+        [
+          "Floor",
+          "6 of 9"
+        ]
+      ],
+      "desc": "Exposed brick, tall windows, and a direct canal view. Building has a lift and secure parking."
+    },
+    {
+      "id": 5,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p5.webp",
+      "title": "Garden-Level Flat, Old Market",
+      "category": "apartment",
+      "location": "Old Market",
+      "price": 318000,
+      "priceCurrency": "USD",
+      "featured": false,
+      "added": 15,
+      "specs": [
+        [
+          "Bedrooms",
+          "2"
+        ],
+        [
+          "Bathrooms",
+          "1"
+        ],
+        [
+          "Interior",
+          "910 sq ft"
+        ],
+        [
+          "Floor",
+          "Ground"
+        ]
+      ],
+      "desc": "A quiet garden-level flat with its own private courtyard access — rare for this building."
+    },
+    {
+      "id": 6,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p6.webp",
+      "title": "Skyline Two-Bed near Transit",
+      "category": "apartment",
+      "location": "Station Road",
+      "price": 489000,
+      "priceCurrency": "USD",
+      "featured": false,
+      "added": 11,
+      "specs": [
+        [
+          "Bedrooms",
+          "2"
+        ],
+        [
+          "Bathrooms",
+          "2"
+        ],
+        [
+          "Interior",
+          "1,080 sq ft"
+        ],
+        [
+          "Floor",
+          "11 of 14"
+        ]
+      ],
+      "desc": "Two minutes from the station, with a south-facing balcony and in-unit laundry."
+    },
+    {
+      "id": 7,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p7.webp",
+      "title": "12-Acre Open Parcel, Cedar Road",
+      "category": "land",
+      "location": "Cedar Road",
+      "price": 210000,
+      "priceCurrency": "USD",
+      "featured": true,
+      "added": 2,
+      "specs": [
+        [
+          "Acreage",
+          "12 acres"
+        ],
+        [
+          "Zoning",
+          "Residential"
+        ],
+        [
+          "Road frontage",
+          "340 ft"
+        ],
+        [
+          "Utilities",
+          "At the road"
+        ]
+      ],
+      "desc": "A gently sloped, cleared parcel with utilities already run to the road line. Perc test on file."
+    },
+    {
+      "id": 8,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p8.webp",
+      "title": "Wooded 5-Acre Lot",
+      "category": "land",
+      "location": "Pine Ridge",
+      "price": 96000,
+      "priceCurrency": "USD",
+      "featured": false,
+      "added": 28,
+      "specs": [
+        [
+          "Acreage",
+          "5 acres"
+        ],
+        [
+          "Zoning",
+          "Rural residential"
+        ],
+        [
+          "Road frontage",
+          "180 ft"
+        ],
+        [
+          "Utilities",
+          "Well & septic needed"
+        ]
+      ],
+      "desc": "Mature hardwood lot backing onto conservation land, so the view stays the view."
+    },
+    {
+      "id": 9,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p9.webp",
+      "title": "Riverside Building Plot",
+      "category": "land",
+      "location": "Millbrook",
+      "price": 305000,
+      "priceCurrency": "USD",
+      "featured": false,
+      "added": 17,
+      "specs": [
+        [
+          "Acreage",
+          "2.4 acres"
+        ],
+        [
+          "Zoning",
+          "Residential"
+        ],
+        [
+          "Road frontage",
+          "110 ft"
+        ],
+        [
+          "Utilities",
+          "At the road"
+        ]
+      ],
+      "desc": "A rare riverside building plot with an approved site plan already on file for a single-family home."
+    },
+    {
+      "id": 10,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p10.webp",
+      "title": "Restored Farmhouse with Barn",
+      "category": "farmhouse",
+      "location": "Cedar Road",
+      "price": 875000,
+      "priceCurrency": "USD",
+      "featured": true,
+      "added": 5,
+      "specs": [
+        [
+          "Bedrooms",
+          "4"
+        ],
+        [
+          "Bathrooms",
+          "2"
+        ],
+        [
+          "Acreage",
+          "18 acres"
+        ],
+        [
+          "Outbuildings",
+          "Barn, equipment shed"
+        ]
+      ],
+      "desc": "A full farmhouse restoration — original beams, new mechanicals throughout — on 18 working acres with a standing barn."
+    },
+    {
+      "id": 11,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p11.webp",
+      "title": "Working Farm with Orchard",
+      "category": "farmhouse",
+      "location": "Pine Ridge",
+      "price": 1050000,
+      "priceCurrency": "USD",
+      "featured": false,
+      "added": 19,
+      "specs": [
+        [
+          "Bedrooms",
+          "5"
+        ],
+        [
+          "Bathrooms",
+          "3"
+        ],
+        [
+          "Acreage",
+          "32 acres"
+        ],
+        [
+          "Outbuildings",
+          "Barn, orchard, silo"
+        ]
+      ],
+      "desc": "A long-run apple orchard with an active harvest contract, plus a five-bedroom main house and full barn."
+    },
+    {
+      "id": 12,
+      "isDemo": true,
+      "dataStatus": "demo",
+      "dataDisclaimer": "Sample/demo record from the Chandra Estates website build. Not a real property: not for sale, not for rent, not available for viewing.",
+      "img": "assets/p12.webp",
+      "title": "Countryside Farmhouse Retreat",
+      "category": "farmhouse",
+      "location": "Millbrook",
+      "price": 699000,
+      "priceCurrency": "USD",
+      "featured": false,
+      "added": 13,
+      "specs": [
+        [
+          "Bedrooms",
+          "3"
+        ],
+        [
+          "Bathrooms",
+          "2"
+        ],
+        [
+          "Acreage",
+          "9 acres"
+        ],
+        [
+          "Outbuildings",
+          "Barn"
+        ]
+      ],
+      "desc": "A smaller farmhouse for anyone wanting the land without the scale of a working farm. Fenced paddock included."
+    }
+  ]
+}
