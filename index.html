@@ -181,7 +181,7 @@
   .hero-copy .eyebrow .rule{max-width:2rem}
   .hero-copy a,.hero-copy .btn{pointer-events:auto}
 
-  .wordmark{position:relative; width:max-content; max-width:100%; --split:55%}
+  .wordmark{position:relative; width:max-content; max-width:100%; --split:60%}
   .wm{font-family:var(--serif); font-weight:300; font-size:clamp(3.2rem,12.8vw,11.5rem); line-height:.84;
     letter-spacing:-.05em; margin:0; white-space:nowrap}
   .wm em{font-style:italic; font-weight:300}
@@ -213,14 +213,13 @@
   .hero-stats dd{margin:.1rem 0 0; font-size:.66rem; line-height:1.45; color:var(--ink-2)}
 
   @media (max-width:900px){
-    .hero-stage{display:block; min-height:0}
-    .hero-photo{height:min(64vw,430px); min-height:300px; border-radius:var(--r-md)}
-    .hero-copy{display:block; padding:1.1rem 0 0}
-    .wm{font-size:clamp(3rem,14vw,6rem); white-space:normal}
-    .wm-over{display:none}
-    .hero-copy .eyebrow{max-width:none}
-    .hero-copy .lede{max-width:46ch; margin:.9rem 0 1.2rem}
-    .hero-stats{padding:.9rem 1rem}
+    .hero-stage{min-height:0}
+    .hero-photo{grid-column:1 / -1; grid-row:1; height:min(82vw, 520px); min-height:340px; border-radius:var(--r-md)}
+    .hero-copy{grid-column:1 / -1; grid-row:1; z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:clamp(1.4rem,4vw,3rem) 1.5rem; pointer-events:none}
+    .wm{font-size:clamp(2.2rem,11vw,5.6rem); white-space:normal}
+    .hero-copy .eyebrow{color:var(--cream); max-width:none}
+    .hero-copy .lede{color:var(--cream); max-width:46ch; margin:.9rem 0 1.2rem}
+    .hero-stats{margin-top:0; padding:1rem 1.5rem}
     .hero-stats > div{padding:0 .7rem}
   }
   @media (max-width:520px){
@@ -871,6 +870,12 @@
   const catLabel = {house:"House",apartment:"Apartment",land:"Land & plot",farmhouse:"Farm house"};
   const money = n => "\u20b9" + n.toLocaleString("en-IN");
 
+  /* ---------- small safety helpers (defense against data-driven markup injection) ---------- */
+  const escapeHtml = s => String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const ASSET_RE = /^(?:\.\/|assets\/|[A-Za-z0-9_-]+\.(?:webp|jpg|jpeg|png|gif|avif))$/;
+  const safeSrc = src => ASSET_RE.test(String(src)) ? String(src) : "assets/hero.webp";
+  const safeHash = h => String(h).startsWith("#") ? String(h) : "#listings";
+
   /* ---------- photography ---------- */
   const photo = {
     hero: "assets/hero.webp",
@@ -892,7 +897,7 @@
   };
   const galleryFor = p => (p.images || []).slice(0,4);
   const imgTag = (src, alt, extra) =>
-    `<img src="${src}" alt="${alt}" ${extra || ""} loading="lazy" decoding="async" />`;
+    `<img src="${escapeHtml(safeSrc(src))}" alt="${escapeHtml(alt)}" ${extra || ""} loading="lazy" decoding="async" />`;
 
   /* ---------- spec pairs for cards, drawer and detail ---------- */
   const nf = n => Number(n).toLocaleString("en-IN");
@@ -925,23 +930,23 @@
 
   /* ---------- cards / grids ---------- */
   function propCard(p){
-    const route = p.detailUrl || "#property-"+p.id;
+    const route = safeHash(p.detailUrl || "#property-"+p.id);
     const card = document.createElement("article");
     card.className = "prop-card reveal";
     card.dataset.href = route;
     card.innerHTML = `
       <div class="img-wrap">
         ${imgTag(p.images[0], "Illustrative demo image — fictional sample property", 'width="900" height="675"')}
-        <span class="cat-tag">${catLabel[p.category]}</span>
+        <span class="cat-tag">${escapeHtml(catLabel[p.category])}</span>
         ${p.featured?'<span class="featured-tag">Featured</span>':''}
         <span class="demo-tag">Demo listing</span>
       </div>
       <div class="body">
         <p class="price">${money(p.price)}</p>
-        <h3>${p.title}</h3>
-        <p class="loc">${p.location}</p>
-        <p class="specs">${specPairs(p).slice(0,2).map(s=>s[1]).join(" · ")}</p>
-        <a class="view-details" href="${route}" aria-label="View property details for ${p.title}">View Property Details <span aria-hidden="true">&#8594;</span></a>
+        <h3>${escapeHtml(p.title)}</h3>
+        <p class="loc">${escapeHtml(p.location)}</p>
+        <p class="specs">${specPairs(p).slice(0,2).map(s=>escapeHtml(s[1])).join(" · ")}</p>
+        <a class="view-details" href="${escapeHtml(route)}" aria-label="View property details for ${escapeHtml(p.title)}">View Property Details <span aria-hidden="true">&#8594;</span></a>
       </div>`;
     return card;
   }
@@ -1058,17 +1063,17 @@
           <div class="thumbs">
             ${variants.map((v,i)=>`<button type="button" class="${i===0?'active':''}" data-idx="${i}" aria-label="Show illustrative image ${i+1}" aria-pressed="${i===0}">${imgTag(v, "Illustrative demo image " + (i+1) + " of " + variants.length)}</button>`).join("")}
           </div>
-          <p style="margin:1.2rem 0 0; color:var(--ink-2); max-width:58ch; font-size:.92rem">${p.description}</p>
+          <p style="margin:1.2rem 0 0; color:var(--ink-2); max-width:58ch; font-size:.92rem">${escapeHtml(p.description)}</p>
         </div>
         <div class="detail-info">
-          <span class="cat-tag">${catLabel[p.category]}</span>
+          <span class="cat-tag">${escapeHtml(catLabel[p.category])}</span>
           <p class="price">${money(p.price)}</p>
-          <h1>${p.title}</h1>
-          <p class="loc">${p.location}</p>
+          <h1>${escapeHtml(p.title)}</h1>
+          <p class="loc">${escapeHtml(p.location)}</p>
           <dl class="spec-grid">
-            ${specPairs(p).map(s=>`<div><dt>${s[0]}</dt><dd>${s[1]}</dd></div>`).join("")}
+            ${specPairs(p).map(s=>`<div><dt>${escapeHtml(s[0])}</dt><dd>${escapeHtml(s[1])}</dd></div>`).join("")}
           </dl>
-          <p class="demo-note"><strong>Demo listing</strong>${p.demoNotice}</p>
+          <p class="demo-note"><strong>Demo listing</strong>${escapeHtml(p.demoNotice)}</p>
           <a href="#contact" class="btn" style="width:100%; justify-content:center">Demo enquiry</a>
         </div>
       </div>`;
@@ -1199,12 +1204,8 @@
   const wordmark = document.getElementById("wordmark");
 
   function syncWordmarkSplit(){
-    if (!wordmark || !heroMedia) return;
-    const wr = wordmark.getBoundingClientRect();
-    const pr = heroMedia.getBoundingClientRect();
-    if (!wr.width) return;
-    const split = Math.max(0, Math.min(wr.width, pr.left - wr.left));
-    wordmark.style.setProperty("--split", split.toFixed(1) + "px");
+    if (!wordmark) return;
+    wordmark.style.setProperty("--split", "60%");
   }
 
   let heroTick = false;
