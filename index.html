@@ -161,25 +161,21 @@
   .page.active{display:block; animation:pageIn 560ms var(--ease)}
   @keyframes pageIn{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:translateY(0)}}
 
-  /* ---------- hero: name across the photograph ---------- */
+  /* ---------- hero: name straddling the photograph (60% out / 40% on) ---------- */
   .hero{padding:clamp(1rem,2.2vw,1.8rem) 0 clamp(1.4rem,2.6vw,2.2rem)}
-  .hero-stage{position:relative; display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; align-items:stretch}
-  .hero-photo{grid-column:4 / -1; grid-row:1; position:relative; overflow:hidden; border-radius:var(--r-lg);
-    min-height:clamp(470px,64vh,660px);
+  .hero-stage{--hero-h:clamp(470px,64vh,660px); position:relative; display:block; min-height:var(--hero-h)}
+  .hero-photo{position:absolute; top:0; bottom:0; right:0; left:var(--photo-left,55%); overflow:hidden; border-radius:var(--r-lg);
     box-shadow:0 60px 110px -70px rgba(32,28,22,.7); background:var(--paper-2)}
   .hero-photo .main{position:absolute; inset:-6% 0; overflow:hidden;
     transform:translate3d(0,calc(var(--shift,0px) * -1),0); transition:transform 120ms linear; will-change:transform}
-  .hero-photo .main img{width:100%; height:100%; object-fit:cover; animation:kenburns 30s ease-in-out infinite alternate}
+  .hero-photo .main img{width:100%; height:100%; object-fit:cover; object-position:center; animation:kenburns 30s ease-in-out infinite alternate}
   @keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.08)}}
   .hero-photo::after{content:""; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(95deg, rgba(16,18,24,.5) 0%, rgba(16,18,24,.14) 26%, rgba(16,18,24,0) 52%),
-      linear-gradient(0deg, rgba(16,18,24,.5), rgba(16,18,24,0) 45%)}
+    background:linear-gradient(95deg, rgba(16,18,24,.58) 0%, rgba(16,18,24,.28) 32%, rgba(16,18,24,.06) 62%, rgba(16,18,24,0) 82%),
+      linear-gradient(0deg, rgba(16,18,24,.4), rgba(16,18,24,0) 45%)}
 
-  .hero-copy{grid-column:1 / -1; grid-row:1; z-index:2; display:flex; flex-direction:column; justify-content:center;
-    padding:clamp(1.4rem,3vw,2.4rem) 0; pointer-events:none}
-  .hero-copy .eyebrow{color:var(--ink-2); margin-bottom:clamp(.8rem,1.6vw,1.4rem); max-width:22rem}
-  .hero-copy .eyebrow .rule{max-width:2rem}
-  .hero-copy a,.hero-copy .btn{pointer-events:auto}
+  .hero-copy{position:relative; z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+    min-height:var(--hero-h); padding:clamp(1.4rem,3vw,2.4rem) 0; pointer-events:none}
 
   .wordmark{position:relative; width:max-content; max-width:100%; --split:60%}
   .wm{font-family:var(--serif); font-weight:300; font-size:clamp(3.2rem,12.8vw,11.5rem); line-height:.84;
@@ -190,7 +186,10 @@
     clip-path:inset(0 0 0 var(--split));
     text-shadow:0 2px 34px rgba(10,12,18,.35)}
 
-  .hero-copy .lede{max-width:min(31ch,23%); margin:clamp(1.1rem,2.2vw,1.7rem) 0 clamp(1.1rem,2vw,1.6rem);
+  .hero-intro{position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start;
+    max-width:min(56ch,62%); margin-top:clamp(1.2rem,2.4vw,1.9rem)}
+  .hero-intro .eyebrow{color:var(--ink-2); margin-bottom:clamp(.7rem,1.4vw,1.1rem)}
+  .hero-intro .lede{max-width:44ch; margin:0 0 clamp(1.1rem,2vw,1.6rem);
     font-size:.98rem; line-height:1.72; color:var(--ink-2)}
   .hero-ctas{display:flex; gap:.6rem; flex-wrap:wrap; width:max-content; max-width:100%}
   .btn{display:inline-flex; align-items:center; justify-content:center; gap:.5rem; min-height:46px; padding:.8rem 1.55rem;
@@ -213,13 +212,13 @@
   .hero-stats dd{margin:.1rem 0 0; font-size:.66rem; line-height:1.45; color:var(--ink-2)}
 
   @media (max-width:900px){
-    .hero-stage{min-height:0}
-    .hero-photo{grid-column:1 / -1; grid-row:1; height:min(82vw, 520px); min-height:340px; border-radius:var(--r-md)}
-    .hero-copy{grid-column:1 / -1; grid-row:1; z-index:2; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:clamp(1.4rem,4vw,3rem) 1.5rem; pointer-events:none}
-    .wm{font-size:clamp(2.2rem,11vw,5.6rem); white-space:normal}
-    .hero-copy .eyebrow{color:var(--cream); max-width:none}
-    .hero-copy .lede{color:var(--cream); max-width:46ch; margin:.9rem 0 1.2rem}
-    .hero-stats{margin-top:0; padding:1rem 1.5rem}
+    .hero-stage{--hero-h:min(70vw, 430px); min-height:var(--hero-h)}
+    .hero-photo{left:var(--photo-left,55%); border-radius:var(--r-md)}
+    .hero-copy{min-height:var(--hero-h); padding:1.2rem 0}
+    .wm{font-size:clamp(2.4rem,11.5vw,5.6rem); white-space:normal}
+    .hero-intro{max-width:none; margin-top:1.3rem}
+    .hero-intro .lede{max-width:46ch}
+    .hero-stats{margin-top:1rem; padding:1rem 1.5rem}
     .hero-stats > div{padding:0 .7rem}
   }
   @media (max-width:520px){
@@ -611,16 +610,19 @@
       </figure>
 
       <div class="hero-copy">
-        <p class="eyebrow"><span class="idx">01</span> Fictional demonstration site</p>
         <div class="wordmark" id="wordmark">
           <h1 class="wm wm-base">Chandra<br /><em>Estates</em></h1>
           <span class="wm wm-over" aria-hidden="true">Chandra<br /><em>Estates</em></span>
         </div>
-        <p class="lede">Houses, apartments, land and farm houses &mdash; all twelve are fictional samples, with illustrative INR prices and stock photography.</p>
-        <div class="hero-ctas">
-          <a href="#listings" class="btn">Browse listings</a>
-          <a href="#contact" class="btn ghost">Demo enquiries</a>
-        </div>
+      </div>
+    </div>
+
+    <div class="hero-intro">
+      <p class="eyebrow"><span class="idx">01</span> Fictional demonstration site</p>
+      <p class="lede">Houses, apartments, land and farm houses &mdash; all twelve are fictional samples, with illustrative INR prices and stock photography.</p>
+      <div class="hero-ctas">
+        <a href="#listings" class="btn">Browse listings</a>
+        <a href="#contact" class="btn ghost">Demo enquiries</a>
       </div>
     </div>
 
@@ -872,7 +874,7 @@
 
   /* ---------- small safety helpers (defense against data-driven markup injection) ---------- */
   const escapeHtml = s => String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  const ASSET_RE = /^(?:\.\/|assets\/|[A-Za-z0-9_-]+\.(?:webp|jpg|jpeg|png|gif|avif))$/;
+  const ASSET_RE = /^(?:\.\/)?(?:assets\/)?[A-Za-z0-9._-]+\.(?:webp|jpg|jpeg|png|gif|avif)$/i;
   const safeSrc = src => ASSET_RE.test(String(src)) ? String(src) : "assets/hero.webp";
   const safeHash = h => String(h).startsWith("#") ? String(h) : "#listings";
 
@@ -1199,12 +1201,20 @@
     });
   }
 
-  /* ---------- hero motion: split wordmark + scroll parallax ---------- */
+  /* ---------- hero motion: name straddles the photo edge + scroll parallax ---------- */
   const heroMedia = document.getElementById("heroMedia");
+  const heroStage = document.querySelector(".hero-stage");
   const wordmark = document.getElementById("wordmark");
 
-  function syncWordmarkSplit(){
-    if (!wordmark) return;
+  /* Keep the photograph's left edge at the 60% mark of the wordmark, so 60% of the
+     name sits on the page background and the remaining 40% sits on the image. */
+  function layoutHero(){
+    if (!wordmark || !heroStage) return;
+    const sr = heroStage.getBoundingClientRect();
+    const wr = wordmark.getBoundingClientRect();
+    if (!wr.width) return;
+    const photoLeft = (wr.left - sr.left) + wr.width * 0.6;
+    heroStage.style.setProperty("--photo-left", photoLeft.toFixed(1) + "px");
     wordmark.style.setProperty("--split", "60%");
   }
 
@@ -1220,8 +1230,8 @@
     heroTick = false;
   }
   window.addEventListener("scroll", ()=>{ if(!heroTick){ heroTick = true; requestAnimationFrame(syncHero); } }, {passive:true});
-  window.addEventListener("resize", syncWordmarkSplit);
-  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(syncWordmarkSplit); }
+  window.addEventListener("resize", layoutHero);
+  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(layoutHero); }
 
   /* ---------- quick-view drawer ---------- */
   const drawer = document.getElementById("quickDrawer");
@@ -1330,7 +1340,7 @@
 
     const activePage = document.querySelector(".page.active");
     if (activePage){ revealInView(activePage); }
-    if (page === "home"){ requestAnimationFrame(syncWordmarkSplit); }
+    if (page === "home"){ requestAnimationFrame(layoutHero); }
 
     if (hash === "about"){
       const target = document.getElementById("homeAbout");
@@ -1344,7 +1354,7 @@
 
   window.addEventListener("hashchange", router);
   renderStaticScenes();
-  syncWordmarkSplit();
+  layoutHero();
   syncHero();
   observeReveals(document);
   observeCounts(document);

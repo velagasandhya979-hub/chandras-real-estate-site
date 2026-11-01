@@ -46,7 +46,8 @@
       "Land records use only their own photograph plus the shared category image; no land gallery shows another property's photograph.",
       "featured is true on exactly three records, matching the three slots in the homepage featured grid.",
       "properties.json is the single source of truth: index.html fetches it at load time and keeps no duplicate copy of these records.",
-      "Each record's detailUrl matches its real hash route, '#property-<id>'. Every property card links to it with a 'View Property Details' link; the data contains no other URL pattern."
+      "Each record's detailUrl matches its real hash route, '#property-<id>'. Every property card links to it with a 'View Property Details' link; the data contains no other URL pattern.",
+      "Every property keeps its own main photograph; gallery interiors are rotated per record so no two listings show an identical image set."
     ],
     "detailRouteNote": "detailUrl is this site's real detail route for the record: '#property-<id>' (for example '#property-1'). Property pages exist only at that hash route; there is no /properties/<id> or per-property HTML file."
   },
@@ -126,9 +127,9 @@
       "description": "Five bedrooms across three floors in Nandanagiri Enclave, a short walk from the neighbourhood park. Covered parking for two cars and a roof replaced recently.",
       "images": [
         "assets/p2.webp",
-        "assets/interior-1.webp",
         "assets/interior-2.webp",
-        "assets/interior-3.webp"
+        "assets/interior-3.webp",
+        "assets/interior-4.webp"
       ],
       "featured": false,
       "added": 21,
@@ -180,9 +181,9 @@
       "description": "A compact three-bedroom cottage on Kanaka Ridge, fully renovated, with a paved front garden and a covered sit-out that faces the morning sun.",
       "images": [
         "assets/p3.webp",
-        "assets/interior-1.webp",
-        "assets/interior-2.webp",
-        "assets/interior-3.webp"
+        "assets/interior-3.webp",
+        "assets/interior-4.webp",
+        "assets/interior-1.webp"
       ],
       "featured": true,
       "added": 4,
@@ -233,9 +234,9 @@
       "description": "A sixth-floor three-bedroom apartment at Ravella Springs with a wide balcony and a clear view over the layout's central green. The building has two lifts.",
       "images": [
         "assets/p4.webp",
+        "assets/interior-4.webp",
         "assets/interior-1.webp",
-        "assets/interior-2.webp",
-        "assets/interior-3.webp"
+        "assets/interior-2.webp"
       ],
       "featured": true,
       "added": 6,
@@ -352,9 +353,9 @@
       "description": "An eleventh-floor two-bedroom apartment at Vasudha Terrace with a south-facing balcony and covered parking in the basement.",
       "images": [
         "assets/p6.webp",
-        "assets/interior-1.webp",
         "assets/interior-2.webp",
-        "assets/interior-3.webp"
+        "assets/interior-3.webp",
+        "assets/interior-4.webp"
       ],
       "featured": false,
       "added": 11,
@@ -412,7 +413,8 @@
       "description": "A level 400 sq yd plot in Siri Vanam Layout with a 40 ft approach road, a compound wall on two sides and utility lines already brought to the plot boundary.",
       "images": [
         "assets/p7.webp",
-        "assets/cat-land.webp"
+        "assets/cat-land.webp",
+        "assets/p9.webp"
       ],
       "featured": false,
       "added": 2,
@@ -463,7 +465,8 @@
       "description": "A 200 sq yd corner plot in Bhoomi Greens, cleared and ready to build, with a 30 ft road on two sides.",
       "images": [
         "assets/p8.webp",
-        "assets/cat-land.webp"
+        "assets/cat-land.webp",
+        "assets/p7.webp"
       ],
       "featured": false,
       "added": 28,
@@ -514,7 +517,8 @@
       "description": "A 250 sq yd plot in Aranya Grove with a gentle slope, a 30 ft approach road and room for a single-family home.",
       "images": [
         "assets/p9.webp",
-        "assets/cat-land.webp"
+        "assets/cat-land.webp",
+        "assets/p8.webp"
       ],
       "featured": false,
       "added": 17,
@@ -566,9 +570,9 @@
       "description": "A restored four-bedroom farmhouse on 2.5 acres at Devara Farmlands - original timber beams, new plumbing and wiring throughout, plus a standing barn and equipment shed.",
       "images": [
         "assets/p10.webp",
-        "assets/interior-1.webp",
         "assets/interior-2.webp",
-        "assets/interior-3.webp"
+        "assets/interior-3.webp",
+        "assets/interior-4.webp"
       ],
       "featured": false,
       "added": 5,
@@ -625,9 +629,9 @@
       "description": "A five-acre working farm at Siri Orchards with a maintained fruit orchard, a four-bedroom main house and a full barn.",
       "images": [
         "assets/p11.webp",
-        "assets/interior-1.webp",
-        "assets/interior-2.webp",
-        "assets/interior-3.webp"
+        "assets/interior-3.webp",
+        "assets/interior-4.webp",
+        "assets/interior-1.webp"
       ],
       "featured": false,
       "added": 19,
@@ -686,9 +690,9 @@
       "description": "A 1.5-acre farmhouse at Kanaka Pastures for anyone wanting land without the scale of a working farm. Fenced paddock and a three-bedroom house included.",
       "images": [
         "assets/p12.webp",
+        "assets/interior-4.webp",
         "assets/interior-1.webp",
-        "assets/interior-2.webp",
-        "assets/interior-3.webp"
+        "assets/interior-2.webp"
       ],
       "featured": false,
       "added": 13,
