@@ -1,7 +1,7 @@
 {
   "dataset": {
     "name": "Chandra Estates - fictional demo property dataset",
-    "schemaVersion": 3,
+    "schemaVersion": 4,
     "market": "India",
     "currency": "INR",
     "currencyCode": "INR",
@@ -45,12 +45,15 @@
       "Photographs are stock images used as illustrative demo images. They do not depict the property described; detail galleries are captioned and alt text is generic.",
       "Land records use only their own photograph plus the shared category image; no land gallery shows another property's photograph.",
       "featured is true on exactly three records, matching the three slots in the homepage featured grid.",
-      "properties.json is the single source of truth: index.html fetches it at load time and keeps no duplicate copy of these records."
-    ]
+      "properties.json is the single source of truth: index.html fetches it at load time and keeps no duplicate copy of these records.",
+      "Each record's detailUrl matches its real hash route, '#property-<id>'. Every property card links to it with a 'View Property Details' link; the data contains no other URL pattern."
+    ],
+    "detailRouteNote": "detailUrl is this site's real detail route for the record: '#property-<id>' (for example '#property-1'). Property pages exist only at that hash route; there is no /properties/<id> or per-property HTML file."
   },
   "properties": [
     {
       "id": 1,
+      "detailUrl": "#property-1",
       "title": "Sunlit 4 BHK Villa, Devara Meadows",
       "category": "house",
       "listingType": null,
@@ -104,6 +107,7 @@
     },
     {
       "id": 2,
+      "detailUrl": "#property-2",
       "title": "Brick-Front 5 BHK Home, Nandanagiri Enclave",
       "category": "house",
       "listingType": null,
@@ -157,6 +161,7 @@
     },
     {
       "id": 3,
+      "detailUrl": "#property-3",
       "title": "Garden 3 BHK Cottage, Kanaka Ridge",
       "category": "house",
       "listingType": null,
@@ -209,6 +214,7 @@
     },
     {
       "id": 4,
+      "detailUrl": "#property-4",
       "title": "Riverside 3 BHK Flat, Ravella Springs",
       "category": "apartment",
       "listingType": null,
@@ -269,6 +275,7 @@
     },
     {
       "id": 5,
+      "detailUrl": "#property-5",
       "title": "Courtyard 2 BHK Flat, Kesava Corner",
       "category": "apartment",
       "listingType": null,
@@ -326,6 +333,7 @@
     },
     {
       "id": 6,
+      "detailUrl": "#property-6",
       "title": "Skyline 2 BHK Flat, Vasudha Terrace",
       "category": "apartment",
       "listingType": null,
@@ -385,6 +393,7 @@
     },
     {
       "id": 7,
+      "detailUrl": "#property-7",
       "title": "400 sq yd Plot, Siri Vanam Layout",
       "category": "land",
       "listingType": null,
@@ -435,6 +444,7 @@
     },
     {
       "id": 8,
+      "detailUrl": "#property-8",
       "title": "200 sq yd Plot, Bhoomi Greens",
       "category": "land",
       "listingType": null,
@@ -485,6 +495,7 @@
     },
     {
       "id": 9,
+      "detailUrl": "#property-9",
       "title": "250 sq yd Plot, Aranya Grove",
       "category": "land",
       "listingType": null,
@@ -536,6 +547,7 @@
     },
     {
       "id": 10,
+      "detailUrl": "#property-10",
       "title": "Restored 4 BHK Farmhouse, Devara Farmlands",
       "category": "farmhouse",
       "listingType": null,
@@ -594,6 +606,7 @@
     },
     {
       "id": 11,
+      "detailUrl": "#property-11",
       "title": "5-Acre Farm with Orchard, Siri Orchards",
       "category": "farmhouse",
       "listingType": null,
@@ -654,6 +667,7 @@
     },
     {
       "id": 12,
+      "detailUrl": "#property-12",
       "title": "1.5-Acre Farmhouse, Kanaka Pastures",
       "category": "farmhouse",
       "listingType": null,

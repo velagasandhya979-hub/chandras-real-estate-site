@@ -268,7 +268,7 @@
   #featuredGrid .body{flex:1}
   @media (max-width:900px){#featuredGrid{grid-template-columns:1fr}}
 
-  .prop-card{display:flex; flex-direction:column; text-decoration:none; color:var(--ink);
+  .prop-card{display:flex; flex-direction:column; text-decoration:none; color:var(--ink); cursor:pointer;
     border-radius:var(--r); overflow:hidden; background:rgba(253,250,243,.4);
     backdrop-filter:blur(24px) saturate(1.25); -webkit-backdrop-filter:blur(24px) saturate(1.25);
     border:1px solid var(--glass-edge); box-shadow:var(--glass-shadow);
@@ -294,6 +294,12 @@
   .prop-card .loc{margin:.12rem 0 0; font-size:.62rem; letter-spacing:.17em; text-transform:uppercase; color:var(--ink-2)}
   .prop-card .specs{margin:.65rem 0 0; padding-top:.6rem; border-top:1px solid var(--line-soft);
     font-size:.73rem; color:var(--ink-2); display:flex; gap:.5rem; flex-wrap:wrap}
+  .prop-card .view-details{margin-top:.6rem; align-self:start; display:inline-flex; align-items:center; gap:.35rem;
+    font-size:.56rem; letter-spacing:.18em; text-transform:uppercase; color:var(--clay-deep); text-decoration:none;
+    border-bottom:1px solid rgba(164,79,40,.35); padding-bottom:.22rem;
+    transition:color 200ms var(--ease), border-color 200ms var(--ease)}
+  @media (hover:hover) and (pointer:fine){.prop-card .view-details:hover{color:var(--clay); border-color:var(--clay)}}
+  .more-grid .prop-card .view-details{font-size:.5rem; margin-top:.45rem}
 
   /* ---------- listings controls ---------- */
   .chip-row{display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.1rem}
@@ -919,10 +925,11 @@
 
   /* ---------- cards / grids ---------- */
   function propCard(p){
-    const a = document.createElement("a");
-    a.href = "#property-"+p.id;
-    a.className = "prop-card reveal";
-    a.innerHTML = `
+    const route = p.detailUrl || "#property-"+p.id;
+    const card = document.createElement("article");
+    card.className = "prop-card reveal";
+    card.dataset.href = route;
+    card.innerHTML = `
       <div class="img-wrap">
         ${imgTag(p.images[0], "Illustrative demo image — fictional sample property", 'width="900" height="675"')}
         <span class="cat-tag">${catLabel[p.category]}</span>
@@ -934,8 +941,9 @@
         <h3>${p.title}</h3>
         <p class="loc">${p.location}</p>
         <p class="specs">${specPairs(p).slice(0,2).map(s=>s[1]).join(" · ")}</p>
+        <a class="view-details" href="${route}" aria-label="View property details for ${p.title}">View Property Details <span aria-hidden="true">&#8594;</span></a>
       </div>`;
-    return a;
+    return card;
   }
 
   function renderFeatured(){
@@ -1273,8 +1281,9 @@
   document.addEventListener("click", e => {
     const card = e.target.closest ? e.target.closest(".prop-card") : null;
     if (!card) return;
+    if (e.target.closest(".view-details")) return;  /* real link: let it navigate to the detail route */
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    const href = card.getAttribute("href") || "";
+    const href = card.dataset.href || "";
     if (!href.startsWith("#property-")) return;
     const p = properties.find(x => x.id === Number(href.replace("#property-", "")));
     if (!p) return;

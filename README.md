@@ -55,6 +55,8 @@ property, a real address or an offer for sale or rent.
   those fields are `null` rather than guessed.
 - Every record carries `status: "demo-only"`, `availability: "not-available"`, `priceType:
   "illustrative"`, `listingType: null` and `isDemo: true`. Nothing is offered for sale or rent.
+- Each record's `detailUrl` is its real route on the site (`#property-<id>`); every card shows a
+  "View Property Details" link to it. There is no other property URL pattern.
 - The 12 records live only in `properties.json`. The page fetches that file at load time, checks the
   response and the dataset, and renders from it — there is no duplicate array in `index.html`.
 - Demo status is shown in the interface, not only in the footer: a `DEMO LISTING` label on every
