@@ -498,10 +498,10 @@
     background:var(--glass-strong); font-size:.88rem; color:var(--ink-2); box-shadow:var(--glass-shadow)}
 
   /* ---------- quick-view drawer ---------- */
-  .drawer-scrim{position:fixed; inset:0; z-index:70; background:rgba(24,20,16,.38); backdrop-filter:blur(4px);
+  .drawer-scrim{position:fixed; inset:0; z-index:10000; background:rgba(24,20,16,.38); backdrop-filter:blur(4px);
     opacity:0; pointer-events:none; transition:opacity 320ms var(--ease)}
   .drawer-scrim.open{opacity:1; pointer-events:auto}
-  .drawer{position:fixed; top:0; right:0; bottom:0; z-index:80; width:min(400px,92vw);
+  .drawer{position:fixed; top:0; right:0; bottom:0; z-index:10001; width:min(400px,92vw);
     display:flex; flex-direction:column; overflow:auto;
     background:rgba(253,250,243,.72); backdrop-filter:blur(34px) saturate(1.35); -webkit-backdrop-filter:blur(34px) saturate(1.35);
     border-left:1px solid rgba(255,255,255,.6); box-shadow:-40px 0 90px -50px rgba(32,28,22,.55);
@@ -1437,5 +1437,9 @@
   loadProperties();
 })();
 </script>
+
+<!-- Botpress Webchat (official embed) -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/10/31/14/20261031140244-3EGJ9IK8.js" defer></script>
 </body>
 </html>
