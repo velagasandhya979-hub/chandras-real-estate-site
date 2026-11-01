@@ -32,9 +32,9 @@
     },
     "categoryFields": "Category-specific fields appear only on records of that category; all records share the same common fields.",
     "updatedOn": "2026-10-31",
-    "source": "index.html - const properties (kept in sync with this file)",
-    "usedByWebsite": false,
-    "syncNote": "index.html carries an identical copy of these records in its JavaScript array; the site does not fetch this JSON yet.",
+    "source": "properties.json - single source of truth, fetched by index.html at load time",
+    "usedByWebsite": true,
+    "syncNote": "index.html no longer contains a copy of these records; it fetches this file at load time.",
     "notes": [
       "Prices are numeric INR values; priceDisplay uses Indian grouping and always matches the numeric price. All prices are illustrative, not offers or valuations.",
       "Every record is marked isDemo true, dataStatus 'demo', status 'demo-only', availability 'not-available' and priceType 'illustrative'.",
@@ -45,7 +45,7 @@
       "Photographs are stock images used as illustrative demo images. They do not depict the property described; detail galleries are captioned and alt text is generic.",
       "Land records use only their own photograph plus the shared category image; no land gallery shows another property's photograph.",
       "featured is true on exactly three records, matching the three slots in the homepage featured grid.",
-      "The website still reads the JavaScript array in index.html; properties.json is a synchronised export and is not fetched by the site."
+      "properties.json is the single source of truth: index.html fetches it at load time and keeps no duplicate copy of these records."
     ]
   },
   "properties": [

@@ -4,7 +4,7 @@ Single-page front-end design for a real estate agency (Houses, Apartments, Land 
 
 ## Preview
 
-Open `index.html` in a browser, or serve the folder locally:
+Serve the folder locally (the page fetches `properties.json`, which browsers block on `file://`):
 
 ```powershell
 python -m http.server 8000
@@ -26,7 +26,7 @@ A mix of Swiss grid discipline, bento layout, glass surfaces and wabi-sabi warmt
 
 ## Stack
 
-- One self-contained `index.html` (markup, CSS and JS inline)
+- One `index.html` (markup, CSS and JS inline) plus `properties.json`, the property data source
 - Local image assets in `assets/` (WebP, ~2 MB total)
 - Google Fonts: Fraunces + Inter + Caveat
 - Hash router: `#home`, `#listings`, `#listings-<category>`, `#property-<id>`, `#about`, `#contact`
@@ -37,7 +37,7 @@ The site is a static folder (`index.html` + `assets/`), so any static host works
 
 - **GitHub Pages** — Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)`. The repo must be public for free Pages, or keep it private and use another host.
 - **Netlify Drop / Cloudflare Pages** — drag the folder in, no build step.
-- **Any host** — upload `index.html` and `assets/` to the web root.
+- **Any host** — upload `index.html`, `properties.json` and `assets/` to the web root.
 
 After a real domain exists, change the two share-image tags to absolute URLs
 (`https://your-domain/assets/hero.webp`) so Facebook and WhatsApp can preview the image.
@@ -55,9 +55,8 @@ property, a real address or an offer for sale or rent.
   those fields are `null` rather than guessed.
 - Every record carries `status: "demo-only"`, `availability: "not-available"`, `priceType:
   "illustrative"`, `listingType: null` and `isDemo: true`. Nothing is offered for sale or rent.
-- The same 12 records live in two places and must be kept in sync: the `const properties` array in
-  `index.html` (what the site renders) and `properties.json` (a read-only export the site does not
-  fetch yet).
+- The 12 records live only in `properties.json`. The page fetches that file at load time, checks the
+  response and the dataset, and renders from it — there is no duplicate array in `index.html`.
 - Demo status is shown in the interface, not only in the footer: a `DEMO LISTING` label on every
   property card, a notice on every detail page and in the quick-view drawer, a banner on the listings
   page, and a note under the enquiry form.
@@ -69,6 +68,8 @@ property, a real address or an offer for sale or rent.
 
 - Listings, filters, gallery and contact form are front-end only — no data leaves the page, and the
   enquiry form has no backend, so nothing is sent, stored or shared.
+- If `properties.json` cannot be loaded the page shows an error message instead of an empty
+  catalogue; no property content is embedded in the HTML.
 - No phone number, email, office address or map location is published. Contact details are demo
   placeholders only; do not add real ones without the agency's confirmation.
 - The hero counters (12 sample properties, 4 categories, 0 real listings) and the testimonial are
